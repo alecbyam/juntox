@@ -17,19 +17,41 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     min-height: 100vh;
+    min-height: 100dvh;
     background-color: #060608;
     color: #d6d3d1;
     background-image:
       radial-gradient(ellipse 80% 50% at 50% -20%, rgba(185, 28, 28, 0.03), transparent),
       radial-gradient(ellipse 60% 40% at 80% 60%, rgba(29, 78, 216, 0.015), transparent);
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+
+  /* Touch-friendly tap targets on coarse pointers (mobile/tablet) */
+  @media (pointer: coarse) {
+    a, button {
+      touch-action: manipulation;
+    }
+  }
+
+  /* Respect user's motion preferences — accessibility + battery/perf on low-end devices */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   ::selection {
@@ -62,6 +84,25 @@
     outline: 2px solid rgba(185, 28, 28, 0.5);
     outline-offset: 2px;
     border-radius: 4px;
+  }
+
+  /* Skip-to-content link — hidden until keyboard-focused */
+  .skip-link {
+    position: fixed;
+    top: -100px;
+    left: 1rem;
+    z-index: 100;
+    background: #b91c1c;
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: top 0.2s ease-out;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
   }
 
   /* Typography optical sizing */
@@ -140,7 +181,7 @@
 
   /* ── Cards ── */
   .card-base {
-    @apply relative rounded-2xl border border-white/[0.05] bg-surface-elevated/50 p-8 transition-all duration-400 ease-out-expo;
+    @apply relative rounded-2xl border border-white/[0.05] bg-surface-elevated/50 p-5 transition-all duration-400 ease-out-expo sm:p-8;
     box-shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.02);
   }
 
@@ -169,7 +210,7 @@
 
   /* Gradient border card */
   .card-gradient-border {
-    @apply relative rounded-2xl p-8 transition-all duration-400 ease-out-expo;
+    @apply relative rounded-2xl p-5 transition-all duration-400 ease-out-expo sm:p-8;
     background: #121218;
   }
 
@@ -192,7 +233,7 @@
 
   /* ── Layout ── */
   .section-padding {
-    @apply px-6 py-24 sm:px-8 md:py-32;
+    @apply px-5 py-16 sm:px-8 sm:py-24 md:py-32;
   }
 
   .container-content {

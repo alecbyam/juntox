@@ -59,7 +59,9 @@ function DropdownMenu({
     <div ref={ref} className="relative">
       <button
         onClick={onToggle}
-        className="flex items-center gap-1 text-sm text-neutral-500 transition hover:text-white"
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+        className="flex items-center gap-1 py-2 text-sm text-neutral-500 transition hover:text-white"
       >
         {label}
         <svg
@@ -119,6 +121,13 @@ export function MainNav() {
     setInnovationOpen(false)
   }, [pathname])
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileOpen])
+
   const isActive = (href: string) => pathname === href
 
   return (
@@ -144,6 +153,7 @@ export function MainNav() {
             <Link
               key={link.href}
               href={link.href}
+              aria-current={isActive(link.href) ? 'page' : undefined}
               className={`text-sm transition ${
                 isActive(link.href) ? 'text-white' : 'text-neutral-500 hover:text-white'
               }`}
@@ -176,6 +186,7 @@ export function MainNav() {
             <Link
               key={link.href}
               href={link.href}
+              aria-current={isActive(link.href) ? 'page' : undefined}
               className={`text-sm transition ${
                 isActive(link.href) ? 'text-white' : 'text-neutral-500 hover:text-white'
               }`}
@@ -204,8 +215,10 @@ export function MainNav() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="relative z-10 flex h-10 w-10 items-center justify-center rounded-lg lg:hidden"
-          aria-label="Menu"
+          className="relative z-10 flex h-11 w-11 items-center justify-center rounded-lg lg:hidden"
+          aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
         >
           <div className="flex w-5 flex-col gap-1.5">
             <span
@@ -230,7 +243,8 @@ export function MainNav() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-t border-white/[0.06] bg-background/95 backdrop-blur-xl lg:hidden"
+            id="mobile-menu"
+            className="overflow-hidden border-t border-white/[0.06] bg-background/95 backdrop-blur-xl lg:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto"
           >
             <div className="container-content space-y-1 px-6 py-6 sm:px-8">
               {mainLinks.map((link) => (

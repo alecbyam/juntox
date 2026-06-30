@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { type ReactNode } from 'react'
 
 const sidebarLinks = [
@@ -90,6 +90,17 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const pathname = usePathname()
 
+  useEffect(() => {
+    setSidebarOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
+    document.body.style.overflow = sidebarOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [sidebarOpen])
+
   return (
     <div className="flex min-h-screen bg-background">
       {/* Mobile overlay */}
@@ -97,12 +108,15 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         <div
           className="fixed inset-0 z-40 bg-black/60 lg:hidden"
           onClick={() => setSidebarOpen(false)}
+          aria-hidden="true"
         />
       )}
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-64 transform border-r border-white/[0.04] bg-surface transition-transform duration-200 lg:static lg:translate-x-0 ${
+        id="dashboard-sidebar"
+        aria-label="Navigation du tableau de bord"
+        className={`fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] transform border-r border-white/[0.04] bg-surface transition-transform duration-200 lg:static lg:w-64 lg:max-w-none lg:translate-x-0 ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -116,7 +130,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             </Link>
             <button
               onClick={() => setSidebarOpen(false)}
-              className="rounded-md p-1 text-neutral-500 transition hover:text-white lg:hidden"
+              aria-label="Fermer le menu"
+              className="flex h-11 w-11 items-center justify-center rounded-md text-neutral-500 transition hover:text-white lg:hidden"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -136,7 +151,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                       key={item.href}
                       href={item.href}
                       onClick={() => setSidebarOpen(false)}
-                      className={`flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm transition ${
+                      aria-current={pathname === item.href ? 'page' : undefined}
+                      className={`flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm transition ${
                         pathname === item.href
                           ? 'bg-white/[0.06] text-white'
                           : 'text-neutral-500 hover:bg-white/[0.03] hover:text-neutral-300'
@@ -171,7 +187,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         <div className="flex items-center gap-3 border-b border-white/[0.04] px-4 py-3 lg:hidden">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="rounded-md p-1.5 text-neutral-400 transition hover:text-white"
+            aria-label="Ouvrir le menu"
+            aria-expanded={sidebarOpen}
+            aria-controls="dashboard-sidebar"
+            className="flex h-11 w-11 items-center justify-center rounded-md text-neutral-400 transition hover:text-white"
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />

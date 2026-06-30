@@ -1,8 +1,9 @@
 import './globals.css'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import { MainNav } from '../components/MainNav'
 import { Footer } from '../components/Footer'
+import { ScrollToTop } from '../components/ScrollToTop'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -15,6 +16,13 @@ const playfair = Playfair_Display({
   variable: '--font-playfair',
   display: 'swap',
 })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#060608',
+}
 
 export const metadata: Metadata = {
   title: 'JuntoX — Intelligence transformée en impact',
@@ -43,10 +51,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${inter.variable} ${playfair.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-background font-sans text-neutral-200 antialiased">
+      <body className="min-h-screen bg-background font-sans text-neutral-300 antialiased">
+        <a href="#main-content" className="skip-link">
+          Aller au contenu principal
+        </a>
         <MainNav />
-        <main className="min-h-screen">{children}</main>
+        <main id="main-content" className="min-h-screen">{children}</main>
         <Footer />
+        <ScrollToTop />
       </body>
     </html>
   )

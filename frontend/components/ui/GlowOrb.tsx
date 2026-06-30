@@ -12,11 +12,13 @@ const colors = {
   white: 'bg-white/[0.02]',
 }
 
+// Smaller dimensions + lighter blur on mobile — large blur filters are GPU-expensive
+// and these are purely decorative, so cheapen them below the sm breakpoint.
 const sizes = {
-  sm: 'h-[200px] w-[300px] blur-[100px]',
-  md: 'h-[350px] w-[500px] blur-[120px]',
-  lg: 'h-[500px] w-[700px] blur-[140px]',
-  xl: 'h-[600px] w-[900px] blur-[160px]',
+  sm: 'h-[140px] w-[200px] blur-[60px] sm:h-[200px] sm:w-[300px] sm:blur-[100px]',
+  md: 'h-[220px] w-[320px] blur-[70px] sm:h-[350px] sm:w-[500px] sm:blur-[120px]',
+  lg: 'h-[300px] w-[420px] blur-[80px] sm:h-[500px] sm:w-[700px] sm:blur-[140px]',
+  xl: 'h-[360px] w-[520px] blur-[90px] sm:h-[600px] sm:w-[900px] sm:blur-[160px]',
 }
 
 export function GlowOrb({ color = 'primary', size = 'lg', className = '', animate = true }: Props) {

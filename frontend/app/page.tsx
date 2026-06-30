@@ -163,7 +163,7 @@ export default function Home() {
           >
             <Badge variant="primary">JuntoX SARL &middot; Kinshasa, RD Congo</Badge>
 
-            <h1 className="mt-8 font-serif text-display-xl font-semibold leading-none text-white max-[640px]:text-display">
+            <h1 className="mt-8 font-serif text-display-xl font-semibold leading-[1.05] text-white">
               L&apos;intelligence{' '}
               <span className="text-gradient-primary">transform&eacute;e</span> en
               infrastructure.
