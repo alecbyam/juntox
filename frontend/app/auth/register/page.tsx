@@ -7,6 +7,12 @@ import { GridPattern } from '../../../components/ui/GridPattern'
 import { postJson } from '../../../lib/api'
 import { useToast } from '../../../components/ui/Toast'
 
+const ROLE_OPTIONS = [
+  { value: 'client', label: 'Client' },
+  { value: 'investisseur', label: 'Investisseur' },
+  { value: 'partenaire', label: 'Partenaire' },
+] as const
+
 function getPasswordStrength(password: string) {
   if (!password) return { score: 0, label: '' }
   let score = 0
@@ -24,6 +30,7 @@ function getPasswordStrength(password: string) {
 export default function RegisterPage() {
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
+  const [role, setRole] = useState<(typeof ROLE_OPTIONS)[number]['value']>('client')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -38,7 +45,7 @@ export default function RegisterPage() {
     setLoading(true)
     setError(null)
     try {
-      await postJson('/api/auth/register', { full_name: fullName, email, password, role: 'client' })
+      await postJson('/api/auth/register', { full_name: fullName, email, password, role })
       setSuccess(true)
       showToast('Compte créé avec succès.', 'success')
     } catch (err) {
@@ -106,6 +113,26 @@ export default function RegisterPage() {
                 placeholder="votre@email.com"
               />
             </label>
+            <div className="block">
+              <span className="text-caption font-medium text-neutral-500">Vous êtes</span>
+              <div className="mt-2 grid grid-cols-3 gap-2">
+                {ROLE_OPTIONS.map((option) => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => setRole(option.value)}
+                    aria-pressed={role === option.value}
+                    className={`rounded-xl border px-3 py-2.5 text-sm transition ${
+                      role === option.value
+                        ? 'border-primary/40 bg-primary/[0.08] text-white'
+                        : 'border-white/[0.08] bg-surface-elevated/60 text-neutral-400 hover:border-white/[0.14]'
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
             <label className="block">
               <span className="text-caption font-medium text-neutral-500">Mot de passe</span>
               <div className="relative mt-2">

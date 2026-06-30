@@ -6,6 +6,7 @@ import { Badge } from '../../../components/ui/Badge'
 import { GridPattern } from '../../../components/ui/GridPattern'
 import { postJson } from '../../../lib/api'
 import { useToast } from '../../../components/ui/Toast'
+import { setToken, dashboardPathForRole } from '../../../lib/auth'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -20,10 +21,10 @@ export default function LoginPage() {
     setLoading(true)
     setError(null)
     try {
-      const data = await postJson<{ access_token: string }>('/api/auth/login', { email, password })
-      window.localStorage.setItem('juntox_token', data.access_token)
+      const data = await postJson<{ access_token: string; role: string }>('/api/auth/login', { email, password })
+      setToken(data.access_token)
       showToast('Connexion réussie. Redirection...', 'success')
-      window.location.href = '/dashboard/admin'
+      window.location.href = dashboardPathForRole(data.role)
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Impossible de se connecter'
       setError(msg)

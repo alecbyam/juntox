@@ -4,7 +4,7 @@ from ..db import get_db
 from ..models import User
 from ..schemas.user import UserCreate, UserLogin, Token, UserResponse
 from ..services.user_service import UserService
-from ..auth import AuthService
+from ..auth import AuthService, get_current_user
 
 router = APIRouter()
 user_service = UserService()
@@ -24,4 +24,8 @@ def login_user(payload: UserLogin, db: Session = Depends(get_db)):
     if not user:
         raise HTTPException(status_code=401, detail='Invalid credentials')
     token = auth_service.create_access_token(subject=str(user.id))
-    return {'access_token': token, 'token_type': 'bearer'}
+    return {'access_token': token, 'token_type': 'bearer', 'role': user.role, 'full_name': user.full_name}
+
+@router.get('/me', response_model=UserResponse)
+def get_me(current_user: User = Depends(get_current_user)):
+    return current_user

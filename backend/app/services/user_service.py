@@ -1,18 +1,19 @@
 from sqlalchemy.orm import Session
 from ..auth import AuthService
 from ..models import User
-from ..schemas.user import UserCreate
+from ..schemas.user import UserCreate, SELF_SERVICE_ROLES
 
 class UserService:
     def __init__(self):
         self.auth_service = AuthService()
 
     def create_user(self, db: Session, payload: UserCreate) -> User:
+        role = payload.role if payload.role in SELF_SERVICE_ROLES else 'client'
         hashed_password = self.auth_service.get_password_hash(payload.password)
         user = User(
             email=payload.email,
             full_name=payload.full_name,
-            role=payload.role,
+            role=role,
             hashed_password=hashed_password,
             is_active=True,
         )

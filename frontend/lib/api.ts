@@ -25,3 +25,17 @@ export async function fetchJson<T>(path: string): Promise<T> {
 
   return response.json() as Promise<T>
 }
+
+export async function fetchJsonAuth<T>(path: string): Promise<T> {
+  const token = typeof window !== 'undefined' ? window.localStorage.getItem('juntox_token') : null
+  const response = await fetch(`${API_URL}${path}`, {
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  })
+
+  if (!response.ok) {
+    const text = await response.text()
+    throw new Error(text || `Erreur ${response.status}`)
+  }
+
+  return response.json() as Promise<T>
+}
