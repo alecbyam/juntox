@@ -2,7 +2,7 @@ import { createMetadata } from '../../lib/metadata'
 
 export const metadata = createMetadata({
   title: 'Contact',
-  description: 'Contactez JuntoX SARL pour discuter de votre projet, investir ou devenir partenaire. Kinshasa, RD Congo.',
+  description: 'Contactez JuntoX SARL pour discuter de votre projet, investir ou devenir partenaire. Bunia, Ituri, RD Congo.',
   path: '/contact',
 })
 

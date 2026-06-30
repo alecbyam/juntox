@@ -100,7 +100,7 @@ export default function AIPage() {
                     onChange={(e) => setName(e.target.value)}
                     required
                     className="mt-2 w-full rounded-xl border border-white/[0.08] bg-surface-elevated/60 px-4 py-3 text-sm text-white outline-none transition placeholder:text-neutral-600 focus:border-accent/40 focus:ring-1 focus:ring-accent/20"
-                    placeholder="Ex: Plateforme logistique pour Kinshasa"
+                    placeholder="Ex: Plateforme logistique pour Bunia"
                   />
                 </label>
                 <label className="block">

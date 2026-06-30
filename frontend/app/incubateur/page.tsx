@@ -41,7 +41,7 @@ const faqs = [
     answer: 'Non, l\'accompagnement est gratuit pour les startups sélectionnées. Notre modèle repose sur la création de valeur partagée à long terme, pas sur des frais d\'entrée.',
   },
   {
-    question: 'Dois-je être basé à Kinshasa pour participer ?',
+    question: 'Dois-je être basé à Bunia pour participer ?',
     answer: 'La majorité du programme peut se suivre à distance, mais une présence physique est recommandée pour le Demo Day et certains ateliers clés.',
   },
   {

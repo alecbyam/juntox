@@ -9,7 +9,8 @@ export const siteConfig = {
   description:
     'JuntoX SARL — Plateforme technologique africaine. IA, innovation, investissement, construction, logistique et formation pour bâtir les entreprises de demain.',
   email: 'contact@juntox.africa',
-  locality: 'Kinshasa',
+  locality: 'Bunia',
+  region: 'Ituri',
   country: 'CD',
 
   // Leave a value empty ('') to hide that platform everywhere until the

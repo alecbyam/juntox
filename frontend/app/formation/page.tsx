@@ -24,7 +24,7 @@ const programs = [
   {
     title: 'Bootcamp Entrepreneuriat',
     duration: '12 semaines',
-    format: 'Présentiel — Kinshasa',
+    format: 'Présentiel — Bunia',
     description: 'De l\'idée au business model viable, avec mentorat individuel et pitch final devant investisseurs.',
   },
   {
@@ -170,7 +170,7 @@ export default function FormationPage() {
             <CaseStudy
               tag="Bootcamp Entrepreneuriat — Cohorte 3"
               title="18 entrepreneurs, 12 semaines, 9 entreprises lancées"
-              description="La troisième cohorte du Bootcamp Entrepreneuriat a réuni 18 participants venus de Kinshasa, Lubumbashi et Goma. À l'issue du programme, 9 ont lancé leur activité et 3 ont obtenu un premier financement via notre réseau d'investisseurs partenaires."
+              description="La troisième cohorte du Bootcamp Entrepreneuriat a réuni 18 participants venus de Bunia, Goma et Kisangani. À l'issue du programme, 9 ont lancé leur activité et 3 ont obtenu un premier financement via notre réseau d'investisseurs partenaires."
               metrics={[
                 { value: '18', label: 'Participants' },
                 { value: '9', label: 'Entreprises lancées' },

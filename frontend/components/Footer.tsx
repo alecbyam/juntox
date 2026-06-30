@@ -105,7 +105,7 @@ export function Footer() {
             </p>
             <div className="mt-6 space-y-2 text-sm text-neutral-600">
               <p>contact@juntox.africa</p>
-              <p>Kinshasa, RD Congo</p>
+              <p>Bunia, Ituri, RD Congo</p>
             </div>
             {socialLinks().length > 0 && (
               <div className="mt-6 flex gap-2">

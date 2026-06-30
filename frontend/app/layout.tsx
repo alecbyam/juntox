@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     'construction RDC',
     'logistique Afrique',
     'incubateur startup Afrique',
-    'Kinshasa technologie',
+    'Bunia Ituri technologie',
   ],
   metadataBase: new URL(siteConfig.url),
   alternates: {
@@ -77,6 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     address: {
       '@type': 'PostalAddress',
       addressLocality: siteConfig.locality,
+      addressRegion: siteConfig.region,
       addressCountry: siteConfig.country,
     },
     sameAs: socialLinks().map((link) => link.href),

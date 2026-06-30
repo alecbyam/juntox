@@ -11,8 +11,8 @@ import { useToast } from '../../components/ui/Toast'
 const contactInfo = [
   { label: 'Email', value: 'contact@juntox.africa' },
   { label: 'Téléphone', value: '+243 999 000 000' },
-  { label: 'Adresse', value: 'Kinshasa, RD Congo' },
-  { label: 'Horaires', value: 'Lun–Ven, 8h–17h (UTC+1)' },
+  { label: 'Adresse', value: 'Bunia, Ituri, RD Congo' },
+  { label: 'Horaires', value: 'Lun–Ven, 8h–17h (UTC+2)' },
 ]
 
 const reasons = [
@@ -33,7 +33,7 @@ const faqs = [
   },
   {
     question: 'Avez-vous des bureaux que je peux visiter ?',
-    answer: 'Notre siège est à Kinshasa. Les visites se font sur rendez-vous — contactez-nous pour organiser votre venue.',
+    answer: 'Notre siège est à Bunia, en Ituri. Les visites se font sur rendez-vous — contactez-nous pour organiser votre venue.',
   },
   {
     question: 'Acceptez-vous les candidatures via ce formulaire ?',

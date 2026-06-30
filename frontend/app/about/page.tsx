@@ -35,7 +35,7 @@ const values = [
 ]
 
 const timeline = [
-  { year: '2024', event: 'Fondation de JuntoX SARL à Kinshasa' },
+  { year: '2024', event: 'Fondation de JuntoX SARL à Bunia' },
   { year: '2025', event: 'Lancement de la plateforme IA et premiers projets de consultance' },
   { year: '2026', event: 'Expansion vers la construction, la logistique et l\'incubation' },
   { year: '2027+', event: 'Échelle continentale, partenariats internationaux, laboratoire IA' },
@@ -48,7 +48,7 @@ const faqs = [
   },
   {
     question: 'Où JuntoX opère-t-elle aujourd\'hui ?',
-    answer: 'Notre siège est à Kinshasa, RD Congo. Nous intervenons activement en Afrique centrale et de l\'Ouest, avec des clients et partenaires en Europe et en Asie pour le commerce international et l\'investissement.',
+    answer: 'Notre siège est à Bunia, en Ituri, RD Congo. Nous intervenons activement en Afrique centrale et de l\'Est, avec des clients et partenaires en Europe et en Asie pour le commerce international et l\'investissement.',
   },
   {
     question: 'Comment JuntoX se finance-t-elle ?',

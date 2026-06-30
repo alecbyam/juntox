@@ -152,7 +152,7 @@ export default function PartenairesPage() {
             <CaseStudy
               tag="Partenariat académique — Université locale"
               title="Co-encadrement de recherche appliquée en IA agricole"
-              description="En partenariat avec une université de Kinshasa, JuntoX a co-encadré une équipe de chercheurs sur un projet de traçabilité agricole par IA, depuis devenu un prototype actif de notre laboratoire."
+              description="En partenariat avec une université de Bunia, JuntoX a co-encadré une équipe de chercheurs sur un projet de traçabilité agricole par IA, depuis devenu un prototype actif de notre laboratoire."
               metrics={[
                 { value: '6 mois', label: 'Durée de collaboration' },
                 { value: '4', label: 'Chercheurs impliqués' },

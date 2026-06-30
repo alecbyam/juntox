@@ -136,7 +136,7 @@ const ecosystemFeatures = [
 ]
 
 const trustSignals = [
-  { label: 'Basée en RD Congo', detail: 'Kinshasa' },
+  { label: 'Basée en RD Congo', detail: 'Bunia, Ituri' },
   { label: 'SARL enregistrée', detail: 'Structure légale' },
   { label: 'IA opérationnelle', detail: 'GPT-4o intégré' },
   { label: 'Open Architecture', detail: 'API-first' },
@@ -161,7 +161,7 @@ export default function Home() {
             transition={{ duration: 1, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="max-w-4xl"
           >
-            <Badge variant="primary">JuntoX SARL &middot; Kinshasa, RD Congo</Badge>
+            <Badge variant="primary">JuntoX SARL &middot; Bunia, Ituri, RD Congo</Badge>
 
             <h1 className="mt-8 font-serif text-display-xl font-semibold leading-[1.05] text-white">
               L&apos;intelligence{' '}
