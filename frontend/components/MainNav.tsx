@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { CommandPalette } from './CommandPalette'
 
 const services = [
   { href: '/ai', label: 'Intelligence Artificielle' },
@@ -198,6 +199,7 @@ export function MainNav() {
 
         {/* Desktop CTA */}
         <div className="hidden items-center gap-3 lg:flex">
+          <CommandPalette />
           <Link
             href="/auth/login"
             className="rounded-full px-4 py-2 text-sm text-neutral-500 transition hover:text-white"

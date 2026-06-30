@@ -4,6 +4,7 @@ import { Inter, Playfair_Display } from 'next/font/google'
 import { MainNav } from '../components/MainNav'
 import { Footer } from '../components/Footer'
 import { ScrollToTop } from '../components/ScrollToTop'
+import { ToastProvider } from '../components/ui/Toast'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -52,13 +53,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={`${inter.variable} ${playfair.variable} scroll-smooth`}>
       <body className="min-h-screen bg-background font-sans text-neutral-300 antialiased">
-        <a href="#main-content" className="skip-link">
-          Aller au contenu principal
-        </a>
-        <MainNav />
-        <main id="main-content" className="min-h-screen">{children}</main>
-        <Footer />
-        <ScrollToTop />
+        <ToastProvider>
+          <a href="#main-content" className="skip-link">
+            Aller au contenu principal
+          </a>
+          <MainNav />
+          <main id="main-content" className="min-h-screen">{children}</main>
+          <Footer />
+          <ScrollToTop />
+        </ToastProvider>
       </body>
     </html>
   )

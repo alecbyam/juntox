@@ -6,6 +6,7 @@ import { AnimatedSection } from '../../components/ui/AnimatedSection'
 import { Badge } from '../../components/ui/Badge'
 import { Accordion } from '../../components/ui/Accordion'
 import { postJson } from '../../lib/api'
+import { useToast } from '../../components/ui/Toast'
 
 const contactInfo = [
   { label: 'Email', value: 'contact@juntox.africa' },
@@ -45,6 +46,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
+  const { showToast } = useToast()
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -53,8 +55,11 @@ export default function ContactPage() {
     try {
       await postJson('/api/contact', form)
       setSubmitted(true)
+      showToast('Message envoyé avec succès.', 'success')
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Erreur lors de l\'envoi')
+      const msg = err instanceof Error ? err.message : 'Erreur lors de l\'envoi'
+      setError(msg)
+      showToast(msg, 'error')
     } finally {
       setLoading(false)
     }
