@@ -8,7 +8,7 @@ from typing import List
 router = APIRouter()
 
 
-@router.post('/', response_model=ProjectResponse)
+@router.post('', response_model=ProjectResponse)
 def create_project(payload: ProjectCreate, db: Session = Depends(get_db)):
     project = Project(
         name=payload.name,
@@ -22,7 +22,7 @@ def create_project(payload: ProjectCreate, db: Session = Depends(get_db)):
     return project
 
 
-@router.get('/', response_model=List[ProjectResponse])
+@router.get('', response_model=List[ProjectResponse])
 def list_projects(db: Session = Depends(get_db)):
     return db.query(Project).order_by(Project.created_at.desc()).limit(50).all()
 

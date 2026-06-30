@@ -8,7 +8,7 @@ from typing import List
 router = APIRouter()
 
 
-@router.post('/', response_model=ContactResponse)
+@router.post('', response_model=ContactResponse)
 def create_contact(payload: ContactCreate, db: Session = Depends(get_db)):
     msg = ContactMessage(
         name=payload.name,
@@ -22,6 +22,6 @@ def create_contact(payload: ContactCreate, db: Session = Depends(get_db)):
     return msg
 
 
-@router.get('/', response_model=List[ContactResponse])
+@router.get('', response_model=List[ContactResponse])
 def list_contacts(db: Session = Depends(get_db)):
     return db.query(ContactMessage).order_by(ContactMessage.created_at.desc()).limit(50).all()
