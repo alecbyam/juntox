@@ -1,0 +1,10 @@
+frontend/
+.git/
+.github/
+*.pdf
+*.md
+infra/
+docker-compose.yml
+backend/__pycache__/
+backend/**/__pycache__/
+backend/.env
