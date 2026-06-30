@@ -1,5 +1,9 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
+ARG NEXT_PUBLIC_API_URL
+ARG NEXT_PUBLIC_SITE_URL
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
 COPY package.json ./
 RUN npm install
 COPY . .
@@ -17,4 +21,4 @@ COPY --from=builder /app/tsconfig.json ./tsconfig.json
 COPY --from=builder /app/tailwind.config.ts ./tailwind.config.ts
 COPY --from=builder /app/postcss.config.js ./postcss.config.js
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD npm start -- -p ${PORT:-3000}
