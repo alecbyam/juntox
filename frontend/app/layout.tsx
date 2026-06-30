@@ -5,6 +5,7 @@ import { MainNav } from '../components/MainNav'
 import { Footer } from '../components/Footer'
 import { ScrollToTop } from '../components/ScrollToTop'
 import { ToastProvider } from '../components/ui/Toast'
+import { siteConfig, socialLinks } from '../lib/site-config'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -26,32 +27,69 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'JuntoX — Intelligence transformée en impact',
-  description:
-    'JuntoX SARL — Plateforme technologique africaine. IA, innovation, investissement, construction, logistique et formation pour bâtir les entreprises de demain.',
-  metadataBase: new URL('https://juntox.africa'),
+  title: {
+    default: 'JuntoX — Intelligence transformée en impact',
+    template: '%s — JuntoX SARL',
+  },
+  description: siteConfig.description,
+  keywords: [
+    'JuntoX',
+    'intelligence artificielle Afrique',
+    'consultance Afrique',
+    'investissement Afrique',
+    'construction RDC',
+    'logistique Afrique',
+    'incubateur startup Afrique',
+    'Kinshasa technologie',
+  ],
+  metadataBase: new URL(siteConfig.url),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'JuntoX — Intelligence transformée en impact',
-    description:
-      'Plateforme technologique africaine pour l\'IA, l\'innovation, l\'investissement et l\'infrastructure.',
-    siteName: 'JuntoX SARL',
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    url: siteConfig.url,
     locale: 'fr_FR',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'JuntoX — Intelligence transformée en impact',
-    description:
-      'Plateforme technologique africaine pour l\'IA, l\'innovation, l\'investissement et l\'infrastructure.',
+    description: siteConfig.description,
   },
-  icons: {
-    icon: '/favicon.ico',
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: siteConfig.name,
+    url: siteConfig.url,
+    logo: `${siteConfig.url}/icon`,
+    description: siteConfig.description,
+    email: siteConfig.email,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: siteConfig.locality,
+      addressCountry: siteConfig.country,
+    },
+    sameAs: socialLinks().map((link) => link.href),
+  }
+
   return (
     <html lang="fr" className={`${inter.variable} ${playfair.variable} scroll-smooth`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-screen bg-background font-sans text-neutral-300 antialiased">
         <ToastProvider>
           <a href="#main-content" className="skip-link">

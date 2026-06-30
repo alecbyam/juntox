@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
+import { siteConfig } from './site-config'
 
-const baseUrl = 'https://juntox.africa'
-const siteName = 'JuntoX SARL'
+const baseUrl = siteConfig.url
+const siteName = siteConfig.name
 
 export function createMetadata(options: {
   title: string

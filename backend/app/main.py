@@ -20,6 +20,8 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# Add a domain here (via the ALLOWED_ORIGINS env var, comma-separated) to let
+# another JuntoX product — e.g. Livroto — call this API from the browser.
 allowed_origins = os.getenv('ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
 
 app.add_middleware(
