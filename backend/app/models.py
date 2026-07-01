@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy import Boolean, Column, DateTime, Enum, ForeignKey, Integer, Numeric, String, Text
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, Numeric, String, Text
 from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
@@ -95,18 +95,13 @@ class Investment(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
 
-class BlogPost(Base):
-    __tablename__ = 'blog_posts'
+class Newsletter(Base):
+    __tablename__ = 'newsletter_subscribers'
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String(500), nullable=False)
-    slug = Column(String(500), unique=True, nullable=False)
-    excerpt = Column(Text)
-    content = Column(Text)
-    category = Column(String(100))
-    published = Column(Boolean, default=False)
+    email = Column(String(255), unique=True, nullable=False, index=True)
+    active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
 
 class AuditLog(Base):

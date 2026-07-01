@@ -9,9 +9,35 @@ import { ARTICLES, CATEGORIES, FEATURED_ARTICLE } from '../../lib/blog-data'
 
 export default function BlogPage() {
   const [filter, setFilter] = useState('Tous')
+  const [email, setEmail] = useState('')
+  const [nlStatus, setNlStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
   const filtered =
     filter === 'Tous' ? ARTICLES.filter((a) => !a.featured) : ARTICLES.filter((a) => a.category === filter)
+
+  async function handleNewsletter(e: React.FormEvent) {
+    e.preventDefault()
+    if (!email) return
+    setNlStatus('loading')
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL ?? ''}/api/newsletter/subscribe`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        },
+      )
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.detail ?? 'Erreur')
+      }
+      setNlStatus('success')
+      setEmail('')
+    } catch {
+      setNlStatus('error')
+    }
+  }
 
   return (
     <>
@@ -135,20 +161,40 @@ export default function BlogPage() {
             <p className="mt-3 text-sm text-neutral-400">
               Une sélection de nos meilleurs articles, directement dans votre boîte mail.
             </p>
-            <form className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <input
-                type="email"
-                required
-                placeholder="votre@email.com"
-                className="flex-1 rounded-full border border-white/[0.08] bg-surface-elevated/60 px-5 py-3 text-sm text-white outline-none transition placeholder:text-neutral-600 focus:border-primary/40 focus:ring-1 focus:ring-primary/20"
-              />
-              <button
-                type="submit"
-                className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:bg-primary-light"
-              >
-                S&apos;abonner
-              </button>
-            </form>
+
+            {nlStatus === 'success' ? (
+              <div className="mt-6 flex items-center justify-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-6 py-3 text-sm font-medium text-green-400">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                Vous êtes abonné(e) ! Merci.
+              </div>
+            ) : (
+              <form onSubmit={handleNewsletter} className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="votre@email.com"
+                  className="flex-1 rounded-full border border-white/[0.08] bg-surface-elevated/60 px-5 py-3 text-sm text-white outline-none transition placeholder:text-neutral-600 focus:border-primary/40 focus:ring-1 focus:ring-primary/20"
+                />
+                <button
+                  type="submit"
+                  disabled={nlStatus === 'loading'}
+                  className="flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:bg-primary-light disabled:opacity-60"
+                >
+                  {nlStatus === 'loading' && (
+                    <span className="h-3.5 w-3.5 animate-spin rounded-full border border-white/30 border-t-white" />
+                  )}
+                  S&apos;abonner
+                </button>
+              </form>
+            )}
+
+            {nlStatus === 'error' && (
+              <p className="mt-3 text-xs text-red-400">Une erreur est survenue. Veuillez réessayer.</p>
+            )}
           </div>
         </AnimatedSection>
       </section>

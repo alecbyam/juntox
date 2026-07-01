@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import { pagesIndex } from '../lib/pages-index'
+import { ARTICLES } from '../lib/blog-data'
 
 const ACCENT_MAP: Record<string, string> = {
   'à': 'a', 'â': 'a', 'ä': 'a', 'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e',
@@ -18,6 +19,15 @@ function normalize(s: string) {
     .join('')
 }
 
+const blogEntries = ARTICLES.map((a) => ({
+  href: `/blog/${a.slug}`,
+  label: a.title,
+  group: 'Blog',
+  keywords: `${a.category} ${a.tags.join(' ')} ${a.excerpt}`,
+}))
+
+const searchIndex = [...pagesIndex, ...blogEntries]
+
 export function CommandPalette() {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
@@ -27,8 +37,8 @@ export function CommandPalette() {
 
   const results = useMemo(() => {
     const q = normalize(query.trim())
-    if (!q) return pagesIndex
-    return pagesIndex.filter((p) => {
+    if (!q) return searchIndex
+    return searchIndex.filter((p) => {
       const haystack = normalize(`${p.label} ${p.group} ${p.keywords ?? ''}`)
       return haystack.includes(q)
     })
