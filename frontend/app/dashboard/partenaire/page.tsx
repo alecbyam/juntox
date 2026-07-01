@@ -24,7 +24,7 @@ export default function PartenaireDashboard() {
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <Badge>Espace Partenaire</Badge>
         <h1 className="mt-3 font-serif text-heading-2 font-semibold text-white sm:text-heading-1">
-          Espace partenaire
+          Espace Partenaire
         </h1>
         <p className="mt-2 text-body text-neutral-400">
           Suivez les projets conjoints, accédez aux ressources partagées et communiquez avec JuntoX.

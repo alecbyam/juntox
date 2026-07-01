@@ -11,56 +11,56 @@ const pillars = [
   {
     title: 'La connaissance congolaise comme infrastructure',
     description:
-      'En RDC, les savoirs locaux sont une richesse sous-exploitee. Nous transformons chaque expertise — congolaise ou internationale — en systemes durables, produits reels et entreprises qui restent. Chaque mission que nous menons devient une brique permanente du developpement local.',
+      'En RDC, les savoirs locaux sont une richesse sous-exploitée. Nous transformons chaque expertise — congolaise ou internationale — en systèmes durables, produits réels et entreprises qui restent. Chaque mission que nous menons devient une brique permanente du développement local.',
   },
   {
     title: 'La RDC comme source de solutions',
     description:
-      'La RDC n\'a pas besoin de copier les modeles d\'ailleurs. Elle a ses propres defis, son propre rythme, ses propres ressources — cobalt, forets, jeunesse, terres agricoles. Nous concevons des solutions nees ici, adaptees au contexte congolais, et capables de s\'exporter ensuite.',
+      "La RDC n'a pas besoin de copier les modèles d'ailleurs. Elle a ses propres défis, son propre rythme, ses propres ressources — cobalt, forêts, jeunesse, terres agricoles. Nous concevons des solutions nées ici, adaptées au contexte congolais, et capables de s'exporter ensuite.",
   },
   {
-    title: 'L\'impact avant le profit',
+    title: "L'impact avant le profit",
     description:
-      'Moderniser une PME de Bunia, digitaliser une administration de l\'Ituri, former un ingenieur de Goma, construire une infrastructure en zone reculee — chaque mission JuntoX cree de la valeur reelle, mesurable et durable pour les communautes que nous servons.',
+      "Moderniser une PME de Bunia, digitaliser une administration de l'Ituri, former un ingénieur de Goma, construire une infrastructure en zone reculée — chaque mission JuntoX crée de la valeur réelle, mesurable et durable pour les communautés que nous servons.",
   },
 ]
 
 const values = [
-  { title: 'Excellence', description: 'Chaque detail compte. Livrer du travail mediocre en RDC n\'est pas une option — c\'est une trahison de la mission.' },
-  { title: 'Rigueur', description: 'Nos decisions sont fondees sur l\'analyse du terrain, pas sur des hypotheses importees d\'ailleurs.' },
-  { title: 'Audace', description: 'Croire qu\'on peut creer de l\'excellence depuis Bunia, Goma ou Kisangani. Et le prouver.' },
-  { title: 'Durabilite', description: 'Construire pour les generations de Congolais qui viennent, pas pour le prochain rapport trimestriel.' },
-  { title: 'Innovation', description: 'Resoudre les problemes congolais par les premiers principes — pas en copiant des modeles inadaptes.' },
-  { title: 'Integrite', description: 'La confiance se bâtit sur la coherence entre ce que nous disons et ce que nous faisons sur le terrain.' },
+  { title: 'Excellence', description: "Chaque détail compte. Livrer du travail médiocre en RDC n'est pas une option — c'est une trahison de la mission." },
+  { title: 'Rigueur', description: "Nos décisions sont fondées sur l'analyse du terrain, pas sur des hypothèses importées d'ailleurs." },
+  { title: 'Audace', description: "Croire qu'on peut créer de l'excellence depuis Bunia, Goma ou Kisangani. Et le prouver." },
+  { title: 'Durabilité', description: 'Construire pour les générations de Congolais qui viennent, pas pour le prochain rapport trimestriel.' },
+  { title: 'Innovation', description: "Résoudre les problèmes congolais par les premiers principes — pas en copiant des modèles inadaptés." },
+  { title: 'Intégrité', description: 'La confiance se bâtit sur la cohérence entre ce que nous disons et ce que nous faisons sur le terrain.' },
 ]
 
 const timeline = [
-  { year: '2024', event: 'Fondation de JuntoX SARL à Bunia — premières missions de consultance et développement logiciel' },
-  { year: '2025', event: 'Lancement de la plateforme IA, expansion construction, logistique et commerce international' },
-  { year: '2026', event: 'Élargissement de l\'objet social — 10 pôles d\'expertise couvrant technologie, ingénierie, communication et secteurs émergents' },
-  { year: '2027+', event: 'Échelle continentale, partenariats internationaux, déploiement FinTech, EdTech, Énergie et AgriTech' },
+  { year: '2024', event: "Fondation de JuntoX SARL à Bunia — premières missions de consultance et développement logiciel" },
+  { year: '2025', event: "Lancement de la plateforme IA, expansion construction, logistique et commerce international" },
+  { year: '2026', event: "Élargissement de l'objet social — 10 pôles d'expertise couvrant technologie, ingénierie, communication et secteurs émergents" },
+  { year: '2027+', event: "Échelle continentale, partenariats internationaux, déploiement FinTech, EdTech, Énergie et AgriTech" },
 ]
 
 const faqs = [
   {
     question: 'JuntoX est-elle un groupe ou une seule entreprise ?',
-    answer: 'JuntoX est une SARL dont l\'objet social couvre 10 pôles d\'expertise : technologies, ingénierie, construction, logistique, conseil, formation, communication, investissement et secteurs émergents. Nous opérons comme un groupe intégré depuis une structure unique, ce qui nous permet de proposer des solutions multidisciplinaires sans rupture.',
+    answer: "JuntoX est une SARL dont l'objet social couvre 10 pôles d'expertise : technologies, ingénierie, construction, logistique, conseil, formation, communication, investissement et secteurs émergents. Nous opérons comme un groupe intégré depuis une structure unique, ce qui nous permet de proposer des solutions multidisciplinaires sans rupture.",
   },
   {
-    question: 'JuntoX est-elle une société de conseil, une entreprise tech ou un fonds d\'investissement ?',
-    answer: 'Les trois à la fois — et c\'est précisément notre différenciation. Nous combinons conseil stratégique, développement logiciel, ingénierie, construction, communication et capital pour accompagner un projet de l\'idée jusqu\'à l\'industrialisation, sans rupture entre les étapes.',
+    question: "JuntoX est-elle une société de conseil, une entreprise tech ou un fonds d'investissement ?",
+    answer: "Les trois à la fois — et c'est précisément notre différenciation. Nous combinons conseil stratégique, développement logiciel, ingénierie, construction, communication et capital pour accompagner un projet de l'idée jusqu'à l'industrialisation, sans rupture entre les étapes.",
   },
   {
-    question: 'Où JuntoX opère-t-elle aujourd\'hui ?',
-    answer: 'Notre siège est à Bunia, en Ituri, RD Congo. Nous intervenons activement en Afrique centrale et de l\'Est, avec des clients et partenaires en Europe et en Asie pour le commerce international et l\'investissement.',
+    question: "Où JuntoX opère-t-elle aujourd'hui ?",
+    answer: "Notre siège est à Bunia, en Ituri, RD Congo. Nous intervenons activement en Afrique centrale et de l'Est, avec des clients et partenaires en Europe et en Asie pour le commerce international et l'investissement.",
   },
   {
     question: 'Comment JuntoX se finance-t-elle ?',
-    answer: 'Par les revenus de nos missions de consultance et de construction, complétés par des investissements stratégiques de partenaires qui partagent notre vision à long terme.',
+    answer: "Par les revenus de nos missions de consultance et de construction, complétés par des investissements stratégiques de partenaires qui partagent notre vision à long terme.",
   },
   {
-    question: 'Quelle est la structure juridique de l\'entreprise ?',
-    answer: 'JuntoX est une Société à Responsabilité Limitée (SARL) enregistrée en République Démocratique du Congo, conforme aux réglementations locales en vigueur.',
+    question: "Quelle est la structure juridique de l'entreprise ?",
+    answer: "JuntoX est une Société à Responsabilité Limitée (SARL) enregistrée en République Démocratique du Congo, conforme aux réglementations locales en vigueur.",
   },
 ]
 
@@ -68,9 +68,9 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="A propos"
-        title="Nes en Ituri. Construits pour la RDC. Ouverts au monde."
-        description="JuntoX est nee a Bunia, au coeur de l'Est congolais, avec une conviction claire : la Republique Democratique du Congo a tout ce qu'il faut pour se transformer de l'interieur. Notre role est de fournir les outils, les competences et les structures pour que cela arrive — projet apres projet."
+        eyebrow="À propos"
+        title="Nés en Ituri. Construits pour la RDC. Ouverts au monde."
+        description="JuntoX est née à Bunia, au cœur de l'Est congolais, avec une conviction claire : la République Démocratique du Congo a tout ce qu'il faut pour se transformer de l'intérieur. Notre rôle est de fournir les outils, les compétences et les structures pour que cela arrive — projet après projet."
       >
         <Button href="/vision">Découvrir notre vision</Button>
         <Button href="/contact" variant="secondary">Nous contacter</Button>
@@ -81,7 +81,7 @@ export default function AboutPage() {
         <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
           {[
             { target: 2024, suffix: '', label: 'Année de fondation' },
-            { target: 10, suffix: '', label: 'Pôles d\'expertise' },
+            { target: 10, suffix: '', label: "Pôles d'expertise" },
             { target: 50, suffix: '+', label: 'Services proposés' },
             { target: 100, suffix: '+', label: 'Années de vision' },
           ].map((stat) => (

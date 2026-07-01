@@ -5,60 +5,8 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CommandPalette } from './CommandPalette'
-
-const serviceGroups = [
-  {
-    heading: 'Technologies',
-    items: [
-      { href: '/ai', label: 'Technologies & IA' },
-      { href: '/ingenierie', label: 'Ingénierie & Systèmes' },
-      { href: '/communication', label: 'Communication & Marketing' },
-    ],
-  },
-  {
-    heading: 'Infrastructure',
-    items: [
-      { href: '/construction', label: 'Construction & Génie Civil' },
-      { href: '/logistique', label: 'Logistique & Transport' },
-      { href: '/commerce', label: 'Commerce & Distribution' },
-    ],
-  },
-  {
-    heading: 'Expertise',
-    items: [
-      { href: '/consultance', label: 'Consultance & Études' },
-      { href: '/formation', label: 'Formation' },
-      { href: '/investissements', label: 'Investissement' },
-    ],
-  },
-  {
-    heading: 'Secteurs émergents',
-    items: [
-      { href: '/secteurs-emergents', label: 'Énergie · Agri · Santé · EdTech · FinTech' },
-    ],
-  },
-]
-
-// Flat list for mobile menu
-const services = serviceGroups.flatMap((g) => g.items)
-
-const innovation = [
-  { href: '/recherche', label: 'Recherche & Innovation' },
-  { href: '/incubateur', label: 'Incubateur' },
-  { href: '/laboratoire-ia', label: 'Laboratoire IA' },
-]
-
-const mainLinks = [
-  { href: '/about', label: 'À propos' },
-  { href: '/vision', label: 'Vision' },
-  { href: '/blog', label: 'Blog' },
-]
-
-const secondaryLinks = [
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/carrieres', label: 'Carrières' },
-  { href: '/contact', label: 'Contact' },
-]
+import { LanguageSwitcher } from './ui/LanguageSwitcher'
+import { useLanguage } from './LanguageProvider'
 
 function GroupedDropdownMenu({
   label,
@@ -211,6 +159,60 @@ export function MainNav() {
   const [innovationOpen, setInnovationOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+  const { t } = useLanguage()
+
+  const serviceGroups: { heading: string; items: { href: string; label: string }[] }[] = [
+    {
+      heading: t.nav.groups.technologies,
+      items: [
+        { href: '/ai', label: t.nav.services.ai },
+        { href: '/ingenierie', label: t.nav.services.engineering },
+        { href: '/communication', label: t.nav.services.communication },
+      ],
+    },
+    {
+      heading: t.nav.groups.infrastructure,
+      items: [
+        { href: '/construction', label: t.nav.services.construction },
+        { href: '/logistique', label: t.nav.services.logistics },
+        { href: '/commerce', label: t.nav.services.commerce },
+      ],
+    },
+    {
+      heading: t.nav.groups.expertise,
+      items: [
+        { href: '/consultance', label: t.nav.services.consulting },
+        { href: '/formation', label: t.nav.services.training },
+        { href: '/investissements', label: t.nav.services.investment },
+      ],
+    },
+    {
+      heading: t.nav.groups.emerging,
+      items: [
+        { href: '/secteurs-emergents', label: t.nav.services.emerging },
+      ],
+    },
+  ]
+
+  const services = serviceGroups.flatMap((g) => g.items)
+
+  const innovation = [
+    { href: '/recherche', label: t.nav.innovation.research },
+    { href: '/incubateur', label: t.nav.innovation.incubator },
+    { href: '/laboratoire-ia', label: t.nav.innovation.aiLab },
+  ]
+
+  const mainLinks = [
+    { href: '/about', label: t.nav.about },
+    { href: '/vision', label: t.nav.vision },
+    { href: '/blog', label: t.nav.blog },
+  ]
+
+  const secondaryLinks = [
+    { href: '/portfolio', label: t.nav.portfolio },
+    { href: '/carrieres', label: t.nav.careers },
+    { href: '/contact', label: t.nav.contact },
+  ]
 
   useEffect(() => {
     function onScroll() {
@@ -303,18 +305,19 @@ export function MainNav() {
 
         {/* Desktop CTA */}
         <div className="hidden items-center gap-3 lg:flex">
+          <LanguageSwitcher />
           <CommandPalette />
           <Link
             href="/auth/login"
             className="rounded-full px-4 py-2 text-sm text-neutral-500 transition hover:text-white"
           >
-            Connexion
+            {t.nav.login}
           </Link>
           <Link
             href="/contact"
             className="rounded-full bg-white/[0.06] px-5 py-2 text-sm font-medium text-white border border-white/[0.1] transition hover:bg-white/[0.1] hover:border-white/[0.16]"
           >
-            Nous contacter
+            {t.nav.contactUs}
           </Link>
         </div>
 
@@ -322,7 +325,7 @@ export function MainNav() {
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="relative z-10 flex h-11 w-11 items-center justify-center rounded-lg lg:hidden"
-          aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-label={mobileOpen ? t.nav.closeMenu : t.nav.openMenu}
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
         >
@@ -405,19 +408,22 @@ export function MainNav() {
 
               <div className="divider my-4" />
 
-              <div className="flex gap-3 px-4 pb-2">
-                <Link
-                  href="/auth/login"
-                  className="flex-1 rounded-full border border-white/[0.1] bg-white/[0.04] py-3 text-center text-sm text-white transition hover:bg-white/[0.08]"
-                >
-                  Connexion
-                </Link>
-                <Link
-                  href="/contact"
-                  className="flex-1 rounded-full bg-primary py-3 text-center text-sm font-medium text-white transition hover:bg-primary-light"
-                >
-                  Contact
-                </Link>
+              <div className="flex items-center justify-between px-4 pb-2">
+                <LanguageSwitcher />
+                <div className="flex gap-3">
+                  <Link
+                    href="/auth/login"
+                    className="rounded-full border border-white/[0.1] bg-white/[0.04] px-5 py-2.5 text-center text-sm text-white transition hover:bg-white/[0.08]"
+                  >
+                    {t.nav.login}
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="rounded-full bg-primary px-5 py-2.5 text-center text-sm font-medium text-white transition hover:bg-primary-light"
+                  >
+                    {t.nav.contact}
+                  </Link>
+                </div>
               </div>
             </div>
           </motion.div>

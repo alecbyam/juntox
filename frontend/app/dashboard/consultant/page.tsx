@@ -23,7 +23,7 @@ export default function ConsultantDashboard() {
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <Badge variant="accent">Espace Consultant</Badge>
         <h1 className="mt-3 font-serif text-heading-2 font-semibold text-white sm:text-heading-1">
-          Espace consultant
+          Espace Consultant
         </h1>
         <p className="mt-2 text-body text-neutral-400">
           Gérez vos missions, accédez aux outils d&apos;analyse et produisez des rapports avec l&apos;IA.

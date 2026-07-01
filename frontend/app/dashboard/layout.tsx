@@ -5,15 +5,16 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { type ReactNode } from 'react'
 import { getToken, fetchCurrentUser, dashboardPathForRole, logout, type CurrentUser } from '../../lib/auth'
+import { useLanguage } from '../../components/LanguageProvider'
 
-const sidebarLinks = [
+const SIDEBAR_STRUCTURE = [
   {
-    group: 'Principal',
+    groupKey: 'main' as const,
     roles: ['admin'],
     items: [
       {
         href: '/dashboard/admin',
-        label: "Vue d'ensemble",
+        labelKey: 'overview' as const,
         roles: ['admin'],
         icon: (
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -23,7 +24,7 @@ const sidebarLinks = [
       },
       {
         href: '/dashboard/admin/blog',
-        label: 'Blog CMS',
+        labelKey: 'blogCms' as const,
         roles: ['admin'],
         icon: (
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -34,12 +35,12 @@ const sidebarLinks = [
     ],
   },
   {
-    group: 'Espaces',
+    groupKey: 'spaces' as const,
     roles: ['admin', 'client', 'employe', 'investisseur', 'consultant', 'partenaire'],
     items: [
       {
         href: '/dashboard/client',
-        label: 'Clients',
+        labelKey: 'clients' as const,
         roles: ['admin', 'client'],
         icon: (
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -49,7 +50,7 @@ const sidebarLinks = [
       },
       {
         href: '/dashboard/employe',
-        label: 'Employés',
+        labelKey: 'employees' as const,
         roles: ['admin', 'employe'],
         icon: (
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -59,7 +60,7 @@ const sidebarLinks = [
       },
       {
         href: '/dashboard/investisseur',
-        label: 'Investisseurs',
+        labelKey: 'investors' as const,
         roles: ['admin', 'investisseur'],
         icon: (
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -69,7 +70,7 @@ const sidebarLinks = [
       },
       {
         href: '/dashboard/consultant',
-        label: 'Consultants',
+        labelKey: 'consultants' as const,
         roles: ['admin', 'consultant'],
         icon: (
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -79,7 +80,7 @@ const sidebarLinks = [
       },
       {
         href: '/dashboard/partenaire',
-        label: 'Partenaires',
+        labelKey: 'partners' as const,
         roles: ['admin', 'partenaire'],
         icon: (
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -90,12 +91,12 @@ const sidebarLinks = [
     ],
   },
   {
-    group: 'Outils',
+    groupKey: 'tools' as const,
     roles: ['admin', 'client', 'employe', 'investisseur', 'consultant', 'partenaire'],
     items: [
       {
         href: '/ai',
-        label: 'JuntoX AI',
+        labelKey: 'aiTool' as const,
         roles: ['admin', 'client', 'employe', 'investisseur', 'consultant', 'partenaire'],
         icon: (
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -107,21 +108,13 @@ const sidebarLinks = [
   },
 ]
 
-const ROLE_LABELS: Record<string, string> = {
-  admin: 'Administrateur',
-  client: 'Client',
-  employe: 'Employé',
-  investisseur: 'Investisseur',
-  consultant: 'Consultant',
-  partenaire: 'Partenaire',
-}
-
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [user, setUser] = useState<CurrentUser | null>(null)
   const [checking, setChecking] = useState(true)
   const pathname = usePathname()
   const router = useRouter()
+  const { t } = useLanguage()
 
   useEffect(() => {
     setSidebarOpen(false)
@@ -150,7 +143,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
         const ownPath = dashboardPathForRole(me.role)
         const isAdmin = me.role === 'admin'
-        const onOwnSpace = pathname === ownPath || pathname.startsWith('/ai')
+        const onOwnSpace =
+          pathname === ownPath ||
+          pathname.startsWith(ownPath + '/') ||
+          pathname.startsWith('/ai')
         if (!isAdmin && !onOwnSpace) {
           router.replace(ownPath)
           return
@@ -180,11 +176,18 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     )
   }
 
-  const visibleGroups = sidebarLinks
+  const visibleGroups = SIDEBAR_STRUCTURE
     .filter((group) => group.roles.includes(user.role))
     .map((group) => ({
-      ...group,
-      items: group.items.filter((item) => item.roles.includes(user.role)),
+      groupKey: group.groupKey,
+      heading: t.dashboard.groups[group.groupKey],
+      items: group.items
+        .filter((item) => item.roles.includes(user.role))
+        .map((item) => ({
+          href: item.href,
+          label: t.dashboard[item.labelKey],
+          icon: item.icon,
+        })),
     }))
     .filter((group) => group.items.length > 0)
 
@@ -228,9 +231,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
           <nav className="flex-1 space-y-5 overflow-y-auto px-3 py-3">
             {visibleGroups.map((group) => (
-              <div key={group.group}>
+              <div key={group.groupKey}>
                 <p className="px-3 text-[0.65rem] font-medium uppercase tracking-[0.14em] text-neutral-600">
-                  {group.group}
+                  {group.heading}
                 </p>
                 <div className="mt-1.5 space-y-0.5">
                   {group.items.map((item) => (
@@ -261,7 +264,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               </div>
               <div className="min-w-0">
                 <p className="truncate text-sm text-white">{user.full_name ?? user.email}</p>
-                <p className="text-xs text-neutral-500">{ROLE_LABELS[user.role] ?? user.role}</p>
+                <p className="text-xs text-neutral-500">
+                  {t.dashboard.roles[user.role as keyof typeof t.dashboard.roles] ?? user.role}
+                </p>
               </div>
             </div>
             <Link
@@ -271,7 +276,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
               </svg>
-              Retour au site
+              {t.common.backToSite}
             </Link>
             <button
               onClick={logout}
@@ -280,7 +285,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l3 3m0 0l-3 3m3-3H3" />
               </svg>
-              Déconnexion
+              {t.common.logout}
             </button>
           </div>
         </div>
