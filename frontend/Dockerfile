@@ -1,24 +1,31 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
+
 ARG NEXT_PUBLIC_API_URL=https://juntox-production.up.railway.app
 ARG NEXT_PUBLIC_SITE_URL=https://juntox.africa
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
-COPY package.json ./
-RUN npm install
+
+COPY package.json package-lock.json* ./
+RUN npm ci --prefer-offline
+
 COPY . .
 RUN npm run build
 
 FROM node:20-alpine AS runner
 WORKDIR /app
+
 ENV NODE_ENV=production
+ENV NEXT_PUBLIC_API_URL=https://juntox-production.up.railway.app
+ENV NEXT_PUBLIC_SITE_URL=https://juntox.africa
+ENV HOSTNAME=0.0.0.0
+
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/next.config.mjs ./next.config.mjs
-COPY --from=builder /app/tsconfig.json ./tsconfig.json
-COPY --from=builder /app/tailwind.config.ts ./tailwind.config.ts
-COPY --from=builder /app/postcss.config.js ./postcss.config.js
+
 EXPOSE 3000
-CMD npm start -- -p ${PORT:-3000}
+
+CMD sh -c "node_modules/.bin/next start -H 0.0.0.0 -p ${PORT:-3000}"
