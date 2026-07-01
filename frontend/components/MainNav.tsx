@@ -51,6 +51,7 @@ const innovation = [
 const mainLinks = [
   { href: '/about', label: 'À propos' },
   { href: '/vision', label: 'Vision' },
+  { href: '/blog', label: 'Blog' },
 ]
 
 const secondaryLinks = [

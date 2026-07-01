@@ -1,68 +1,17 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { PageHero } from '../../components/PageHero'
 import { AnimatedSection } from '../../components/ui/AnimatedSection'
 import { Badge } from '../../components/ui/Badge'
-
-const categories = ['Tous', 'Vision', 'Intelligence Artificielle', 'Philosophie', 'Logistique', 'Technologie', 'Investissements']
-
-const featured = {
-  title: 'Pourquoi l\'Afrique sera le prochain hub technologique mondial',
-  excerpt: 'Une analyse des facteurs démographiques, économiques et technologiques qui positionnent l\'Afrique comme le prochain centre d\'innovation mondiale. Nous y détaillons notre thèse complète et les secteurs à plus fort potentiel pour la décennie à venir.',
-  category: 'Vision',
-  date: '15 juin 2026',
-  readTime: '8 min',
-}
-
-const articles = [
-  {
-    title: 'L\'IA au service des entreprises africaines : état des lieux et perspectives',
-    excerpt: 'Comment l\'intelligence artificielle transforme déjà les entreprises du continent et les opportunités à saisir dans les prochaines années.',
-    category: 'Intelligence Artificielle',
-    date: '8 juin 2026',
-    readTime: '6 min',
-  },
-  {
-    title: 'First Principles Thinking : comment nous concevons JuntoX',
-    excerpt: 'Au lieu de copier les modèles existants, nous repartons des fondamentaux pour construire une entreprise véritablement différente.',
-    category: 'Philosophie',
-    date: '1er juin 2026',
-    readTime: '5 min',
-  },
-  {
-    title: 'Le défi logistique en RDC : problèmes et solutions',
-    excerpt: 'Analyse des bottlenecks logistiques en République Démocratique du Congo et les solutions technologiques que nous développons.',
-    category: 'Logistique',
-    date: '25 mai 2026',
-    readTime: '7 min',
-  },
-  {
-    title: 'Construire pour 100 ans : notre approche de l\'architecture logicielle',
-    excerpt: 'Les principes techniques et philosophiques qui guident nos choix architecturaux pour une plateforme durable.',
-    category: 'Technologie',
-    date: '18 mai 2026',
-    readTime: '10 min',
-  },
-  {
-    title: 'L\'impact investing en Afrique : au-delà du rendement financier',
-    excerpt: 'Comment concilier performance financière et impact social mesurable dans le contexte africain.',
-    category: 'Investissements',
-    date: '10 mai 2026',
-    readTime: '6 min',
-  },
-  {
-    title: 'Golden Circle appliqué : pourquoi commencer par le Why change tout',
-    excerpt: 'Retour d\'expérience sur l\'application du modèle de Simon Sinek à la construction de notre stratégie d\'entreprise.',
-    category: 'Philosophie',
-    date: '2 mai 2026',
-    readTime: '5 min',
-  },
-]
+import { ARTICLES, CATEGORIES, FEATURED_ARTICLE } from '../../lib/blog-data'
 
 export default function BlogPage() {
   const [filter, setFilter] = useState('Tous')
-  const filtered = filter === 'Tous' ? articles : articles.filter((a) => a.category === filter)
+
+  const filtered =
+    filter === 'Tous' ? ARTICLES.filter((a) => !a.featured) : ARTICLES.filter((a) => a.category === filter)
 
   return (
     <>
@@ -72,34 +21,51 @@ export default function BlogPage() {
         description="Notre réflexion sur la technologie, l'innovation, l'investissement et l'avenir de l'Afrique. Des articles pour comprendre notre vision et les tendances qui façonnent le monde."
       />
 
-      {/* Featured article */}
+      {/* ── Featured article ── */}
       <section className="section-padding pb-0">
         <div className="container-content">
           <AnimatedSection>
             <Badge variant="primary">Article à la une</Badge>
-            <div className="mt-6 card-gradient-border">
-              <div className="flex items-center gap-3">
-                <Badge>{featured.category}</Badge>
-                <span className="text-xs text-neutral-600">{featured.readTime} de lecture</span>
+            <Link href={`/blog/${FEATURED_ARTICLE.slug}`} className="group mt-6 block card-gradient-border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow">
+              <div className="flex flex-wrap items-center gap-3">
+                <Badge>{FEATURED_ARTICLE.category}</Badge>
+                <span className="flex items-center gap-1.5 text-xs text-neutral-600">
+                  <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {FEATURED_ARTICLE.readTime} de lecture
+                </span>
               </div>
-              <h2 className="mt-5 font-serif text-heading-1 font-semibold text-white">
-                {featured.title}
+              <h2 className="mt-5 font-serif text-heading-1 font-semibold text-white transition group-hover:text-neutral-100">
+                {FEATURED_ARTICLE.title}
               </h2>
-              <p className="mt-4 max-w-2xl text-body text-neutral-400">{featured.excerpt}</p>
+              <p className="mt-4 max-w-2xl text-body text-neutral-400">{FEATURED_ARTICLE.excerpt}</p>
               <div className="mt-6 flex items-center justify-between">
-                <span className="text-sm text-neutral-600">{featured.date}</span>
-                <span className="text-sm font-medium text-primary-light">Lire l&apos;article &rarr;</span>
+                <div className="flex items-center gap-3">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-full border border-primary/20 bg-primary/10">
+                    <span className="text-[10px] font-bold text-primary">JX</span>
+                  </div>
+                  <span className="text-sm text-neutral-600">{FEATURED_ARTICLE.date}</span>
+                </div>
+                <span className="flex items-center gap-1.5 text-sm font-medium text-primary-light transition-all duration-300 group-hover:gap-2.5">
+                  Lire l&apos;article
+                  <svg className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </span>
               </div>
-            </div>
+            </Link>
           </AnimatedSection>
         </div>
       </section>
 
+      {/* ── Articles grid ── */}
       <section className="section-padding">
         <div className="container-content">
-          {/* Filters */}
+
+          {/* Category filters */}
           <AnimatedSection className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
+            {CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
@@ -116,8 +82,8 @@ export default function BlogPage() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {filtered.map((article, i) => (
-              <AnimatedSection key={article.title} delay={i * 0.08}>
-                <article className="card-interactive group flex h-full flex-col">
+              <AnimatedSection key={article.slug} delay={i * 0.07}>
+                <Link href={`/blog/${article.slug}`} className="card-interactive card-shine group flex h-full flex-col">
                   <div className="flex items-center gap-3">
                     <Badge>{article.category}</Badge>
                     <span className="text-xs text-neutral-600">{article.readTime}</span>
@@ -127,25 +93,38 @@ export default function BlogPage() {
                   </h3>
                   <p className="mt-3 flex-1 text-body text-neutral-400">{article.excerpt}</p>
                   <div className="mt-5 flex items-center justify-between">
-                    <span className="text-xs text-neutral-600">{article.date}</span>
-                    <span className="text-sm text-neutral-600 transition group-hover:text-primary">
-                      Lire &rarr;
+                    <time dateTime={article.dateISO} className="text-xs text-neutral-600">
+                      {article.date}
+                    </time>
+                    <span className="flex items-center gap-1.5 text-sm text-neutral-600 transition-all duration-300 group-hover:gap-2.5 group-hover:text-primary">
+                      Lire
+                      <svg className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
                     </span>
                   </div>
-                </article>
+                </Link>
               </AnimatedSection>
             ))}
           </div>
 
           {filtered.length === 0 && (
-            <p className="mt-10 text-center text-sm text-neutral-500">Aucun article dans cette catégorie pour le moment.</p>
+            <div className="mt-16 text-center">
+              <p className="text-sm text-neutral-500">Aucun article dans cette catégorie pour le moment.</p>
+              <button
+                onClick={() => setFilter('Tous')}
+                className="mt-4 text-sm text-primary-light transition hover:underline"
+              >
+                Voir tous les articles
+              </button>
+            </div>
           )}
         </div>
       </section>
 
       <div className="divider" />
 
-      {/* Newsletter */}
+      {/* ── Newsletter ── */}
       <section className="section-padding">
         <AnimatedSection className="container-content">
           <div className="card-featured mx-auto max-w-2xl text-center">
@@ -165,7 +144,7 @@ export default function BlogPage() {
               />
               <button
                 type="submit"
-                className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:bg-primary-light shadow-glow"
+                className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:bg-primary-light"
               >
                 S&apos;abonner
               </button>

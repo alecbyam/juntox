@@ -66,6 +66,23 @@ class ContactMessage(Base):
     user = relationship('User', back_populates='contact_messages')
 
 
+class BlogPost(Base):
+    __tablename__ = 'blog_posts'
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String(500), nullable=False)
+    slug = Column(String(500), unique=True, nullable=False, index=True)
+    excerpt = Column(Text, nullable=True)
+    content = Column(Text, nullable=True)
+    category = Column(String(100), nullable=True)
+    published = Column(Boolean, default=False)
+    author_id = Column(Integer, ForeignKey('users.id'), nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    author = relationship('User', foreign_keys=[author_id])
+
+
 class Investment(Base):
     __tablename__ = 'investments'
 
