@@ -195,7 +195,52 @@
   }
 
   .card-interactive:hover {
-    @apply -translate-y-1;
+    @apply -translate-y-1.5 border-white/[0.1];
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5), 0 16px 40px rgba(0,0,0,0.25), 0 0 1px rgba(255,255,255,0.05), inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+
+  /* Premium card variant with inner shine on hover */
+  .card-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.025) 50%, transparent 60%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .card-shine:hover::after {
+    transform: translateX(100%);
+  }
+
+  /* Numbered card — large ghost number */
+  .card-numbered {
+    @apply card-base overflow-hidden;
+  }
+
+  .card-numbered .card-number {
+    position: absolute;
+    right: -0.5rem;
+    top: -1rem;
+    font-size: 7rem;
+    line-height: 1;
+    font-weight: 700;
+    font-family: var(--font-playfair), serif;
+    color: rgba(255,255,255,0.03);
+    user-select: none;
+    pointer-events: none;
+    transition: color 0.3s;
+  }
+
+  .card-numbered:hover .card-number {
+    color: rgba(185, 28, 28, 0.06);
   }
 
   .card-featured {
@@ -242,7 +287,27 @@
 
   .divider {
     @apply h-px w-full;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06) 20%, rgba(185, 28, 28, 0.08) 50%, rgba(255, 255, 255, 0.06) 80%, transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05) 15%, rgba(185, 28, 28, 0.12) 50%, rgba(255, 255, 255, 0.05) 85%, transparent);
+    position: relative;
+  }
+
+  /* Premium section separator with center dot */
+  .divider-dot {
+    @apply h-px w-full relative;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05) 20%, rgba(185, 28, 28, 0.1) 50%, rgba(255, 255, 255, 0.05) 80%, transparent);
+  }
+
+  .divider-dot::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(185, 28, 28, 0.5);
+    box-shadow: 0 0 8px rgba(185, 28, 28, 0.3);
   }
 
   .divider-subtle {
@@ -346,5 +411,123 @@
 
   .hover-glow-accent:hover {
     box-shadow: 0 0 40px rgba(29, 78, 216, 0.08), 0 0 80px rgba(29, 78, 216, 0.04);
+  }
+
+  /* ── Data display pill ── */
+  .data-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(18,18,24,0.6);
+    font-size: 0.75rem;
+    color: #a8a29e;
+    backdrop-filter: blur(8px);
+  }
+
+  .data-pill .data-pill-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  /* ── Ecosystem node ── */
+  .ecosystem-node {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.875rem;
+    border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(18,18,24,0.8);
+    transition: all 0.25s ease;
+  }
+
+  .ecosystem-node:hover {
+    border-color: rgba(185,28,28,0.4);
+    background: rgba(185,28,28,0.08);
+    transform: scale(1.08);
+  }
+
+  /* ── Gradient headline underline ── */
+  .heading-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .heading-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #b91c1c, transparent);
+    border-radius: 2px;
+  }
+
+  /* ── Premium number display ── */
+  .kpi-number {
+    font-family: var(--font-playfair), serif;
+    font-weight: 600;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: white;
+    background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.7) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Step connector line ── */
+  .step-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.06));
+    position: relative;
+    margin: 0 0.5rem;
+  }
+
+  .step-line::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: -3.5px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid rgba(255,255,255,0.12);
+    border-top: 3.5px solid transparent;
+    border-bottom: 3.5px solid transparent;
+  }
+
+  /* ── Floating badge (pulsing) ── */
+  .badge-live {
+    position: relative;
+  }
+
+  .badge-live::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(185,28,28,0.3), transparent, rgba(185,28,28,0.15));
+    animation: borderGlow 3s ease-in-out infinite;
+    z-index: -1;
+  }
+
+  /* ── Section accent line ── */
+  .section-accent {
+    width: 2.5rem;
+    height: 2px;
+    background: linear-gradient(90deg, #b91c1c, rgba(185,28,28,0.3));
+    border-radius: 2px;
+    margin-bottom: 1rem;
   }
 }

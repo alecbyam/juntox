@@ -8,6 +8,10 @@ import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
 import { GridPattern, DotPattern } from '../components/ui/GridPattern'
 import { GlowOrb } from '../components/ui/GlowOrb'
+import { EcosystemDiagram } from '../components/ui/EcosystemDiagram'
+import { ProcessFlow } from '../components/ui/ProcessFlow'
+import { StatRing } from '../components/ui/StatRing'
+import { HeroVisual } from '../components/ui/HeroVisual'
 
 /* ─── Data ─── */
 
@@ -175,46 +179,56 @@ export default function Home() {
         <GlowOrb color="accent" size="md" className="right-0 top-0 translate-x-1/3 -translate-y-1/4" />
 
         <div className="container-content relative px-6 py-24 sm:px-8 md:py-32 lg:py-40">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.21, 0.47, 0.32, 0.98] }}
-            className="max-w-4xl"
-          >
-            <Badge variant="primary">JuntoX SARL &middot; Bunia, Ituri, RD Congo</Badge>
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_420px] xl:gap-20">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.21, 0.47, 0.32, 0.98] }}
+            >
+              <Badge variant="primary">JuntoX SARL &middot; Bunia, Ituri, RD Congo</Badge>
 
-            <h1 className="mt-8 font-serif text-display-xl font-semibold leading-[1.05] text-white">
-              L&apos;intelligence{' '}
-              <span className="text-gradient-primary">transform&eacute;e</span> en
-              infrastructure.
-            </h1>
+              <h1 className="mt-8 font-serif text-display-xl font-semibold leading-[1.05] text-white">
+                L&apos;intelligence{' '}
+                <span className="text-gradient-primary">transform&eacute;e</span> en
+                infrastructure.
+              </h1>
 
-            <p className="mt-8 max-w-2xl text-body-lg leading-relaxed text-neutral-400">
-              La R&eacute;publique D&eacute;mocratique du Congo regorge d&apos;un potentiel humain, &eacute;conomique et
-              technologique qui attend d&apos;&ecirc;tre valoris&eacute;. JuntoX est n&eacute; pour cela &mdash; en
-              transformant les d&eacute;fis concrets du pays en solutions durables, depuis Bunia
-              jusqu&apos;&agrave; l&apos;&eacute;chelle continentale.
-            </p>
+              <p className="mt-8 max-w-2xl text-body-lg leading-relaxed text-neutral-400">
+                La R&eacute;publique D&eacute;mocratique du Congo regorge d&apos;un potentiel humain, &eacute;conomique et
+                technologique qui attend d&apos;&ecirc;tre valoris&eacute;. JuntoX est n&eacute; pour cela &mdash; en
+                transformant les d&eacute;fis concrets du pays en solutions durables, depuis Bunia
+                jusqu&apos;&agrave; l&apos;&eacute;chelle continentale.
+              </p>
 
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button href="/vision" size="lg">
-                Explorer la vision
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </Button>
-              <Button href="/services" variant="secondary" size="lg">
-                Nos services
-              </Button>
-            </div>
-          </motion.div>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Button href="/vision" size="lg">
+                  Explorer la vision
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </Button>
+                <Button href="/services" variant="secondary" size="lg">
+                  Nos services
+                </Button>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.3, delay: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="hidden lg:flex items-center justify-center"
+            >
+              <HeroVisual />
+            </motion.div>
+          </div>
 
           {/* Animated Stats */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] md:grid-cols-4"
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] md:grid-cols-4"
           >
             {stats.map((stat) => (
               <div key={stat.label} className="bg-surface/60 px-6 py-7 text-center backdrop-blur-sm md:px-8 md:py-9">
@@ -234,6 +248,9 @@ export default function Home() {
           {trustSignals.map((signal, i) => (
             <div key={signal.label} className="flex items-center gap-2 text-xs text-neutral-500">
               {i > 0 && <span className="hidden text-neutral-700 sm:inline">&middot;</span>}
+              <svg className="h-3 w-3 shrink-0 text-primary/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
               <span className="font-medium text-neutral-400">{signal.label}</span>
               <span className="text-neutral-600">{signal.detail}</span>
             </div>
@@ -280,26 +297,34 @@ export default function Home() {
 
       {/* ════════════ IMPACT NUMBERS ════════════ */}
       <section className="relative overflow-hidden border-y border-white/[0.04] bg-surface/30">
-        <DotPattern className="opacity-60" />
-        <div className="container-content relative grid gap-0 sm:grid-cols-3">
-          <AnimatedSection className="border-b border-white/[0.04] px-8 py-14 text-center sm:border-b-0 sm:border-r">
-            <p className="font-serif text-display font-semibold text-white">
-              <AnimatedCounter target={100} />M+
-            </p>
-            <p className="mt-3 text-caption text-neutral-500">Habitants de la RDC &mdash; un potentiel humain &agrave; valoriser</p>
-          </AnimatedSection>
-          <AnimatedSection delay={0.15} className="border-b border-white/[0.04] px-8 py-14 text-center sm:border-b-0 sm:border-r">
-            <p className="font-serif text-display font-semibold text-white">
-              &gt;<AnimatedCounter target={80} />%
-            </p>
-            <p className="mt-3 text-caption text-neutral-500">&Eacute;conomie informelle &agrave; structurer et digitaliser en RDC</p>
-          </AnimatedSection>
-          <AnimatedSection delay={0.3} className="px-8 py-14 text-center">
-            <p className="font-serif text-display font-semibold text-gradient-primary">
-              &lt;<AnimatedCounter target={1} />%
-            </p>
-            <p className="mt-3 text-caption text-neutral-500">Part de la RDC dans l&apos;&eacute;conomie num&eacute;rique mondiale &mdash; l&apos;opportunit&eacute;</p>
-          </AnimatedSection>
+        <DotPattern className="opacity-20" />
+        <div className="container-content relative px-6 sm:px-8">
+          <div className="flex flex-col items-center gap-14 py-16 sm:flex-row sm:justify-around sm:gap-8">
+            <AnimatedSection>
+              <StatRing
+                value={100} max={100}
+                label="Millions d'habitants"
+                sublabel="Potentiel humain de la RDC"
+                suffix="M+" color="primary" size="lg"
+              />
+            </AnimatedSection>
+            <AnimatedSection delay={0.15}>
+              <StatRing
+                value={80} max={100}
+                label="Économie informelle"
+                sublabel="À structurer et digitaliser"
+                prefix=">" suffix="%" color="accent" size="lg"
+              />
+            </AnimatedSection>
+            <AnimatedSection delay={0.3}>
+              <StatRing
+                value={1} max={100}
+                label="Part numérique mondiale"
+                sublabel="L'opportunité à saisir"
+                prefix="<" suffix="%" color="gold" size="lg"
+              />
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
@@ -322,17 +347,17 @@ export default function Home() {
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {serviceCards.map((card, i) => (
               <AnimatedSection key={card.title} delay={i * 0.06}>
-                <Link href={card.href} className="card-interactive group flex h-full flex-col">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.04] text-neutral-400 transition group-hover:bg-primary/10 group-hover:text-primary">
+                <Link href={card.href} className="card-interactive card-shine group flex h-full flex-col">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.03] text-neutral-500 transition-all duration-300 group-hover:border-primary/[0.15] group-hover:bg-primary/[0.08] group-hover:text-primary group-hover:shadow-[0_0_18px_rgba(185,28,28,0.08)]">
                     {card.icon}
                   </div>
                   <h3 className="mt-5 text-base font-semibold text-white">{card.title}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-neutral-500">
                     {card.description}
                   </p>
-                  <div className="mt-4 flex items-center gap-1 text-sm text-neutral-600 transition group-hover:text-primary">
+                  <div className="mt-4 flex items-center gap-1.5 text-sm text-neutral-600 transition-all duration-300 group-hover:gap-2.5 group-hover:text-primary">
                     En savoir plus
-                    <svg className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <svg className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
                   </div>
@@ -349,6 +374,59 @@ export default function Home() {
               </svg>
             </Button>
           </AnimatedSection>
+        </div>
+      </section>
+
+      <div className="divider-dot" />
+
+      {/* ════════════ ECOSYSTEM DIAGRAM ════════════ */}
+      <section className="section-padding">
+        <div className="container-content">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <AnimatedSection direction="left">
+              <div className="section-accent" />
+              <Badge>Notre ecosysteme</Badge>
+              <h2 className="mt-6 max-w-xl font-serif text-display font-semibold text-white">
+                Un systeme int&eacute;gre,{' '}
+                <span className="text-gradient-primary">pas une liste de services</span>
+              </h2>
+              <p className="mt-5 max-w-lg text-body-lg text-neutral-400">
+                Chez JuntoX, les 10 p&ocirc;les d&apos;expertise ne fonctionnent pas en silos. Ils convergent
+                vers une m&ecirc;me mission &mdash; la transformation concr&egrave;te et durable de la RDC
+                et de l&apos;Afrique centrale.
+              </p>
+              <div className="mt-8 grid grid-cols-2 gap-3 max-w-sm">
+                {['Technologie', 'Ingenierie', 'Construction', 'Formation', 'Logistique', 'Investissement'].map((p) => (
+                  <div key={p} className="flex items-center gap-2 text-sm text-neutral-500">
+                    <div className="h-1.5 w-1.5 rounded-full bg-primary/60 shrink-0" />
+                    {p}
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.25} direction="right" className="flex items-center justify-center">
+              <EcosystemDiagram />
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      <div className="divider" />
+
+      {/* ════════════ PROCESS FLOW ════════════ */}
+      <section className="section-padding">
+        <div className="container-content">
+          <AnimatedSection className="mb-14 text-center">
+            <Badge variant="accent">Notre methode</Badge>
+            <h2 className="mx-auto mt-6 max-w-3xl font-serif text-display font-semibold text-white">
+              De la d&eacute;couverte &agrave; l&apos;impact
+            </h2>
+            <p className="mx-auto mt-5 max-w-xl text-body-lg text-neutral-400">
+              Chaque projet JuntoX suit une m&eacute;thode rigoureuse &mdash; adapt&eacute;e aux r&eacute;alit&eacute;s
+              du terrain congolais, structur&eacute;e selon les standards internationaux.
+            </p>
+          </AnimatedSection>
+          <ProcessFlow />
         </div>
       </section>
 
@@ -441,27 +519,31 @@ export default function Home() {
       <section className="section-padding relative overflow-hidden">
         <GlowOrb color="primary" size="lg" className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
 
-        <AnimatedSection className="container-content relative text-center">
-          <h2 className="mx-auto max-w-3xl font-serif text-display font-semibold text-white">
-            La RDC se construit{' '}
-            <span className="text-gradient-primary">maintenant</span>
-          </h2>
-          <p className="mx-auto mt-6 max-w-xl text-body-lg text-neutral-400">
-            Chaque partenariat, chaque projet, chaque solution contribue &agrave; transformer un pays.
-            Entrepreneurs, investisseurs, institutions, ONG &mdash; rejoignez les b&acirc;tisseurs.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Button href="/contact" size="lg">
-              Nous contacter
-            </Button>
-            <Button href="/investisseurs" variant="outline" size="lg">
-              Espace investisseurs
-            </Button>
-            <Button href="/carrieres" variant="ghost" size="lg">
-              Rejoindre l&apos;&eacute;quipe
-            </Button>
-          </div>
-        </AnimatedSection>
+        <div className="container-content relative">
+          <AnimatedSection>
+            <div className="card-gradient-border px-8 py-16 text-center md:px-16">
+              <h2 className="mx-auto max-w-3xl font-serif text-display font-semibold text-white">
+                La RDC se construit{' '}
+                <span className="text-gradient-primary">maintenant</span>
+              </h2>
+              <p className="mx-auto mt-6 max-w-xl text-body-lg text-neutral-400">
+                Chaque partenariat, chaque projet, chaque solution contribue &agrave; transformer un pays.
+                Entrepreneurs, investisseurs, institutions, ONG &mdash; rejoignez les b&acirc;tisseurs.
+              </p>
+              <div className="mt-10 flex flex-wrap justify-center gap-4">
+                <Button href="/contact" size="lg">
+                  Nous contacter
+                </Button>
+                <Button href="/investisseurs" variant="outline" size="lg">
+                  Espace investisseurs
+                </Button>
+                <Button href="/carrieres" variant="ghost" size="lg">
+                  Rejoindre l&apos;&eacute;quipe
+                </Button>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
       </section>
     </>
   )

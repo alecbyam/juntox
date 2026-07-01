@@ -122,11 +122,15 @@ const config: Config = {
         'slide-up': 'slideUp 0.6s ease-out forwards',
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 6s ease-in-out infinite',
+        'float-fast': 'float 3s ease-in-out infinite',
         'glow-pulse': 'glowPulse 4s ease-in-out infinite',
         'shimmer': 'shimmer 2.5s linear infinite',
         'gradient-shift': 'gradientShift 8s ease infinite',
         'border-glow': 'borderGlow 3s ease-in-out infinite',
         'line-draw': 'lineDraw 1.5s ease-out forwards',
+        'spin-slow': 'spin 20s linear infinite',
+        'orbit': 'orbit 24s linear infinite',
+        'pulse-ring': 'pulseRing 2.5s ease-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -160,6 +164,14 @@ const config: Config = {
         lineDraw: {
           '0%': { strokeDashoffset: '100' },
           '100%': { strokeDashoffset: '0' },
+        },
+        orbit: {
+          '0%': { transform: 'rotate(0deg) translateX(120px) rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg) translateX(120px) rotate(-360deg)' },
+        },
+        pulseRing: {
+          '0%': { transform: 'scale(1)', opacity: '0.6' },
+          '100%': { transform: 'scale(2)', opacity: '0' },
         },
       },
 
