@@ -104,6 +104,19 @@ class Newsletter(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
 
+class PasswordResetToken(Base):
+    __tablename__ = 'password_reset_tokens'
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+    token = Column(String(86), unique=True, nullable=False, index=True)
+    expires_at = Column(DateTime, nullable=False)
+    used = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    user = relationship('User', foreign_keys=[user_id])
+
+
 class AuditLog(Base):
     __tablename__ = 'audit_logs'
 
