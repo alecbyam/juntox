@@ -7,7 +7,7 @@ export const siteConfig = {
   name: 'JuntoX SARL',
   url: 'https://juntox.africa',
   description:
-    'JuntoX SARL — Plateforme technologique africaine. IA, innovation, investissement, construction, logistique et formation pour bâtir les entreprises de demain.',
+    'JuntoX SARL — Groupe multidisciplinaire africain. Technologies, ingénierie, construction, logistique, consultance, formation, communication et investissement pour bâtir les entreprises de demain depuis Bunia, Ituri.',
   email: 'contact@juntox.africa',
   locality: 'Bunia',
   region: 'Ituri',

@@ -10,34 +10,44 @@ import { AnimatedCounter } from '../../components/ui/AnimatedCounter'
 
 const offerings = [
   {
-    title: 'Études stratégiques',
-    description: 'Analyse de marché, positionnement concurrentiel et stratégie d\'entrée pour les entreprises qui veulent s\'implanter ou croître en Afrique centrale.',
-    deliverables: ['Cartographie marché', 'Analyse concurrentielle', 'Recommandations stratégiques'],
+    title: 'Conseil stratégique',
+    description: 'Définition de vision, mission et feuille de route à 3-5 ans pour les organisations en croissance. Plans stratégiques, OKRs et modèles de création de valeur.',
+    deliverables: ['Plan stratégique', 'Analyse SWOT/PESTEL', 'OKRs annuels'],
+  },
+  {
+    title: 'Conseil informatique',
+    description: 'Architecture des systèmes d\'information, sélection d\'ERP/CRM, audit de sécurité et feuille de route de transformation numérique.',
+    deliverables: ['Schéma directeur SI', 'Cahier des charges', 'Sélection prestataires'],
+  },
+  {
+    title: 'Conseil financier',
+    description: 'Modélisation financière, levée de fonds, restructuration, évaluation d\'entreprises et conseil en fusions-acquisitions pour les marchés africains.',
+    deliverables: ['Modèle financier', 'Pitch investisseurs', 'Valorisation entreprise'],
+  },
+  {
+    title: 'Accompagnement institutionnel',
+    description: 'Appui aux institutions publiques, ONG et projets financés par des bailleurs (Banque Mondiale, AFD, PNUD) : reformes organisationnelles, renforcement des capacités.',
+    deliverables: ['Diagnostic institutionnel', 'Plan de réforme', 'Formation équipes'],
+  },
+  {
+    title: 'Études & Recherche appliquée',
+    description: 'Études de faisabilité, baseline, études d\'impact, évaluations de projets, suivi-évaluation (M&E), collecte de données terrain et analyse statistique.',
+    deliverables: ['Rapport d\'étude', 'Base de données terrain', 'Rapport M&E'],
+  },
+  {
+    title: 'Gestion de projets',
+    description: 'Planification, coordination et pilotage de projets complexes — gestion des risques, assistance à maîtrise d\'ouvrage (AMO) et élaboration de manuels de procédures.',
+    deliverables: ['Plan de gestion projet', 'Registre des risques', 'Manuel de procédures'],
   },
   {
     title: 'Due diligence',
-    description: 'Évaluation approfondie d\'entreprises, d\'actifs et de projets avant investissement, acquisition ou partenariat.',
+    description: 'Évaluation approfondie d\'entreprises, d\'actifs et de projets avant investissement, acquisition ou partenariat — audit financier, opérationnel et juridique.',
     deliverables: ['Audit financier', 'Audit opérationnel', 'Rapport de risques'],
   },
   {
-    title: 'Transformation digitale',
-    description: 'Accompagnement des organisations dans la modernisation de leurs processus, systèmes et culture numérique.',
-    deliverables: ['Diagnostic digital', 'Feuille de route', 'Plan de mise en œuvre'],
-  },
-  {
-    title: 'Analyses financières',
-    description: 'Modélisation financière, projections de trésorerie et évaluation de la rentabilité de projets complexes.',
-    deliverables: ['Modèle financier', 'Projections 3-5 ans', 'Analyse de sensibilité'],
-  },
-  {
-    title: 'Stratégie d\'entreprise',
-    description: 'Définition de vision, mission et feuille de route à 3-5 ans pour les organisations en croissance.',
-    deliverables: ['Atelier de vision', 'Plan stratégique', 'OKRs annuels'],
-  },
-  {
     title: 'Études sectorielles',
-    description: 'Rapports approfondis sur des secteurs spécifiques — agro-industrie, fintech, énergie, infrastructures.',
-    deliverables: ['Rapport sectoriel', 'Benchmarks', 'Recommandations'],
+    description: 'Rapports approfondis sur des secteurs spécifiques — agro-industrie, FinTech, énergie, santé, construction — avec benchmarks régionaux et recommandations.',
+    deliverables: ['Rapport sectoriel', 'Benchmarks régionaux', 'Recommandations actionnables'],
   },
 ]
 

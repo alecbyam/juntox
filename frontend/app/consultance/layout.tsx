@@ -2,7 +2,7 @@ import { createMetadata } from '../../lib/metadata'
 
 export const metadata = createMetadata({
   title: 'Consultance & Études',
-  description: 'Études stratégiques, due diligence, transformation digitale et analyses financières pour les entreprises africaines et internationales.',
+  description: 'Conseil stratégique, informatique et financier, études de faisabilité, baseline, M&E, gestion de projets, AMO et accompagnement institutionnel pour les entreprises et ONG en Afrique.',
   path: '/consultance',
 })
 

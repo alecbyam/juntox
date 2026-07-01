@@ -10,40 +10,52 @@ import { AnimatedCounter } from '../../components/ui/AnimatedCounter'
 
 const programs = [
   {
-    title: 'Leadership Technologique',
+    title: 'Leadership & Management',
     duration: '8 semaines',
     format: 'Hybride (présentiel + en ligne)',
-    description: 'Pour les dirigeants qui veulent intégrer la technologie dans leur stratégie d\'entreprise.',
+    description: 'Leadership transformationnel, management d\'équipes, prise de décision stratégique et gestion du changement pour les dirigeants africains.',
   },
   {
-    title: 'IA Appliquée',
+    title: 'IA Appliquée aux Entreprises',
     duration: '6 semaines',
     format: 'En ligne',
-    description: 'Formation pratique à l\'intelligence artificielle pour professionnels et entrepreneurs non-techniques.',
+    description: 'Formation pratique à l\'intelligence artificielle : automatisation, prompt engineering, IA générative et cas d\'usage métier pour non-techniques.',
+  },
+  {
+    title: 'Technologies & Développement',
+    duration: '12 semaines',
+    format: 'Hybride',
+    description: 'Développement web/mobile, cybersécurité, cloud computing et architecture des systèmes — du débutant au professionnel.',
   },
   {
     title: 'Bootcamp Entrepreneuriat',
     duration: '12 semaines',
     format: 'Présentiel — Bunia',
-    description: 'De l\'idée au business model viable, avec mentorat individuel et pitch final devant investisseurs.',
+    description: 'De l\'idée au business model viable, avec mentorat individuel et pitch final devant investisseurs. Bootcamp intensif pour fondateurs.',
   },
   {
-    title: 'Gestion de Projets Agile',
+    title: 'Gestion de Projets & PMO',
     duration: '4 semaines',
     format: 'En ligne',
-    description: 'Méthodologies agiles, gestion de produit et delivery à grande échelle.',
+    description: 'Méthodologies PMI/Agile, gestion des risques, MS Project, pilotage de projets complexes et préparation aux certifications PMP.',
   },
   {
-    title: 'Compétences Digitales',
+    title: 'Finance & Gestion d\'Entreprise',
     duration: '6 semaines',
     format: 'Hybride',
-    description: 'Outils numériques, bases du développement web et analyse de données.',
+    description: 'Comptabilité, analyse financière, levée de fonds, business plan et gestion de trésorerie pour entrepreneurs et managers africains.',
   },
   {
-    title: 'Formation sur mesure',
+    title: 'Plateforme E-Learning JuntoX',
+    duration: 'À votre rythme',
+    format: 'Entièrement en ligne',
+    description: 'Bibliothèque de modules courts, certifiants et accessibles sur mobile — disponible 24h/24 pour les professionnels en mobilité.',
+  },
+  {
+    title: 'Formation sur mesure entreprise',
     duration: 'Variable',
-    format: 'Sur site',
-    description: 'Programmes personnalisés conçus avec votre entreprise selon vos besoins spécifiques.',
+    format: 'Sur site / Intra',
+    description: 'Programmes personnalisés conçus avec votre équipe RH selon vos besoins spécifiques, déployables en 4 semaines.',
   },
 ]
 

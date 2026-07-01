@@ -12,8 +12,8 @@ import { GlowOrb } from '../components/ui/GlowOrb'
 /* ─── Data ─── */
 
 const stats = [
-  { target: 8, suffix: '', label: 'Secteurs d’activité' },
-  { target: 24, suffix: '', label: 'Projets en cours' },
+  { target: 10, suffix: '', label: 'Pôles d\'expertise' },
+  { target: 50, suffix: '+', label: 'Services disponibles' },
   { target: 6, suffix: '', label: 'Pays ciblés' },
   { target: 100, suffix: '+', label: 'Années de vision' },
 ]
@@ -23,7 +23,7 @@ const goldenCircle = [
     tag: 'WHY',
     title: 'Pourquoi nous existons',
     description:
-      'Nous croyons que les connaissances doivent devenir des infrastructures. Que les idées doivent devenir des entreprises. Que l’Afrique peut produire les prochaines entreprises technologiques mondiales.',
+      'Nous croyons que les connaissances doivent devenir des infrastructures. Que les idées doivent devenir des entreprises. Que l\'Afrique peut produire les prochains groupes technologiques, industriels et financiers mondiaux.',
     color: 'text-primary',
     border: 'border-primary/20',
   },
@@ -31,7 +31,7 @@ const goldenCircle = [
     tag: 'HOW',
     title: 'Comment nous agissons',
     description:
-      'En combinant intelligence artificielle, logiciels, construction, logistique, conseil, investissement, recherche et formation pour résoudre des problèmes réels à grande échelle.',
+      'En combinant technologie, ingénierie, construction, logistique, conseil, communication, investissement, formation et expertise sectorielle pour résoudre des problèmes réels à grande échelle — de façon intégrée.',
     color: 'text-accent-light',
     border: 'border-accent/20',
   },
@@ -39,7 +39,7 @@ const goldenCircle = [
     tag: 'WHAT',
     title: 'Ce que nous construisons',
     description:
-      'Des plateformes IA, des systèmes de gestion, des infrastructures, des solutions logistiques, des investissements et des programmes de formation qui transforment les territoires.',
+      'Un groupe multidisciplinaire : plateformes IA, systèmes embarqués, infrastructures civiles, chaînes logistiques, solutions de santé et d\'éducation numériques, programmes de formation et portefeuilles d\'investissement à fort impact.',
     color: 'text-white',
     border: 'border-white/[0.1]',
   },
@@ -47,28 +47,28 @@ const goldenCircle = [
 
 const serviceCards = [
   {
-    title: 'Intelligence Artificielle',
-    description: 'Automatiser la stratégie, l’analyse et la prise de décision grâce à des solutions IA sur mesure.',
+    title: 'Technologies & IA',
+    description: 'Développement logiciel, web, mobile, intelligence artificielle, cybersécurité, cloud et transformation digitale.',
     href: '/ai',
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
       </svg>
     ),
   },
   {
-    title: 'Consultance & Études',
-    description: 'Études stratégiques, analyses de marché et accompagnement décisionnel pour des projets à fort impact.',
-    href: '/consultance',
+    title: 'Ingénierie & Systèmes',
+    description: 'Électronique, IoT, robotique, systèmes embarqués et automatisation industrielle.',
+    href: '/ingenierie',
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
       </svg>
     ),
   },
   {
-    title: 'Construction',
-    description: 'Conception et déploiement d’infrastructures robustes, connectées et répétables.',
+    title: 'Construction & Génie Civil',
+    description: 'Bâtiments, génie civil, rénovation, promotion immobilière, supervision et fourniture de matériaux.',
     href: '/construction',
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -77,38 +77,58 @@ const serviceCards = [
     ),
   },
   {
-    title: 'Logistique',
-    description: 'Optimisation des chaînes d’approvisionnement et solutions de transport continentales.',
-    href: '/logistique',
+    title: 'Consultance & Études',
+    description: 'Conseil stratégique, financier, informatique, gestion de projets, AMO, études et accompagnement institutionnel.',
+    href: '/consultance',
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H18.75m-7.5-2.25h3.75m-3.75 0h-3.375c-.621 0-1.125.504-1.125 1.125V14.25m1.5 0V5.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v8.625m-7.5 0h7.5" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3" />
       </svg>
     ),
   },
   {
-    title: 'Commerce International',
-    description: 'Faciliter les échanges commerciaux entre l’Afrique et le reste du monde.',
+    title: 'Logistique & Transport',
+    description: 'Transport, transit, dédouanement, supply chain, entrepôts, distribution et chaîne du froid.',
+    href: '/logistique',
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H18.75m-7.5-2.25h3.75m-3.75 0h-3.375c-.621 0-1.125.504-1.125 1.125V14.25" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Commerce & Distribution',
+    description: 'Import-export, e-commerce, distribution, sourcing international et accompagnement ZLECAf.',
     href: '/commerce',
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918" />
       </svg>
     ),
   },
   {
     title: 'Formation',
-    description: 'Former la prochaine génération de leaders technologiques et d’entrepreneurs africains.',
+    description: 'Leadership, IA, technologies, gestion, entrepreneuriat et plateforme e-learning pour les professionnels africains.',
     href: '/formation',
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489" />
       </svg>
     ),
   },
   {
-    title: 'Investissements',
-    description: 'Mobiliser du capital et financer des entreprises à fort potentiel de croissance.',
+    title: 'Communication & Marketing',
+    description: 'Marketing digital, branding, production audiovisuelle et communication institutionnelle.',
+    href: '/communication',
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 01-1.44-4.282m3.102.069a18.03 18.03 0 01-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 018.835 2.535M10.34 6.66a23.847 23.847 0 008.835-2.535m0 0A23.74 23.74 0 0018.795 3m.38 1.125a23.91 23.91 0 011.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 001.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 010 3.46" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Investissement & Incubation',
+    description: 'Capital-risque, incubation de startups, accélération, prise de participation et gestion de projets innovants.',
     href: '/investissements',
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -117,12 +137,12 @@ const serviceCards = [
     ),
   },
   {
-    title: 'Recherche & Innovation',
-    description: 'Cartographier les opportunités, inventer les modèles et accélérer l’impact.',
-    href: '/recherche',
+    title: 'Secteurs Émergents',
+    description: 'Énergie solaire, agriculture intelligente, santé numérique, éducation (EdTech) et finance numérique (FinTech).',
+    href: '/secteurs-emergents',
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
       </svg>
     ),
   },
@@ -132,15 +152,15 @@ const ecosystemFeatures = [
   { title: 'API & Intégrations', description: 'Architecture ouverte pour connecter vos systèmes existants.', icon: '/' },
   { title: 'Multi-espaces', description: 'Clients, employés, investisseurs, partenaires — chacun son accès.', icon: '≡' },
   { title: 'IA intégrée', description: 'Assistant intelligent pour analyser, décider et agir plus vite.', icon: '✱' },
-  { title: 'Évolutif', description: 'Conçu pour supporter des milliers d’utilisateurs dès le premier jour.', icon: '↑' },
+  { title: 'Evolutif', description: "Concu pour supporter des milliers d'utilisateurs des le premier jour.", icon: '↑' },
 ]
 
 const trustSignals = [
   { label: 'Basée en RD Congo', detail: 'Bunia, Ituri' },
   { label: 'SARL enregistrée', detail: 'Structure légale' },
   { label: 'IA opérationnelle', detail: 'GPT-4o intégré' },
-  { label: 'Open Architecture', detail: 'API-first' },
-  { label: 'Multi-sectoriel', detail: '8 domaines' },
+  { label: 'Groupe multidisciplinaire', detail: '10 pôles d\'expertise' },
+  { label: 'Open Architecture', detail: 'API-first & extensible' },
 ]
 
 /* ─── Page ─── */

@@ -9,19 +9,22 @@ import { CaseStudy } from '../../components/ui/CaseStudy'
 import { AnimatedCounter } from '../../components/ui/AnimatedCounter'
 
 const capabilities = [
-  { title: 'Capital-risque', description: 'Investissement dans des startups technologiques africaines à fort potentiel de croissance.' },
-  { title: 'Structuration financière', description: 'Montage de financements, levées de fonds et structuration de deals complexes.' },
-  { title: 'Accompagnement post-investissement', description: 'Support stratégique et opérationnel continu aux entreprises du portefeuille.' },
-  { title: 'Due diligence', description: 'Évaluation rigoureuse — financière, technique et juridique — de chaque opportunité.' },
-  { title: 'Co-investissement', description: 'Partenariats structurés avec des fonds et investisseurs internationaux.' },
-  { title: 'Impact investing', description: 'Investissements générant un retour financier et un impact social mesurable.' },
+  { title: 'Capital-risque (Venture)', description: 'Investissement en equity dans des startups technologiques et innovantes africaines à fort potentiel de croissance et d\'impact.' },
+  { title: 'Incubation de startups', description: 'Programme d\'incubation intensif 12 semaines : mentorat, ressources, réseau et accès au capital pour les porteurs de projets à potentiel.' },
+  { title: 'Accélération', description: 'Programme d\'accélération pour startups post-MVP : scale produit, expansion marché et préparation aux levées de fonds.' },
+  { title: 'Gestion de projets innovants', description: 'Pilotage de projets à fort contenu technologique ou d\'innovation pour le compte de partenaires institutionnels ou privés.' },
+  { title: 'Prise de participation', description: 'Acquisition de participations minoritaires ou majoritaires dans des PME à fort potentiel, avec accompagnement stratégique actif.' },
+  { title: 'Structuration financière', description: 'Montage de financements, structuration de deals complexes, levées de fonds Serie A/B et syndication avec co-investisseurs.' },
+  { title: 'Due diligence', description: 'Évaluation rigoureuse — financière, technique, juridique et ESG — de chaque opportunité avant tout engagement.' },
+  { title: 'Impact investing', description: 'Investissements à impact : retour financier mesurable combiné à des indicateurs sociaux et environnementaux (ODD alignés).' },
 ]
 
 const sectors = [
-  { name: 'IA & Logiciels', allocation: '35%' },
-  { name: 'Infrastructures', allocation: '25%' },
+  { name: 'Technologies & IA', allocation: '30%' },
+  { name: 'Infrastructures', allocation: '20%' },
   { name: 'Agro-industrie', allocation: '20%' },
-  { name: 'Fintech', allocation: '20%' },
+  { name: 'FinTech & EdTech', allocation: '15%' },
+  { name: 'Énergie & Santé', allocation: '15%' },
 ]
 
 const process = [

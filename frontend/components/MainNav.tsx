@@ -6,15 +6,41 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CommandPalette } from './CommandPalette'
 
-const services = [
-  { href: '/ai', label: 'Intelligence Artificielle' },
-  { href: '/consultance', label: 'Consultance & Études' },
-  { href: '/construction', label: 'Construction' },
-  { href: '/logistique', label: 'Logistique' },
-  { href: '/commerce', label: 'Commerce International' },
-  { href: '/formation', label: 'Formation' },
-  { href: '/investissements', label: 'Investissements' },
+const serviceGroups = [
+  {
+    heading: 'Technologies',
+    items: [
+      { href: '/ai', label: 'Technologies & IA' },
+      { href: '/ingenierie', label: 'Ingénierie & Systèmes' },
+      { href: '/communication', label: 'Communication & Marketing' },
+    ],
+  },
+  {
+    heading: 'Infrastructure',
+    items: [
+      { href: '/construction', label: 'Construction & Génie Civil' },
+      { href: '/logistique', label: 'Logistique & Transport' },
+      { href: '/commerce', label: 'Commerce & Distribution' },
+    ],
+  },
+  {
+    heading: 'Expertise',
+    items: [
+      { href: '/consultance', label: 'Consultance & Études' },
+      { href: '/formation', label: 'Formation' },
+      { href: '/investissements', label: 'Investissement' },
+    ],
+  },
+  {
+    heading: 'Secteurs émergents',
+    items: [
+      { href: '/secteurs-emergents', label: 'Énergie · Agri · Santé · EdTech · FinTech' },
+    ],
+  },
 ]
+
+// Flat list for mobile menu
+const services = serviceGroups.flatMap((g) => g.items)
 
 const innovation = [
   { href: '/recherche', label: 'Recherche & Innovation' },
@@ -32,6 +58,83 @@ const secondaryLinks = [
   { href: '/carrieres', label: 'Carrières' },
   { href: '/contact', label: 'Contact' },
 ]
+
+function GroupedDropdownMenu({
+  label,
+  groups,
+  isOpen,
+  onToggle,
+}: {
+  label: string
+  groups: { heading: string; items: { href: string; label: string }[] }[]
+  isOpen: boolean
+  onToggle: () => void
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        if (isOpen) onToggle()
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isOpen, onToggle])
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+        className="flex items-center gap-1 py-2 text-sm text-neutral-500 transition hover:text-white"
+      >
+        {label}
+        <svg
+          className={`h-3.5 w-3.5 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 8, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 8, scale: 0.97 }}
+            transition={{ duration: 0.15 }}
+            className="absolute left-0 top-full z-50 mt-3 w-[580px] overflow-hidden rounded-xl border border-white/[0.08] bg-surface-elevated p-4 shadow-2xl"
+          >
+            <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+              {groups.map((group) => (
+                <div key={group.heading} className="mb-2">
+                  <p className="px-2 pb-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-neutral-600">
+                    {group.heading}
+                  </p>
+                  {group.items.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={onToggle}
+                      className="block rounded-lg px-2.5 py-2 text-sm text-neutral-400 transition hover:bg-white/[0.05] hover:text-white"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
 
 function DropdownMenu({
   label,
@@ -163,9 +266,9 @@ export function MainNav() {
             </Link>
           ))}
 
-          <DropdownMenu
+          <GroupedDropdownMenu
             label="Services"
-            items={services}
+            groups={serviceGroups}
             isOpen={servicesOpen}
             onToggle={() => {
               setServicesOpen(!servicesOpen)

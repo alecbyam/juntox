@@ -35,16 +35,20 @@ const values = [
 ]
 
 const timeline = [
-  { year: '2024', event: 'Fondation de JuntoX SARL à Bunia' },
-  { year: '2025', event: 'Lancement de la plateforme IA et premiers projets de consultance' },
-  { year: '2026', event: 'Expansion vers la construction, la logistique et l\'incubation' },
-  { year: '2027+', event: 'Échelle continentale, partenariats internationaux, laboratoire IA' },
+  { year: '2024', event: 'Fondation de JuntoX SARL à Bunia — premières missions de consultance et développement logiciel' },
+  { year: '2025', event: 'Lancement de la plateforme IA, expansion construction, logistique et commerce international' },
+  { year: '2026', event: 'Élargissement de l\'objet social — 10 pôles d\'expertise couvrant technologie, ingénierie, communication et secteurs émergents' },
+  { year: '2027+', event: 'Échelle continentale, partenariats internationaux, déploiement FinTech, EdTech, Énergie et AgriTech' },
 ]
 
 const faqs = [
   {
+    question: 'JuntoX est-elle un groupe ou une seule entreprise ?',
+    answer: 'JuntoX est une SARL dont l\'objet social couvre 10 pôles d\'expertise : technologies, ingénierie, construction, logistique, conseil, formation, communication, investissement et secteurs émergents. Nous opérons comme un groupe intégré depuis une structure unique, ce qui nous permet de proposer des solutions multidisciplinaires sans rupture.',
+  },
+  {
     question: 'JuntoX est-elle une société de conseil, une entreprise tech ou un fonds d\'investissement ?',
-    answer: 'Les trois à la fois, et c\'est précisément notre différenciation. Nous combinons conseil stratégique, ingénierie logicielle et capital pour accompagner un projet de l\'idée jusqu\'à l\'industrialisation, sans rupture entre les étapes.',
+    answer: 'Les trois à la fois — et c\'est précisément notre différenciation. Nous combinons conseil stratégique, développement logiciel, ingénierie, construction, communication et capital pour accompagner un projet de l\'idée jusqu\'à l\'industrialisation, sans rupture entre les étapes.',
   },
   {
     question: 'Où JuntoX opère-t-elle aujourd\'hui ?',
@@ -77,8 +81,8 @@ export default function AboutPage() {
         <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
           {[
             { target: 2024, suffix: '', label: 'Année de fondation' },
-            { target: 8, suffix: '', label: 'Secteurs d\'activité' },
-            { target: 24, suffix: '+', label: 'Collaborateurs et consultants' },
+            { target: 10, suffix: '', label: 'Pôles d\'expertise' },
+            { target: 50, suffix: '+', label: 'Services proposés' },
             { target: 100, suffix: '+', label: 'Années de vision' },
           ].map((stat) => (
             <div key={stat.label} className="px-6 py-10 text-center">

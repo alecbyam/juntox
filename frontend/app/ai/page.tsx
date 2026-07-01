@@ -8,12 +8,16 @@ import { Button } from '../../components/ui/Button'
 import { postJson } from '../../lib/api'
 
 const capabilities = [
-  { title: 'Analyse de projets', description: 'Évaluation structurée des forces, risques et recommandations pour tout projet.' },
-  { title: 'Business plans', description: 'Génération de plans d\'affaires complets avec modèle de revenus et stratégie.' },
-  { title: 'Études financières', description: 'Projections financières, analyses de rentabilité et simulations d\'investissement.' },
-  { title: 'Estimation de chantiers', description: 'Calcul des coûts, délais et ressources pour les projets de construction.' },
-  { title: 'Assistant client', description: 'Réponses intelligentes aux questions des clients et partenaires.' },
-  { title: 'Rapports automatisés', description: 'Génération de rapports professionnels structurés en quelques secondes.' },
+  { title: 'Analyse de projets', description: 'Évaluation structurée des forces, risques et recommandations pour tout projet d\'entreprise ou de développement.' },
+  { title: 'Business plans', description: 'Génération de plans d\'affaires complets avec modèle de revenus, analyse de marché et stratégie de croissance.' },
+  { title: 'Études financières', description: 'Projections financières, analyses de rentabilité et simulations d\'investissement pour toutes tailles de projets.' },
+  { title: 'Estimation de chantiers', description: 'Calcul précis des coûts, délais et ressources pour les projets de construction et d\'infrastructure.' },
+  { title: 'Développement logiciel IA', description: 'Applications web et mobiles intégrant l\'IA : chatbots, moteurs de recommandation, OCR et analyse de documents.' },
+  { title: 'Cybersécurité augmentée', description: 'Audit de sécurité automatisé, détection d\'anomalies et analyse des menaces par apprentissage automatique.' },
+  { title: 'Transformation digitale', description: 'Diagnostic et feuille de route pour digitaliser vos processus métier — de l\'ERP aux workflows automatisés.' },
+  { title: 'Cloud & Infrastructure IA', description: 'Architecture cloud native, migration et optimisation des coûts pour des systèmes AI-ready à grande échelle.' },
+  { title: 'Automation des processus (RPA)', description: 'Automatisation des tâches répétitives par IA : saisie, reporting, tri, validation et extraction de données.' },
+  { title: 'Rapports automatisés', description: 'Génération de rapports professionnels structurés et personnalisés en quelques secondes via notre assistant.' },
 ]
 
 export default function AIPage() {

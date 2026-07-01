@@ -2,7 +2,7 @@ import { createMetadata } from '../../lib/metadata'
 
 export const metadata = createMetadata({
   title: 'Construction',
-  description: 'Conception, gestion et supervision de projets de construction en RDC et en Afrique. Estimation IA, smart buildings et suivi digital.',
+  description: 'Construction de bâtiments, génie civil, rénovation, promotion immobilière, fourniture de matériaux et supervision de chantiers en RDC et en Afrique. Estimation IA et management de projets.',
   path: '/construction',
 })
 

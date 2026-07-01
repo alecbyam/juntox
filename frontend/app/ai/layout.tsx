@@ -2,7 +2,7 @@ import { createMetadata } from '../../lib/metadata'
 
 export const metadata = createMetadata({
   title: 'Intelligence Artificielle',
-  description: 'Solutions IA sur mesure — analyse de projets, business plans, études financières et rapports automatisés par JuntoX AI.',
+  description: 'Technologies de l\'information et IA — développement logiciel, applications web et mobiles, cybersécurité, cloud computing, automatisation RPA et transformation digitale par JuntoX SARL.',
   path: '/ai',
 })
 

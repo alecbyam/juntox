@@ -9,12 +9,14 @@ import { CaseStudy } from '../../components/ui/CaseStudy'
 import { AnimatedCounter } from '../../components/ui/AnimatedCounter'
 
 const capabilities = [
-  { title: 'Import-Export', description: 'Gestion complète des opérations commerciales, de la négociation fournisseur à la livraison finale.' },
-  { title: 'Sourcing international', description: 'Identification et qualification de fournisseurs fiables en Asie, Europe et Moyen-Orient.' },
-  { title: 'Conformité réglementaire', description: 'Navigation experte dans les réglementations douanières congolaises et régionales.' },
-  { title: 'Trade finance', description: 'Lettres de crédit, garanties bancaires et solutions de financement du commerce.' },
-  { title: 'Études de marché export', description: 'Identification des marchés porteurs pour les produits et matières premières africaines.' },
-  { title: 'Accompagnement ZLECAf', description: 'Stratégies pour tirer parti de la Zone de Libre-Échange Continentale Africaine.' },
+  { title: 'Import-Export', description: 'Gestion complète des opérations commerciales, de la négociation fournisseur à la livraison finale — Asie, Europe, Afrique.' },
+  { title: 'E-commerce & Vente en ligne', description: 'Création et gestion de boutiques en ligne, marketplaces B2B et B2C, paiements mobiles et intégration logistique last-mile.' },
+  { title: 'Commerce général & Distribution', description: 'Approvisionnement, stockage et distribution de biens de consommation, matériaux et équipements sur le marché local et régional.' },
+  { title: 'Sourcing international', description: 'Identification et qualification de fournisseurs fiables en Asie, Europe et Moyen-Orient — due diligence et contrats.' },
+  { title: 'Conformité & Dédouanement', description: 'Navigation experte dans les réglementations douanières congolaises et régionales — transit, TP, exonérations et régimes suspensifs.' },
+  { title: 'Trade finance', description: 'Lettres de crédit, garanties bancaires, affacturage et solutions de financement du commerce international et local.' },
+  { title: 'Études de marché export', description: 'Identification des marchés porteurs pour les produits et matières premières africaines. Accompagnement ZLECAf.' },
+  { title: 'Commerce de matières premières', description: 'Négoce de produits agricoles, minéraux et ressources naturelles — conformité EDD, traçabilité et certification export.' },
 ]
 
 const corridors = [

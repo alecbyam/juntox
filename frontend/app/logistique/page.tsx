@@ -9,19 +9,23 @@ import { CaseStudy } from '../../components/ui/CaseStudy'
 import { AnimatedCounter } from '../../components/ui/AnimatedCounter'
 
 const capabilities = [
-  { title: 'Gestion d\'entrepôts', description: 'Systèmes de gestion de stocks (WMS), traçabilité en temps réel et optimisation des espaces.' },
-  { title: 'Transport et distribution', description: 'Planification d\'itinéraires, gestion de flottes et solutions de livraison last-mile.' },
-  { title: 'Supply chain management', description: 'Optimisation de bout en bout, de l\'approvisionnement à la livraison finale.' },
-  { title: 'Logistique internationale', description: 'Gestion des importations, exportations, dédouanement et conformité réglementaire.' },
-  { title: 'Plateforme digitale', description: 'Tableaux de bord temps réel pour suivre chaque expédition et chaque stock.' },
-  { title: 'Conseil logistique', description: 'Audit complet et recommandations pour réduire les coûts et délais.' },
+  { title: 'Transport & Fret', description: 'Gestion de flotte, planification d\'itinéraires, transport routier, aérien et fluvial sur l\'ensemble du territoire et en Afrique centrale.' },
+  { title: 'Transit & Dédouanement', description: 'Représentation en douane, gestion des formalités d\'importation/exportation, régimes suspensifs, TP et exonérations bailleurs.' },
+  { title: 'Supply Chain Management', description: 'Optimisation complète de la chaîne d\'approvisionnement — de l\'achat fournisseur à la livraison finale — avec réduction des délais et coûts.' },
+  { title: 'Gestion d\'entrepôts (3PL)', description: 'Stockage sécurisé, gestion de stocks WMS, préparation de commandes, emballage et traçabilité en temps réel.' },
+  { title: 'Distribution & Last-mile', description: 'Solutions de distribution multi-points, livraison last-mile en zones urbaines et périurbaines, gestion des retours.' },
+  { title: 'Chaîne du froid', description: 'Logistique réfrigérée pour produits agroalimentaires et pharmaceutiques — certifiée normes sanitaires internationales.' },
+  { title: 'Plateforme digitale de tracking', description: 'Tableaux de bord temps réel pour suivre chaque expédition, chaque stock et chaque prestataire depuis une interface unique.' },
+  { title: 'Conseil & Audit logistique', description: 'Diagnostic complet, cartographie des flux et plan d\'optimisation pour réduire vos coûts logistiques jusqu\'à 30%.' },
 ]
 
 const sectors = [
-  { name: 'Agro-industrie', detail: 'Chaîne du froid, stockage de denrées périssables' },
-  { name: 'Commerce de détail', detail: 'Distribution multi-points, gestion de la demande' },
-  { name: 'Construction', detail: 'Approvisionnement de chantiers, gestion de matériaux' },
-  { name: 'E-commerce', detail: 'Fulfillment et livraison last-mile' },
+  { name: 'Agro-industrie', detail: 'Chaîne du froid, stockage de denrées périssables, export certification' },
+  { name: 'Commerce & Distribution', detail: 'Multi-points, gestion de la demande, e-commerce fulfillment' },
+  { name: 'Construction & Mines', detail: 'Approvisionnement de chantiers, gestion de matériaux et équipements' },
+  { name: 'Humanitaire & ONG', detail: 'Logistique de projets, gestion de kits et matériels de terrain' },
+  { name: 'Santé & Pharmaceutique', detail: 'Chaîne du froid médicaments, distribution vaccins' },
+  { name: 'Commerce international', detail: 'Transit, dédouanement, corridors régionaux' },
 ]
 
 const process = [

@@ -9,19 +9,23 @@ import { CaseStudy } from '../../components/ui/CaseStudy'
 import { AnimatedCounter } from '../../components/ui/AnimatedCounter'
 
 const specializations = [
-  { title: 'Résidentiel', description: 'Villas, complexes résidentiels et lotissements conçus pour durer.' },
-  { title: 'Commercial', description: 'Bureaux, centres commerciaux et espaces mixtes à haute valeur d\'usage.' },
-  { title: 'Industriel', description: 'Entrepôts, usines et infrastructures logistiques optimisées.' },
-  { title: 'Infrastructures publiques', description: 'Routes, ponts et équipements collectifs au service des territoires.' },
+  { title: 'Résidentiel', description: 'Villas, complexes résidentiels et lotissements conçus pour durer et s\'adapter aux modes de vie locaux.' },
+  { title: 'Commercial & Tertiaire', description: 'Bureaux, centres commerciaux, hôtels et espaces mixtes à haute valeur d\'usage et de représentation.' },
+  { title: 'Génie Civil', description: 'Routes, ponts, barrages, réseaux hydrauliques et ouvrages d\'art au service des territoires et des populations.' },
+  { title: 'Industriel', description: 'Entrepôts, usines, unités de transformation agroalimentaire et infrastructures logistiques optimisées.' },
+  { title: 'Rénovation & Réhabilitation', description: 'Modernisation d\'immeubles anciens, mise aux normes, amélioration énergétique et extension de bâtiments existants.' },
+  { title: 'Promotion Immobilière', description: 'Développement de programmes immobiliers résidentiels et commerciaux — de la maîtrise foncière à la commercialisation.' },
 ]
 
 const capabilities = [
-  { title: 'Gestion de projets', description: 'Pilotage complet de projets de construction, du concept à la livraison, avec un point de contact unique.' },
-  { title: 'Conception architecturale', description: 'Design fonctionnel et esthétique adapté aux contraintes climatiques et culturelles locales.' },
+  { title: 'Maîtrise d\'ouvrage déléguée', description: 'Assistance à maîtrise d\'ouvrage (AMO) pour les clients qui n\'ont pas de direction technique interne.' },
+  { title: 'Conception architecturale', description: 'Design fonctionnel et esthétique adapté aux contraintes climatiques, culturelles et réglementaires locales.' },
   { title: 'Estimation IA', description: 'Notre moteur d\'estimation calcule les coûts avec une marge d\'erreur inférieure à 8%, contre 20-30% pour les méthodes traditionnelles.' },
-  { title: 'Supervision de chantiers', description: 'Contrôle qualité hebdomadaire, suivi des délais et gestion proactive des sous-traitants.' },
-  { title: 'Smart buildings', description: 'Intégration de capteurs IoT, gestion énergétique et systèmes de sécurité connectés.' },
-  { title: 'Études de faisabilité', description: 'Analyse technique, environnementale et financière avant tout engagement budgétaire.' },
+  { title: 'Supervision de chantiers', description: 'Contrôle qualité hebdomadaire, suivi des délais, coordination des corps de métier et gestion proactive des imprévus.' },
+  { title: 'Fourniture de matériaux', description: 'Approvisionnement en matériaux de construction : ciment, fer, bois, toiture, sanitaires — sourcing local et international.' },
+  { title: 'Smart buildings', description: 'Intégration de capteurs IoT, gestion énergétique intelligente et systèmes de sécurité connectés dans les nouvelles constructions.' },
+  { title: 'Études de faisabilité', description: 'Analyse technique, environnementale et financière avant tout engagement budgétaire — études de sol, environnement, permis.' },
+  { title: 'Gestion des risques chantier', description: 'Identification proactive des risques techniques, juridiques et environnementaux avec plans de mitigation.' },
 ]
 
 const process = [
