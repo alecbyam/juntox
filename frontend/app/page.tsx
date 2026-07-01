@@ -23,7 +23,7 @@ const goldenCircle = [
     tag: 'WHY',
     title: 'Pourquoi nous existons',
     description:
-      'Nous croyons que les connaissances doivent devenir des infrastructures. Que les idées doivent devenir des entreprises. Que l\'Afrique peut produire les prochains groupes technologiques, industriels et financiers mondiaux.',
+      'La RDC possède un immense potentiel humain, economique et technologique qui reste insuffisamment valorise. Nous croyons que ses defis — infrastructures, transformation numerique, emploi des jeunes, logistique, gouvernance — peuvent etre releves grace a des solutions intelligentes, adaptees au contexte local et ouvertes aux standards internationaux. Nous voulons transformer les idees en projets concrets, les connaissances en solutions durables et les opportunites en impact mesurable.',
     color: 'text-primary',
     border: 'border-primary/20',
   },
@@ -31,7 +31,7 @@ const goldenCircle = [
     tag: 'HOW',
     title: 'Comment nous agissons',
     description:
-      'En combinant technologie, ingénierie, construction, logistique, conseil, communication, investissement, formation et expertise sectorielle pour résoudre des problèmes réels à grande échelle — de façon intégrée.',
+      'En reunissant plusieurs expertises au sein d\'un meme ecosysteme de transformation : technologies numeriques, intelligence artificielle, ingenierie, construction, etudes et recherche, consultance, gestion de projets, logistique, formation et investissement. Ces activites ne sont pas independantes — elles constituent un systeme integre, concu pour repondre aux realites du terrain congolais.',
     color: 'text-accent-light',
     border: 'border-accent/20',
   },
@@ -39,7 +39,7 @@ const goldenCircle = [
     tag: 'WHAT',
     title: 'Ce que nous construisons',
     description:
-      'Un groupe multidisciplinaire : plateformes IA, systèmes embarqués, infrastructures civiles, chaînes logistiques, solutions de santé et d\'éducation numériques, programmes de formation et portefeuilles d\'investissement à fort impact.',
+      'Des projets concrets qui modernisent les infrastructures. Des entreprises accompagnees de l\'idee a l\'execution. Des emplois qualifies crees localement. Des institutions et des PME dotees des outils numeriques qu\'elles meritent. Chaque service que JuntoX propose est au service de cette mission — pas l\'inverse.',
     color: 'text-white',
     border: 'border-white/[0.1]',
   },
@@ -156,11 +156,11 @@ const ecosystemFeatures = [
 ]
 
 const trustSignals = [
-  { label: 'Basée en RD Congo', detail: 'Bunia, Ituri' },
-  { label: 'SARL enregistrée', detail: 'Structure légale' },
-  { label: 'IA opérationnelle', detail: 'GPT-4o intégré' },
-  { label: 'Groupe multidisciplinaire', detail: '10 pôles d\'expertise' },
-  { label: 'Open Architecture', detail: 'API-first & extensible' },
+  { label: 'Ancree en Ituri, RDC', detail: 'Bunia — coeur de l\'Est' },
+  { label: 'SARL enregistree', detail: 'Structure legale congolaise' },
+  { label: 'Impact local mesurable', detail: 'Projets, emplois, formations' },
+  { label: 'Groupe multidisciplinaire', detail: '10 poles d\'expertise' },
+  { label: 'Vision long terme', detail: 'Construire pour 100 ans' },
 ]
 
 /* ─── Page ─── */
@@ -190,9 +190,10 @@ export default function Home() {
             </h1>
 
             <p className="mt-8 max-w-2xl text-body-lg leading-relaxed text-neutral-400">
-              Nous construisons une plateforme technologique durable qui combine IA, ing&eacute;nierie,
-              investissement et formation pour r&eacute;soudre les probl&egrave;mes les plus complexes &mdash; depuis
-              l&apos;Afrique, vers le monde.
+              La R&eacute;publique D&eacute;mocratique du Congo regorge d&apos;un potentiel humain, &eacute;conomique et
+              technologique qui attend d&apos;&ecirc;tre valoris&eacute;. JuntoX est n&eacute; pour cela &mdash; en
+              transformant les d&eacute;fis concrets du pays en solutions durables, depuis Bunia
+              jusqu&apos;&agrave; l&apos;&eacute;chelle continentale.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
@@ -248,11 +249,12 @@ export default function Home() {
           <AnimatedSection className="text-center">
             <Badge>Notre raison d&apos;&ecirc;tre</Badge>
             <h2 className="mx-auto mt-6 max-w-3xl font-serif text-display font-semibold text-white">
-              Commencer par le <span className="text-gradient-primary">pourquoi</span>
+              Pourquoi JuntoX <span className="text-gradient-primary">existe</span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-body-lg text-neutral-400">
-              Chaque grande entreprise commence par une conviction profonde. La n&ocirc;tre : transformer
-              l&apos;intelligence humaine en impact &eacute;conomique durable.
+              Pourquoi une entreprise comme JuntoX na&icirc;t-elle &agrave; Bunia, en Ituri&nbsp;? Parce que les d&eacute;fis
+              de la RDC ne manquent pas de solutions &mdash; ils manquent de b&acirc;tisseurs qui y croient
+              et qui agissent.
             </p>
           </AnimatedSection>
 
@@ -282,21 +284,21 @@ export default function Home() {
         <div className="container-content relative grid gap-0 sm:grid-cols-3">
           <AnimatedSection className="border-b border-white/[0.04] px-8 py-14 text-center sm:border-b-0 sm:border-r">
             <p className="font-serif text-display font-semibold text-white">
-              $<AnimatedCounter target={2} />T+
+              <AnimatedCounter target={100} />M+
             </p>
-            <p className="mt-3 text-caption text-neutral-500">March&eacute; adressable en Afrique</p>
+            <p className="mt-3 text-caption text-neutral-500">Habitants de la RDC &mdash; un potentiel humain &agrave; valoriser</p>
           </AnimatedSection>
           <AnimatedSection delay={0.15} className="border-b border-white/[0.04] px-8 py-14 text-center sm:border-b-0 sm:border-r">
             <p className="font-serif text-display font-semibold text-white">
-              <AnimatedCounter target={1} />.<AnimatedCounter target={4} duration={2500} />B
+              &gt;<AnimatedCounter target={80} />%
             </p>
-            <p className="mt-3 text-caption text-neutral-500">Population du continent</p>
+            <p className="mt-3 text-caption text-neutral-500">&Eacute;conomie informelle &agrave; structurer et digitaliser en RDC</p>
           </AnimatedSection>
           <AnimatedSection delay={0.3} className="px-8 py-14 text-center">
             <p className="font-serif text-display font-semibold text-gradient-primary">
-              &lt;<AnimatedCounter target={3} />%
+              &lt;<AnimatedCounter target={1} />%
             </p>
-            <p className="mt-3 text-caption text-neutral-500">&Eacute;conomie num&eacute;rique africaine vs mondiale</p>
+            <p className="mt-3 text-caption text-neutral-500">Part de la RDC dans l&apos;&eacute;conomie num&eacute;rique mondiale &mdash; l&apos;opportunit&eacute;</p>
           </AnimatedSection>
         </div>
       </section>
@@ -309,11 +311,11 @@ export default function Home() {
           <AnimatedSection>
             <Badge variant="accent">Nos services</Badge>
             <h2 className="mt-6 max-w-2xl font-serif text-display font-semibold text-white">
-              Des solutions con&ccedil;ues pour l&apos;impact
+              Dix expertises. Une seule mission.
             </h2>
             <p className="mt-5 max-w-2xl text-body-lg text-neutral-400">
-              Huit domaines d&apos;expertise int&eacute;gr&eacute;s dans une plateforme unique, de la strat&eacute;gie
-              &agrave; l&apos;ex&eacute;cution.
+              Chaque service que JuntoX propose est un outil au service de la m&ecirc;me vision :
+              moderniser, former, construire et connecter la RDC et l&apos;Afrique centrale.
             </p>
           </AnimatedSection>
 
@@ -441,12 +443,12 @@ export default function Home() {
 
         <AnimatedSection className="container-content relative text-center">
           <h2 className="mx-auto max-w-3xl font-serif text-display font-semibold text-white">
-            Rejoignez une entreprise qui{' '}
-            <span className="text-gradient-primary">construit le futur</span>
+            La RDC se construit{' '}
+            <span className="text-gradient-primary">maintenant</span>
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-body-lg text-neutral-400">
-            Que vous soyez investisseur, partenaire, client ou talent &mdash; il y a une place pour vous
-            dans l&apos;&eacute;cosyst&egrave;me JuntoX.
+            Chaque partenariat, chaque projet, chaque solution contribue &agrave; transformer un pays.
+            Entrepreneurs, investisseurs, institutions, ONG &mdash; rejoignez les b&acirc;tisseurs.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Button href="/contact" size="lg">

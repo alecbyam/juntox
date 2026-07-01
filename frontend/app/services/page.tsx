@@ -143,8 +143,8 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Nos Services"
-        title="Une offre multidisciplinaire, une plateforme unique"
-        description="JuntoX couvre l'ensemble du cycle de développement des organisations : technologie, ingénierie, conseil, infrastructure, commerce, formation, communication et investissement. Chaque service est conçu comme un module interconnecté de notre plateforme."
+        title="Des expertises integrees, une seule mission"
+        description="Chaque service que JuntoX propose est un outil au service d'une vision : accompagner la transformation de la RDC et de l'Afrique centrale. Technologie, ingenierie, conseil, construction, formation, communication et investissement — un ecosysteme pense pour agir a tous les niveaux."
       >
         <Button href="/contact">Discuter d&apos;un projet</Button>
         <Button href="/portfolio" variant="secondary">Voir nos réalisations</Button>
@@ -188,11 +188,12 @@ export default function ServicesPage() {
       <section className="section-padding">
         <AnimatedSection className="container-content text-center">
           <h2 className="mx-auto max-w-2xl font-serif text-heading-1 font-semibold text-white">
-            Une solution intégrée pour votre organisation
+            Votre defi devient notre prochain projet
           </h2>
           <p className="mx-auto mt-5 max-w-lg text-body-lg text-neutral-400">
-            JuntoX conçoit des solutions qui traversent plusieurs de ces pôles simultanément.
-            Parlez-nous de votre défi — nous construisons sur mesure.
+            Entreprise, ONG, institution publique ou investisseur — JuntoX construit des
+            solutions qui combinent plusieurs expertises en reponse a des enjeux reels.
+            Parlez-nous de votre contexte.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button href="/contact" size="lg">Nous contacter</Button>

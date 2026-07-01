@@ -9,29 +9,29 @@ import { AnimatedCounter } from '../../components/ui/AnimatedCounter'
 
 const pillars = [
   {
-    title: 'Connaissance comme infrastructure',
+    title: 'La connaissance congolaise comme infrastructure',
     description:
-      'Nous transformons les idées et l\'expertise en systèmes, produits et entreprises durables. Chaque projet que nous menons est conçu pour devenir une brique permanente.',
+      'En RDC, les savoirs locaux sont une richesse sous-exploitee. Nous transformons chaque expertise — congolaise ou internationale — en systemes durables, produits reels et entreprises qui restent. Chaque mission que nous menons devient une brique permanente du developpement local.',
   },
   {
-    title: 'Afrique, source mondiale',
+    title: 'La RDC comme source de solutions',
     description:
-      'Nous croyons que l\'Afrique peut être l\'origine des prochaines grandes plateformes technologiques. Notre travail est fondé sur la rigueur, l\'ambition et l\'excellence.',
+      'La RDC n\'a pas besoin de copier les modeles d\'ailleurs. Elle a ses propres defis, son propre rythme, ses propres ressources — cobalt, forets, jeunesse, terres agricoles. Nous concevons des solutions nees ici, adaptees au contexte congolais, et capables de s\'exporter ensuite.',
   },
   {
-    title: 'Impact économique durable',
+    title: 'L\'impact avant le profit',
     description:
-      'Chaque projet est pensé pour générer de la valeur sur le long terme — pour les entreprises, les emplois, les territoires et les générations futures.',
+      'Moderniser une PME de Bunia, digitaliser une administration de l\'Ituri, former un ingenieur de Goma, construire une infrastructure en zone reculee — chaque mission JuntoX cree de la valeur reelle, mesurable et durable pour les communautes que nous servons.',
   },
 ]
 
 const values = [
-  { title: 'Excellence', description: 'Chaque détail compte. Nous ne livrons rien de médiocre.' },
-  { title: 'Rigueur', description: 'Nos décisions sont fondées sur l\'analyse et les faits.' },
-  { title: 'Audace', description: 'Nous pensons à l\'échelle mondiale dès le premier jour.' },
-  { title: 'Durabilité', description: 'Construire pour les générations, pas pour le trimestre.' },
-  { title: 'Innovation', description: 'Résoudre les problèmes par les premiers principes.' },
-  { title: 'Intégrité', description: 'La confiance se bâtit sur la transparence et la cohérence.' },
+  { title: 'Excellence', description: 'Chaque detail compte. Livrer du travail mediocre en RDC n\'est pas une option — c\'est une trahison de la mission.' },
+  { title: 'Rigueur', description: 'Nos decisions sont fondees sur l\'analyse du terrain, pas sur des hypotheses importees d\'ailleurs.' },
+  { title: 'Audace', description: 'Croire qu\'on peut creer de l\'excellence depuis Bunia, Goma ou Kisangani. Et le prouver.' },
+  { title: 'Durabilite', description: 'Construire pour les generations de Congolais qui viennent, pas pour le prochain rapport trimestriel.' },
+  { title: 'Innovation', description: 'Resoudre les problemes congolais par les premiers principes — pas en copiant des modeles inadaptes.' },
+  { title: 'Integrite', description: 'La confiance se bâtit sur la coherence entre ce que nous disons et ce que nous faisons sur le terrain.' },
 ]
 
 const timeline = [
@@ -68,9 +68,9 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="À propos"
-        title="JuntoX n'est pas une entreprise ordinaire"
-        description="Nous construisons une plateforme qui lie capital, intelligence et exécution concrète. Notre approche est systémique, conçue pour traverser les générations et transformer les territoires."
+        eyebrow="A propos"
+        title="Nes en Ituri. Construits pour la RDC. Ouverts au monde."
+        description="JuntoX est nee a Bunia, au coeur de l'Est congolais, avec une conviction claire : la Republique Democratique du Congo a tout ce qu'il faut pour se transformer de l'interieur. Notre role est de fournir les outils, les competences et les structures pour que cela arrive — projet apres projet."
       >
         <Button href="/vision">Découvrir notre vision</Button>
         <Button href="/contact" variant="secondary">Nous contacter</Button>

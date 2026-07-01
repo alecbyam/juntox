@@ -22,9 +22,9 @@ const principles = [
   },
   {
     number: '03',
-    title: 'Échelle africaine, standard mondial',
+    title: 'Ancrage local, standard mondial',
     description:
-      'Imaginer des plateformes qui rayonnent à l\'échelle continentale puis mondiale, sans compromettre la qualité.',
+      'Ancrer nos solutions dans les realites de la RDC — ses contraintes, ses ressources, ses talents locaux — avant de les developper a l\'echelle africaine puis mondiale. Ce que l\'Ituri apprend au monde, pas l\'inverse.',
   },
   {
     number: '04',
@@ -50,9 +50,9 @@ const ambitions = [
 ]
 
 const horizons = [
-  { period: '2024 – 2026', focus: 'Consolidation', description: 'Asseoir notre expertise en IA, consultance et construction sur le marché congolais.' },
-  { period: '2027 – 2030', focus: 'Expansion régionale', description: 'Étendre nos opérations à l\'Afrique centrale et de l\'Ouest, renforcer l\'incubateur.' },
-  { period: '2031 +', focus: 'Échelle continentale', description: 'Devenir une plateforme de référence panafricaine reconnue mondialement.' },
+  { period: '2024 – 2026', focus: 'Ancrage en RDC', description: 'Prouver notre modele sur le terrain congolais : projets concrets en Ituri et dans l\'Est, premiers emplois crees, premieres institutions accompagnees.' },
+  { period: '2027 – 2030', focus: 'Expansion regionale', description: 'Etendre nos operations a l\'Afrique centrale et de l\'Est — Rwanda, Uganda, RCA, Burundi — en portant les methodes et les expertises affutees en RDC.' },
+  { period: '2031 +', focus: 'Echelle continentale', description: 'Devenir un groupe de reference panafricain — reconnu pour avoir prouve qu\'on peut bâtir l\'excellence depuis l\'interieur du continent.' },
 ]
 
 const faqs = [
@@ -79,8 +79,8 @@ export default function VisionPage() {
     <>
       <PageHero
         eyebrow="Notre Vision"
-        title="Construire une entreprise qui inspire et qui dure"
-        description="Si aucune entreprise n'existait aujourd'hui, comment construirions-nous la meilleure entreprise technologique africaine ? C'est la question qui guide chaque décision chez JuntoX."
+        title="La RDC merite des batisseurs a la hauteur de son potentiel"
+        description="JuntoX est ne de cette conviction : les defis de la Republique Democratique du Congo sont aussi grands que ses opportunites. Nous existons pour reunir l'ingenierie, la technologie et l'intelligence humaine au service de cette transformation — depuis l'Ituri, vers l'Afrique."
         badge="accent"
       >
         <Button href="/about">En savoir plus</Button>
@@ -217,10 +217,12 @@ export default function VisionPage() {
         </div>
         <AnimatedSection className="container-content relative text-center">
           <h2 className="mx-auto max-w-2xl font-serif text-heading-1 font-semibold text-white">
-            Prêt à faire partie de l&apos;aventure ?
+            La transformation de la RDC commence par des acteurs engages
           </h2>
           <p className="mx-auto mt-5 max-w-lg text-body-lg text-neutral-400">
-            Investisseurs, partenaires, talents — contactez-nous pour construire ensemble.
+            Investisseurs, partenaires, institutions, ONG, entrepreneurs — nous cherchons des
+            collaborateurs partages par la meme conviction : que la RDC peut et doit se
+            construire de l&apos;interieur.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button href="/contact" size="lg">Nous contacter</Button>
