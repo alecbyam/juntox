@@ -11,9 +11,16 @@ from .db import get_db
 
 load_dotenv()
 
-SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'change_this_secret')
+_raw_secret = os.getenv('JWT_SECRET_KEY', '')
+if not _raw_secret:
+    raise RuntimeError(
+        'JWT_SECRET_KEY environment variable is not set. '
+        'The application cannot start without a secure secret key.'
+    )
+
+SECRET_KEY = _raw_secret
 ALGORITHM = 'HS256'
-ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24
+ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
 pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 
@@ -59,3 +66,9 @@ def get_current_user(
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='User not found or inactive')
 
     return user
+
+
+def require_admin(current_user=Depends(get_current_user)):
+    if current_user.role != 'admin':
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail='Admin access required')
+    return current_user
