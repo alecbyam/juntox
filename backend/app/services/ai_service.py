@@ -1,56 +1,71 @@
 import os
-from openai import OpenAI
+import anthropic
 from ..schemas.ai import AIAnalysisRequest, AIBusinessPlanRequest, AIReportRequest
+
+_SYSTEM = (
+    "Vous êtes JuntoX AI, un assistant stratégique spécialisé pour les entreprises africaines. "
+    "Répondez toujours en français, de façon structurée, professionnelle et directement actionnable. "
+    "Tenez compte du contexte africain — RDC, contraintes terrain, réalités économiques locales."
+)
+
+_HAIKU = 'claude-haiku-4-5-20251001'
+_SONNET = 'claude-sonnet-4-6'
 
 
 class JuntoXAIService:
     def __init__(self) -> None:
-        self.api_key = os.getenv('OPENAI_API_KEY')
-        self.client = OpenAI(api_key=self.api_key) if self.api_key else None
+        api_key = os.getenv('ANTHROPIC_API_KEY')
+        self.client = anthropic.Anthropic(api_key=api_key) if api_key else None
 
     def is_configured(self) -> bool:
         return self.client is not None
 
-    def _call_model(self, prompt: str) -> str:
+    def _call(self, prompt: str, model: str = _HAIKU, max_tokens: int = 1024) -> str:
         if not self.client:
-            raise RuntimeError('OPENAI_API_KEY is not configured. Add it to the environment to enable AI features.')
-
-        response = self.client.chat.completions.create(
-            model='gpt-4o-mini',
-            messages=[
-                {
-                    'role': 'system',
-                    'content': 'Vous êtes JuntoX AI, un assistant stratégique spécialisé pour les entreprises africaines et mondiales.'
-                },
-                {'role': 'user', 'content': prompt},
-            ],
-            temperature=0.2,
-            max_tokens=700,
+            raise RuntimeError(
+                'ANTHROPIC_API_KEY non configurée. '
+                'Ajoutez-la dans les variables d\'environnement Railway.'
+            )
+        message = self.client.messages.create(
+            model=model,
+            max_tokens=max_tokens,
+            system=_SYSTEM,
+            messages=[{'role': 'user', 'content': prompt}],
         )
-        return (response.choices[0].message.content or '').strip()
+        return message.content[0].text.strip()
 
     def analyze_project(self, request: AIAnalysisRequest) -> str:
         prompt = (
-            f"Analyse ce projet : {request.name}. Description : {request.description}. "
-            f"Objectif stratégique : {request.objective}. "
-            f"Liste les forces, risques et recommandations prioritaires."
+            f"Analyse ce projet : **{request.name}**\n\n"
+            f"Description : {request.description}\n\n"
+            f"Objectif stratégique : {request.objective}\n\n"
+            "Structure ta réponse en 3 sections :\n"
+            "1. **Forces** — atouts clés du projet\n"
+            "2. **Risques** — points de vigilance prioritaires\n"
+            "3. **Recommandations** — 3 actions concrètes à mettre en œuvre"
         )
-        return self._call_model(prompt)
+        return self._call(prompt, model=_HAIKU, max_tokens=1200)
 
     def generate_business_plan(self, request: AIBusinessPlanRequest) -> str:
         prompt = (
-            f"Génère un business plan clair pour {request.company_name}. "
-            f"Résumé : {request.summary}. "
-            f"Public visé : {request.target_audience}. "
-            f"Inclue une proposition de valeur, modèle de revenus, besoins de financement et prochaines étapes."
+            f"Génère un business plan structuré pour **{request.company_name}**.\n\n"
+            f"Résumé de l'activité : {request.summary}\n"
+            f"Public cible : {request.target_audience}\n\n"
+            "Inclus les sections suivantes :\n"
+            "1. Résumé exécutif\n"
+            "2. Proposition de valeur\n"
+            "3. Analyse de marché et concurrence\n"
+            "4. Modèle de revenus\n"
+            "5. Besoins de financement\n"
+            "6. Plan d'action 90 jours"
         )
-        return self._call_model(prompt)
+        return self._call(prompt, model=_SONNET, max_tokens=2000)
 
     def generate_report(self, request: AIReportRequest) -> str:
         prompt = (
-            f"Rédige un rapport professionnel sur : {request.topic}. "
-            f"Contexte : {request.context}. "
-            f"Objectif : {request.goal}. "
-            f"Structure en sections claires et recommandations."
+            f"Rédige un rapport professionnel sur : **{request.topic}**\n\n"
+            f"Contexte : {request.context}\n"
+            f"Objectif du rapport : {request.goal}\n\n"
+            "Structure le rapport en sections claires avec une conclusion et des recommandations concrètes."
         )
-        return self._call_model(prompt)
+        return self._call(prompt, model=_HAIKU, max_tokens=1500)
