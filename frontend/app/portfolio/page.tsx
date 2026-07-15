@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { PageHero } from '../../components/PageHero'
 import { AnimatedSection } from '../../components/ui/AnimatedSection'
 import { Badge } from '../../components/ui/Badge'
@@ -10,6 +11,14 @@ import { AnimatedCounter } from '../../components/ui/AnimatedCounter'
 const categories = ['Tous', 'Technologie', 'Intelligence Artificielle', 'Consultance', 'Construction', 'Formation', 'Investissement']
 
 const projects = [
+  {
+    title: 'Livroto',
+    category: 'Technologie',
+    description: 'Première marketplace locale de livraison à Bunia, Ituri. Commande en ligne, vendeurs locaux, cash à la porte. Application web et mobile (Android/iOS) — en production.',
+    status: 'En production',
+    tags: ['React', 'Supabase', 'FastAPI', 'Capacitor', 'Livraison'],
+    href: '/livroto',
+  },
   {
     title: 'Plateforme JuntoX',
     category: 'Technologie',
@@ -22,7 +31,7 @@ const projects = [
     category: 'Intelligence Artificielle',
     description: 'Développement de l\'assistant IA capable d\'analyser des projets, générer des business plans et produire des rapports stratégiques automatisés.',
     status: 'En production',
-    tags: ['OpenAI', 'Python', 'NLP'],
+    tags: ['Anthropic Claude', 'Python', 'NLP'],
   },
   {
     title: 'Études de marché RDC',
@@ -123,7 +132,7 @@ export default function PortfolioPage() {
           <div className="mt-10 grid gap-8 lg:grid-cols-2">
             {filtered.map((project, i) => (
               <AnimatedSection key={project.title} delay={i * 0.06}>
-                <div className="card-base h-full">
+                <div className={`card-base h-full flex flex-col ${'href' in project ? 'group cursor-pointer transition hover:border-white/[0.12]' : ''}`}>
                   <div className="flex items-start justify-between gap-4">
                     <Badge variant={project.status === 'En production' ? 'accent' : 'default'}>
                       {project.category}
@@ -149,6 +158,19 @@ export default function PortfolioPage() {
                       </span>
                     ))}
                   </div>
+                  {'href' in project && project.href && (
+                    <div className="mt-5 pt-4 border-t border-white/[0.05]">
+                      <Link
+                        href={project.href}
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition group-hover:text-primary-light"
+                      >
+                        Voir le projet
+                        <svg className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </AnimatedSection>
             ))}

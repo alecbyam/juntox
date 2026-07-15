@@ -209,6 +209,7 @@ export function MainNav() {
   ]
 
   const secondaryLinks = [
+    { href: '/livroto', label: 'Livroto' },
     { href: '/portfolio', label: t.nav.portfolio },
     { href: '/carrieres', label: t.nav.careers },
     { href: '/contact', label: t.nav.contact },
