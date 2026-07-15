@@ -25,6 +25,24 @@ const pillars = [
   },
 ]
 
+const lovePillars = [
+  {
+    title: "L'amour comme moteur d'excellence",
+    description:
+      "Nous ne construisons pas JuntoX par calcul financier. Nous le faisons par amour profond pour la RDC — pour Bunia, pour l'Ituri, pour chaque famille que nous servons. Cet amour nous rend intraitables sur la qualité : on ne livre pas du travail médiocre à ceux qu'on aime.",
+  },
+  {
+    title: "L'expérience de terrain, pas les hypothèses",
+    description:
+      "Nous n'analysons pas la RDC depuis un bureau à l'étranger. Nous vivons ses réalités : l'intermittence du réseau, les défis logistiques, les coupures d'électricité, la profondeur des talents locaux. Cette connaissance incarnée est notre avantage compétitif le plus durable.",
+  },
+  {
+    title: "La passion libère l'impossible",
+    description:
+      "Quand on fait ce qu'on aime pour les gens qu'on aime, on dépasse les limites du probable. Chaque ligne de code, chaque fondation coulée, chaque rapport livré — nous les faisons avec la conviction que cela changera concrètement quelque chose dans la vie de quelqu'un en RDC.",
+  },
+]
+
 const values = [
   { title: 'Excellence', description: "Chaque détail compte. Livrer du travail médiocre en RDC n'est pas une option — c'est une trahison de la mission." },
   { title: 'Rigueur', description: "Nos décisions sont fondées sur l'analyse du terrain, pas sur des hypothèses importées d'ailleurs." },
@@ -143,6 +161,53 @@ export default function AboutPage() {
               </AnimatedSection>
             ))}
           </div>
+        </div>
+      </section>
+
+      <div className="divider" />
+
+      {/* Love Can Do */}
+      <section className="section-padding relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/[0.05] via-transparent to-transparent" />
+        <div className="container-content relative">
+          <AnimatedSection>
+            <Badge variant="primary">Notre philosophie</Badge>
+            <div className="mt-8 flex items-start gap-5">
+              <div className="mt-1 h-16 w-1 shrink-0 rounded-full bg-primary" />
+              <div>
+                <blockquote className="max-w-3xl font-serif text-heading-1 font-semibold leading-tight text-white">
+                  &ldquo;Ce que vous aimez, vous le faites mieux.&nbsp;
+                  <span className="text-primary">Love Can Do.</span>&rdquo;
+                </blockquote>
+                <p className="mt-3 text-sm text-neutral-500">— Idriss Aberkane, neuroscientifique & philosophe</p>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          <div className="mt-14 grid gap-6 lg:grid-cols-3">
+            {lovePillars.map((p, i) => (
+              <AnimatedSection key={p.title} delay={i * 0.12}>
+                <div className="card-base h-full border-primary/[0.12]">
+                  <div className="mb-4 h-0.5 w-10 rounded-full bg-primary/60" />
+                  <h3 className="font-serif text-heading-3 font-semibold text-white">{p.title}</h3>
+                  <p className="mt-4 text-body text-neutral-400">{p.description}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection delay={0.3} className="mt-10">
+            <div className="max-w-3xl rounded-xl border border-primary/[0.18] bg-primary/[0.04] p-7 sm:p-9">
+              <p className="font-serif text-body-lg leading-relaxed text-neutral-200">
+                L&apos;approche <strong className="text-white">Love Can Do</strong> n&apos;est pas un slogan marketing.
+                C&apos;est une conviction opérationnelle que nous avons adoptée dès la naissance de JuntoX à Bunia :
+                quand on agit par amour — pour sa terre, pour son peuple, pour les générations futures —
+                on accepte des défis que la logique pure déconseille. On persévère là où le calcul rendrait.
+                Et c&apos;est précisément cette énergie, ancrée dans les réalités du terrain congolais,
+                qui nous permet de construire ce que les autres disent impossible depuis l&apos;Ituri.
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 

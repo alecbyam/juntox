@@ -12,25 +12,31 @@ const principles = [
     number: '01',
     title: 'Audace intellectuelle',
     description:
-      'Prendre le temps d\'analyser afin de décider avec pertinence. Penser en premiers principes plutôt que par analogie.',
+      "Prendre le temps d'analyser afin de décider avec pertinence. Penser en premiers principes plutôt que par analogie.",
   },
   {
     number: '02',
     title: 'Rigueur opérationnelle',
     description:
-      'Concevoir des systèmes robustes qui tiennent leurs promesses sur le terrain. L\'exécution est la seule mesure qui compte.',
+      "Concevoir des systèmes robustes qui tiennent leurs promesses sur le terrain. L'exécution est la seule mesure qui compte.",
   },
   {
     number: '03',
     title: 'Ancrage local, standard mondial',
     description:
-      'Ancrer nos solutions dans les realites de la RDC — ses contraintes, ses ressources, ses talents locaux — avant de les developper a l\'echelle africaine puis mondiale. Ce que l\'Ituri apprend au monde, pas l\'inverse.',
+      "Ancrer nos solutions dans les réalités de la RDC — ses contraintes, ses ressources, ses talents locaux — avant de les développer à l'échelle africaine puis mondiale. Ce que l'Ituri apprend au monde, pas l'inverse.",
   },
   {
     number: '04',
     title: 'Technologie comme levier',
     description:
-      'L\'IA, le logiciel et l\'automatisation ne sont pas des fins en soi. Ce sont des instruments au service de la résolution de problèmes.',
+      "L'IA, le logiciel et l'automatisation ne sont pas des fins en soi. Ce sont des instruments au service de la résolution de problèmes réels — jamais une technologie importée plaquée sur un contexte qu'elle ne comprend pas.",
+  },
+  {
+    number: '05',
+    title: 'Love Can Do — La passion comme énergie fondamentale',
+    description:
+      "Inspirés par la philosophie d'Idriss Aberkane, nous croyons que l'amour et la passion sont le carburant le plus puissant qui soit. Ce que nous aimons — la RDC, son peuple, son avenir — nous le faisons mieux. L'expérience de terrain forgée en Ituri nous donne ce que l'amour seul ne suffit pas : la lucidité sur les réalités locales, la rigueur des solutions qui marchent vraiment ici, pas sur un autre continent.",
   },
 ]
 
@@ -50,9 +56,9 @@ const ambitions = [
 ]
 
 const horizons = [
-  { period: '2024 – 2026', focus: 'Ancrage en RDC', description: 'Prouver notre modele sur le terrain congolais : projets concrets en Ituri et dans l\'Est, premiers emplois crees, premieres institutions accompagnees.' },
-  { period: '2027 – 2030', focus: 'Expansion regionale', description: 'Etendre nos operations a l\'Afrique centrale et de l\'Est — Rwanda, Uganda, RCA, Burundi — en portant les methodes et les expertises affutees en RDC.' },
-  { period: '2031 +', focus: 'Echelle continentale', description: 'Devenir un groupe de reference panafricain — reconnu pour avoir prouve qu\'on peut bâtir l\'excellence depuis l\'interieur du continent.' },
+  { period: '2024 – 2026', focus: 'Ancrage en RDC', description: "Prouver notre modèle sur le terrain congolais : projets concrets en Ituri et dans l'Est, premiers emplois créés, premières institutions accompagnées." },
+  { period: '2027 – 2030', focus: 'Expansion régionale', description: "Étendre nos opérations à l'Afrique centrale et de l'Est — Rwanda, Uganda, RCA, Burundi — en portant les méthodes et les expertises affinées en RDC." },
+  { period: '2031 +', focus: 'Échelle continentale', description: "Devenir un groupe de référence panafricain — reconnu pour avoir prouvé qu'on peut bâtir l'excellence depuis l'intérieur du continent." },
 ]
 
 const faqs = [
@@ -79,8 +85,8 @@ export default function VisionPage() {
     <>
       <PageHero
         eyebrow="Notre Vision"
-        title="La RDC merite des batisseurs a la hauteur de son potentiel"
-        description="JuntoX est ne de cette conviction : les defis de la Republique Democratique du Congo sont aussi grands que ses opportunites. Nous existons pour reunir l'ingenierie, la technologie et l'intelligence humaine au service de cette transformation — depuis l'Ituri, vers l'Afrique."
+        title="La RDC mérite des bâtisseurs à la hauteur de son potentiel"
+        description="JuntoX est née de cette conviction : les défis de la République Démocratique du Congo sont aussi grands que ses opportunités. Nous existons pour réunir l'ingénierie, la technologie et l'intelligence humaine au service de cette transformation — depuis l'Ituri, vers l'Afrique."
         badge="accent"
       >
         <Button href="/about">En savoir plus</Button>
@@ -92,7 +98,7 @@ export default function VisionPage() {
         <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-3">
           {[
             { target: 100, suffix: '+', label: 'Années d\'horizon visé' },
-            { target: 4, suffix: '', label: 'Principes directeurs' },
+            { target: 5, suffix: '', label: 'Principes directeurs' },
             { target: 3, suffix: '', label: 'Horizons stratégiques' },
           ].map((stat) => (
             <div key={stat.label} className="px-6 py-10 text-center">
@@ -111,7 +117,7 @@ export default function VisionPage() {
           <AnimatedSection>
             <Badge>Principes directeurs</Badge>
             <h2 className="mt-6 max-w-3xl font-serif text-heading-1 font-semibold text-white">
-              Quatre principes pour une entreprise exceptionnelle
+              Cinq principes pour une entreprise exceptionnelle
             </h2>
           </AnimatedSection>
 
@@ -217,12 +223,12 @@ export default function VisionPage() {
         </div>
         <AnimatedSection className="container-content relative text-center">
           <h2 className="mx-auto max-w-2xl font-serif text-heading-1 font-semibold text-white">
-            La transformation de la RDC commence par des acteurs engages
+            La transformation de la RDC commence par des acteurs engagés
           </h2>
           <p className="mx-auto mt-5 max-w-lg text-body-lg text-neutral-400">
             Investisseurs, partenaires, institutions, ONG, entrepreneurs — nous cherchons des
-            collaborateurs partages par la meme conviction : que la RDC peut et doit se
-            construire de l&apos;interieur.
+            collaborateurs partagés par la même conviction : que la RDC peut et doit se
+            construire de l&apos;intérieur, par amour et par passion.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button href="/contact" size="lg">Nous contacter</Button>
