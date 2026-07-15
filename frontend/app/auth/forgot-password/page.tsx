@@ -8,7 +8,7 @@ import { GridPattern } from '../../../components/ui/GridPattern'
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
-  const [token, setToken] = useState<string | null>(null)
+  const [sent, setSent] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   async function handleSubmit(e: React.FormEvent) {
@@ -26,7 +26,7 @@ export default function ForgotPasswordPage() {
       )
       const data = await res.json()
       if (!res.ok) throw new Error(data.detail ?? 'Erreur')
-      setToken(data.reset_token ?? null)
+      setSent(true)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erreur réseau')
     } finally {
@@ -49,30 +49,17 @@ export default function ForgotPasswordPage() {
           </p>
         </div>
 
-        {token ? (
-          <div className="mt-10 space-y-4">
-            <div className="rounded-2xl border border-primary/20 bg-primary/[0.04] p-5">
-              <div className="flex items-center gap-2">
-                <svg className="h-4 w-4 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
-                </svg>
-                <p className="text-sm font-medium text-white">Token de réinitialisation</p>
-              </div>
-              <code className="mt-3 block break-all rounded-lg border border-white/[0.06] bg-white/[0.03] p-3 font-mono text-xs text-primary-light">
-                {token}
-              </code>
-              <p className="mt-3 text-xs text-neutral-500">
-                Ce token est valide 24 heures. Cliquez sur le bouton ci-dessous pour définir votre nouveau mot de passe.
-              </p>
-            </div>
-            <Link
-              href={`/auth/reset-password?token=${encodeURIComponent(token)}`}
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:bg-primary-light"
-            >
-              Définir un nouveau mot de passe
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
+        {sent ? (
+          <div className="mt-10 rounded-2xl border border-primary/20 bg-primary/[0.04] p-6 text-center">
+            <svg className="mx-auto h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+            <p className="mt-4 text-sm font-medium text-white">Email envoyé</p>
+            <p className="mt-2 text-sm text-neutral-400">
+              Si cet email est enregistré, vous recevrez un lien de réinitialisation sous peu.
+            </p>
+            <Link href="/auth/login" className="mt-6 inline-block text-sm text-primary hover:text-primary-light transition">
+              ← Retour à la connexion
             </Link>
           </div>
         ) : (

@@ -5,7 +5,7 @@ import { PageHero } from '../../components/PageHero'
 import { AnimatedSection } from '../../components/ui/AnimatedSection'
 import { Badge } from '../../components/ui/Badge'
 import { Button } from '../../components/ui/Button'
-import { postJson } from '../../lib/api'
+import { postJsonAuth } from '../../lib/api'
 
 const capabilities = [
   { title: 'Analyse de projets', description: 'Évaluation structurée des forces, risques et recommandations pour tout projet d\'entreprise ou de développement.' },
@@ -34,7 +34,7 @@ export default function AIPage() {
     setError(null)
     setResult(null)
     try {
-      const response = await postJson<{ result: string }>('/api/ai/analyze', { name, description, objective })
+      const response = await postJsonAuth<{ result: string }>('/api/ai/analyze', { name, description, objective })
       setResult(response.result)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erreur lors de l\'analyse')

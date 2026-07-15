@@ -37,3 +37,17 @@ export async function fetchJsonAuth<T>(path: string): Promise<T> {
   if (!response.ok) await throwApiError(response)
   return response.json() as Promise<T>
 }
+
+export async function postJsonAuth<T>(path: string, body: unknown): Promise<T> {
+  const token = typeof window !== 'undefined' ? window.localStorage.getItem(TOKEN_KEY) : null
+  const response = await fetch(`${API_URL}${path}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify(body),
+  })
+  if (!response.ok) await throwApiError(response)
+  return response.json() as Promise<T>
+}
