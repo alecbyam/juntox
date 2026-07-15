@@ -7,35 +7,13 @@ import { Badge } from '../../../components/ui/Badge'
 import { AnimatedCounter } from '../../../components/ui/AnimatedCounter'
 
 const metrics = [
-  { label: 'Projets actifs', target: 24, trend: '+3', trendUp: true },
-  { label: 'Études en cours', target: 12, trend: '+2', trendUp: true },
-  { label: 'Capital mobilisé', prefix: '$', target: 18, suffix: 'M', trend: '+5M', trendUp: true },
-  { label: 'Partenaires', target: 8, trend: '+1', trendUp: true },
+  { label: 'Projets actifs', target: 0, trend: '', trendUp: true },
+  { label: 'Études en cours', target: 0, trend: '', trendUp: true },
+  { label: 'Partenaires', target: 0, trend: '', trendUp: true },
+  { label: 'Messages reçus', target: 0, trend: '', trendUp: true },
 ]
 
-const revenueChart = [
-  { month: 'Jan', value: 30 },
-  { month: 'Fév', value: 45 },
-  { month: 'Mar', value: 35 },
-  { month: 'Avr', value: 55 },
-  { month: 'Mai', value: 50 },
-  { month: 'Jun', value: 72 },
-]
-
-const sectorDistribution = [
-  { name: 'IA', value: 35, color: 'bg-accent' },
-  { name: 'Consultance', value: 25, color: 'bg-primary' },
-  { name: 'Construction', value: 20, color: 'bg-green-500' },
-  { name: 'Autres', value: 20, color: 'bg-neutral-500' },
-]
-
-const recentActivity = [
-  { action: 'Nouvelle étude de marché créée', time: 'Il y a 2h', type: 'Consultance', typeColor: 'text-primary' },
-  { action: 'Analyse IA complétée — Projet Alpha', time: 'Il y a 5h', type: 'IA', typeColor: 'text-accent-light' },
-  { action: 'Nouveau partenaire ajouté', time: 'Hier', type: 'Partenariat', typeColor: 'text-green-400' },
-  { action: 'Business plan généré — StartupX', time: 'Hier', type: 'IA', typeColor: 'text-accent-light' },
-  { action: 'Estimation chantier Terminal 3', time: 'Il y a 2j', type: 'Construction', typeColor: 'text-yellow-400' },
-]
+const recentActivity: { action: string; time: string; type: string; typeColor: string }[] = []
 
 const quickActions = [
   { label: 'Analyser un projet', href: '/ai', description: 'Lancer une analyse IA structurée' },
@@ -53,8 +31,6 @@ export default function AdminDashboard() {
       .then((data) => setAiStatus(data.status))
       .catch(() => setAiStatus('Hors ligne'))
   }, [])
-
-  const maxChart = Math.max(...revenueChart.map((d) => d.value))
 
   return (
     <div className="px-5 py-6 sm:px-8 sm:py-8">
@@ -94,87 +70,41 @@ export default function AdminDashboard() {
               </p>
               <div className="mt-2 flex items-end gap-2">
                 <p className="text-heading-2 font-semibold text-white">
-                  <AnimatedCounter target={metric.target} prefix={metric.prefix} suffix={metric.suffix} />
+                  <AnimatedCounter target={metric.target} />
                 </p>
-                <span className={`mb-1 text-xs font-medium ${metric.trendUp ? 'text-green-400' : 'text-red-400'}`}>
-                  {metric.trend}
-                </span>
               </div>
             </motion.div>
           ))}
-        </div>
-
-        {/* Charts row */}
-        <div className="mt-6 grid gap-4 lg:grid-cols-[1.5fr_1fr]">
-          {/* Bar chart */}
-          <div className="rounded-xl border border-white/[0.06] bg-surface-elevated/50 p-5">
-            <div className="flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-white">Performance mensuelle</h2>
-              <span className="text-xs text-neutral-600">2026</span>
-            </div>
-            <div className="mt-6 flex items-end gap-3 h-40">
-              {revenueChart.map((d) => (
-                <div key={d.month} className="flex flex-1 flex-col items-center gap-2">
-                  <div className="relative w-full">
-                    <div
-                      className="w-full rounded-t-md bg-primary/80 transition-all hover:bg-primary"
-                      style={{ height: `${(d.value / maxChart) * 128}px` }}
-                    />
-                  </div>
-                  <span className="text-[0.6rem] text-neutral-600">{d.month}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Sector distribution */}
-          <div className="rounded-xl border border-white/[0.06] bg-surface-elevated/50 p-5">
-            <h2 className="text-sm font-semibold text-white">R&eacute;partition par secteur</h2>
-            <div className="mt-6 space-y-3">
-              {sectorDistribution.map((sector) => (
-                <div key={sector.name}>
-                  <div className="flex justify-between text-xs">
-                    <span className="text-neutral-400">{sector.name}</span>
-                    <span className="text-neutral-500">{sector.value}%</span>
-                  </div>
-                  <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-white/[0.04]">
-                    <div
-                      className={`h-full rounded-full ${sector.color} transition-all`}
-                      style={{ width: `${sector.value}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6 rounded-lg bg-white/[0.02] p-3">
-              <p className="text-xs text-neutral-600">Total projets actifs</p>
-              <p className="mt-1 text-lg font-semibold text-white">24</p>
-            </div>
-          </div>
         </div>
 
         {/* Activity + Actions */}
         <div className="mt-6 grid gap-4 lg:grid-cols-[1.3fr_0.7fr]">
           {/* Activity */}
           <div className="rounded-xl border border-white/[0.06] bg-surface-elevated/50 p-5">
-            <h2 className="text-sm font-semibold text-white">Activit&eacute; r&eacute;cente</h2>
-            <div className="mt-4 space-y-0">
-              {recentActivity.map((activity) => (
-                <div
-                  key={activity.action}
-                  className="flex items-start justify-between gap-3 border-b border-white/[0.03] py-3.5 last:border-0"
-                >
-                  <div className="min-w-0">
-                    <p className="truncate text-sm text-neutral-300">{activity.action}</p>
-                    <p className="mt-0.5 text-xs text-neutral-600">{activity.time}</p>
+            <h2 className="text-sm font-semibold text-white">Activité récente</h2>
+            {recentActivity.length === 0 ? (
+              <div className="mt-8 flex flex-col items-center justify-center gap-2 py-6 text-center">
+                <p className="text-sm text-neutral-500">Aucune activité pour le moment</p>
+                <p className="text-xs text-neutral-700">Les événements apparaîtront ici dès que des actions seront effectuées.</p>
+              </div>
+            ) : (
+              <div className="mt-4 space-y-0">
+                {recentActivity.map((activity) => (
+                  <div
+                    key={activity.action}
+                    className="flex items-start justify-between gap-3 border-b border-white/[0.03] py-3.5 last:border-0"
+                  >
+                    <div className="min-w-0">
+                      <p className="truncate text-sm text-neutral-300">{activity.action}</p>
+                      <p className="mt-0.5 text-xs text-neutral-600">{activity.time}</p>
+                    </div>
+                    <span className={`shrink-0 text-xs font-medium ${activity.typeColor}`}>
+                      {activity.type}
+                    </span>
                   </div>
-                  <span className={`shrink-0 text-xs font-medium ${activity.typeColor}`}>
-                    {activity.type}
-                  </span>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Quick actions */}
