@@ -1,5 +1,5 @@
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
@@ -32,7 +32,7 @@ class AuthService:
         return pwd_context.hash(password)
 
     def create_access_token(self, subject: str, expires_delta: Optional[timedelta] = None) -> str:
-        expire = datetime.utcnow() + (expires_delta or timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
+        expire = datetime.now(timezone.utc) + (expires_delta or timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
         payload = {'sub': subject, 'exp': expire}
         return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
 

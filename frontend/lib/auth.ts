@@ -1,4 +1,4 @@
-import { fetchJsonAuth } from './api'
+import { fetchJsonAuth, TOKEN_KEY } from './api'
 
 export const VALID_ROLES = ['admin', 'client', 'employe', 'investisseur', 'consultant', 'partenaire'] as const
 export type Role = (typeof VALID_ROLES)[number]
@@ -10,8 +10,6 @@ export type CurrentUser = {
   role: string
   is_active: boolean
 }
-
-const TOKEN_KEY = 'juntox_token'
 
 export function getToken(): string | null {
   if (typeof window === 'undefined') return null

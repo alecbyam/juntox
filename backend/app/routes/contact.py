@@ -1,18 +1,18 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 from ..db import get_db
 from ..models import ContactMessage, User
 from ..schemas.contact import ContactCreate, ContactResponse
 from ..auth import get_current_user, require_admin
+from ..rate_limit import limiter
 from typing import List
 
 router = APIRouter()
 
 
-# POST /api/contact remains public — it's the public contact form.
-# Rate limiting is enforced at the app level via slowapi.
 @router.post('', response_model=ContactResponse)
-def create_contact(payload: ContactCreate, db: Session = Depends(get_db)):
+@limiter.limit('3/minute')
+def create_contact(request: Request, payload: ContactCreate, db: Session = Depends(get_db)):
     msg = ContactMessage(
         name=payload.name,
         email=payload.email,

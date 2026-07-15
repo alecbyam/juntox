@@ -1,5 +1,5 @@
 import secrets
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy.orm import Session
 from ..db import get_db
@@ -81,15 +81,12 @@ def forgot_password(
     reset = PasswordResetToken(
         user_id=user.id,
         token=token,
-        expires_at=datetime.utcnow() + timedelta(hours=_RESET_EXPIRE_HOURS),
+        expires_at=datetime.now(timezone.utc) + timedelta(hours=_RESET_EXPIRE_HOURS),
     )
     db.add(reset)
     db.commit()
 
-    return {
-        'message': 'Token de réinitialisation généré.',
-        'reset_token': token,
-    }
+    return {'message': 'Si cet email est enregistré, un lien de réinitialisation a été envoyé.'}
 
 
 @router.post('/reset-password')
@@ -101,7 +98,7 @@ def reset_password(
     reset = db.query(PasswordResetToken).filter(
         PasswordResetToken.token == payload.token,
         PasswordResetToken.used == False,  # noqa: E712
-        PasswordResetToken.expires_at > datetime.utcnow(),
+        PasswordResetToken.expires_at > datetime.now(timezone.utc),
     ).first()
 
     if not reset:
