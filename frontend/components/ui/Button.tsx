@@ -9,6 +9,8 @@ type ButtonProps = {
   variant?: Variant
   size?: Size
   href?: string
+  target?: string
+  rel?: string
   className?: string
   type?: 'button' | 'submit'
   disabled?: boolean
@@ -39,6 +41,8 @@ export function Button({
   variant = 'primary',
   size = 'md',
   href,
+  target,
+  rel,
   className = '',
   type = 'button',
   disabled,
@@ -48,7 +52,7 @@ export function Button({
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} target={target} rel={rel} className={classes}>
         {children}
       </Link>
     )

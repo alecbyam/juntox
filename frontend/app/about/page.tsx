@@ -52,6 +52,25 @@ const values = [
   { title: 'Intégrité', description: 'La confiance se bâtit sur la cohérence entre ce que nous disons et ce que nous faisons sur le terrain.' },
 ]
 
+const juntoQuestions = [
+  {
+    n: '01',
+    question: "Quel problème congolais mérite d'être résolu par l'intelligence collective ?",
+  },
+  {
+    n: '02',
+    question: "Quelle compétence as-tu développée que tu pourrais partager avec un pair ?",
+  },
+  {
+    n: '03',
+    question: "Quel bâtisseur, ingénieur ou entrepreneur mérite d'être soutenu et reconnu ?",
+  },
+  {
+    n: '04',
+    question: "Comment JuntoX peut-il servir concrètement son territoire et son peuple aujourd'hui ?",
+  },
+]
+
 const timeline = [
   { year: '2024', event: "Fondation de JuntoX SARL à Bunia — premières missions de consultance et développement logiciel" },
   { year: '2025', event: "Lancement de la plateforme IA, expansion construction, logistique et commerce international" },
@@ -206,6 +225,105 @@ export default function AboutPage() {
                 Et c&apos;est précisément cette énergie, ancrée dans les réalités du terrain congolais,
                 qui nous permet de construire ce que les autres disent impossible depuis l&apos;Ituri.
               </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      <div className="divider" />
+
+      {/* Benjamin Franklin & le Junto */}
+      <section className="section-padding">
+        <div className="container-content">
+          <AnimatedSection>
+            <Badge variant="gold">L'origine du nom</Badge>
+            <h2 className="mt-6 max-w-3xl font-serif text-heading-1 font-semibold text-white">
+              Benjamin Franklin &amp; le Junto — Philadelphia, 1727
+            </h2>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1} className="mt-10">
+            <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+              {/* Left: story */}
+              <div className="space-y-6 text-body text-neutral-400">
+                <p>
+                  À 21 ans, Benjamin Franklin fonde à Philadelphia un cercle de réflexion qu'il baptise
+                  le <strong className="text-neutral-200">Junto</strong> — du latin <em>juncto</em>, « ensemble ».
+                  Douze artisans, imprimeurs et commerçants se réunissent chaque vendredi soir autour d'une
+                  règle simple : <strong className="text-neutral-200">partager librement le savoir, s'améliorer
+                  mutuellement et servir la communauté.</strong>
+                </p>
+                <p>
+                  Pas de hiérarchie. Pas de secrets. Chaque membre pose des questions, partage une découverte,
+                  signale une opportunité ou défend une idée devant le groupe. Le Junto durera quarante ans et
+                  donnera naissance à la première bibliothèque publique américaine, au premier corps de pompiers
+                  organisé, à une académie — et in fine aux Lumières américaines.
+                </p>
+                <p>
+                  Franklin avait compris avant tout le monde que l'excellence individuelle ne suffit pas :
+                  c'est l'intelligence <em>collective</em>, la générosité du partage et l'ancrage
+                  dans une communauté réelle qui créent des civilisations durables.
+                </p>
+                <p>
+                  Le <strong className="text-neutral-200">X</strong> de JuntoX porte trois sens simultanés :
+                  l'<strong className="text-neutral-200">excellence</strong> comme standard non négociable,
+                  l'<strong className="text-neutral-200">expansion</strong> de l'Afrique vers le monde,
+                  et l'<strong className="text-neutral-200">inconnu</strong> — tout ce que le continent
+                  n'a pas encore révélé au monde et que nous nous engageons à faire émerger.
+                </p>
+              </div>
+
+              {/* Right: quote + questions */}
+              <div className="space-y-6">
+                <div className="rounded-xl border border-accent/[0.18] bg-accent/[0.04] p-7">
+                  <svg className="mb-4 h-6 w-6 text-accent/60" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
+                  <blockquote className="font-serif text-heading-3 font-semibold leading-snug text-white">
+                    Un investissement dans la connaissance paie les meilleurs intérêts.
+                  </blockquote>
+                  <figcaption className="mt-4 text-sm text-neutral-500">
+                    — Benjamin Franklin, fondateur du Junto · Philadelphia, 1727
+                  </figcaption>
+                </div>
+
+                <div className="rounded-xl border border-white/[0.06] bg-surface-elevated/40 p-6">
+                  <p className="mb-5 text-xs font-bold uppercase tracking-[0.14em] text-neutral-600">
+                    Les 4 questions du Junto — version JuntoX
+                  </p>
+                  <div className="space-y-4">
+                    {juntoQuestions.map((q) => (
+                      <div key={q.n} className="flex gap-4">
+                        <span className="mt-0.5 shrink-0 font-serif text-sm font-semibold text-primary/60">
+                          {q.n}
+                        </span>
+                        <p className="text-sm leading-relaxed text-neutral-400">{q.question}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Philadelphia → Bunia bridge */}
+          <AnimatedSection delay={0.2} className="mt-12">
+            <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-center sm:gap-0">
+              <div className="flex flex-1 flex-col items-center rounded-xl border border-white/[0.06] bg-surface-elevated/30 p-5 text-center sm:items-start sm:text-left">
+                <span className="text-xs font-bold uppercase tracking-widest text-neutral-600">Origine</span>
+                <p className="mt-1 font-serif text-lg font-semibold text-white">Philadelphia</p>
+                <p className="text-sm text-neutral-500">1727 · Benjamin Franklin</p>
+              </div>
+              <div className="flex items-center justify-center px-4">
+                <svg className="h-5 w-5 rotate-90 text-neutral-700 sm:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </div>
+              <div className="flex flex-1 flex-col items-center rounded-xl border border-primary/[0.18] bg-primary/[0.04] p-5 text-center sm:items-start sm:text-left">
+                <span className="text-xs font-bold uppercase tracking-widest text-primary/60">Continuation</span>
+                <p className="mt-1 font-serif text-lg font-semibold text-white">Bunia, Ituri</p>
+                <p className="text-sm text-neutral-500">2024 · JuntoX SARL</p>
+              </div>
             </div>
           </AnimatedSection>
         </div>
