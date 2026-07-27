@@ -212,7 +212,6 @@ export function MainNav() {
     { href: '/livroto', label: 'Livroto' },
     { href: '/portfolio', label: t.nav.portfolio },
     { href: '/carrieres', label: t.nav.careers },
-    { href: '/contact', label: t.nav.contact },
   ]
 
   useEffect(() => {
@@ -256,7 +255,7 @@ export function MainNav() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden items-center gap-7 lg:flex">
+        <div className="hidden items-center gap-5 xl:flex">
           {mainLinks.map((link) => (
             <Link
               key={link.href}
@@ -305,18 +304,18 @@ export function MainNav() {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-2 xl:flex">
           <LanguageSwitcher />
           <CommandPalette />
           <Link
             href="/auth/login"
-            className="rounded-full px-4 py-2 text-sm text-neutral-500 transition hover:text-white"
+            className="shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm text-neutral-500 transition hover:text-white"
           >
             {t.nav.login}
           </Link>
           <Link
             href="/contact"
-            className="rounded-full bg-white/[0.06] px-5 py-2 text-sm font-medium text-white border border-white/[0.1] transition hover:bg-white/[0.1] hover:border-white/[0.16]"
+            className="shrink-0 whitespace-nowrap rounded-full bg-white/[0.06] px-5 py-2 text-sm font-medium text-white border border-white/[0.1] transition hover:bg-white/[0.1] hover:border-white/[0.16]"
           >
             {t.nav.contactUs}
           </Link>
@@ -325,7 +324,7 @@ export function MainNav() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="relative z-10 flex h-11 w-11 items-center justify-center rounded-lg lg:hidden"
+          className="relative z-10 flex h-11 w-11 items-center justify-center rounded-lg xl:hidden"
           aria-label={mobileOpen ? t.nav.closeMenu : t.nav.openMenu}
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
@@ -354,7 +353,7 @@ export function MainNav() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
             id="mobile-menu"
-            className="overflow-hidden border-t border-white/[0.06] bg-background/95 backdrop-blur-xl lg:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto"
+            className="overflow-hidden border-t border-white/[0.06] bg-background/95 backdrop-blur-xl xl:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto"
           >
             <div className="container-content space-y-1 px-6 py-6 sm:px-8">
               {mainLinks.map((link) => (

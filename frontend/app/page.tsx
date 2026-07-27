@@ -27,7 +27,7 @@ const goldenCircle = [
     tag: 'WHY',
     title: 'Pourquoi nous existons',
     description:
-      'La RDC possède un immense potentiel humain, economique et technologique qui reste insuffisamment valorise. Nous croyons que ses defis — infrastructures, transformation numerique, emploi des jeunes, logistique, gouvernance — peuvent etre releves grace a des solutions intelligentes, adaptees au contexte local et ouvertes aux standards internationaux. Nous voulons transformer les idees en projets concrets, les connaissances en solutions durables et les opportunites en impact mesurable.',
+      "La RDC possède un immense potentiel humain, économique et technologique qui reste insuffisamment valorisé. Nous croyons que ses défis — infrastructures, transformation numérique, emploi des jeunes, logistique, gouvernance — peuvent être relevés grâce à des solutions intelligentes, adaptées au contexte local et ouvertes aux standards internationaux. Nous voulons transformer les idées en projets concrets, les connaissances en solutions durables et les opportunités en impact mesurable.",
     color: 'text-primary',
     border: 'border-primary/20',
   },
@@ -35,7 +35,7 @@ const goldenCircle = [
     tag: 'HOW',
     title: 'Comment nous agissons',
     description:
-      'En reunissant plusieurs expertises au sein d\'un meme ecosysteme de transformation : technologies numeriques, intelligence artificielle, ingenierie, construction, etudes et recherche, consultance, gestion de projets, logistique, formation et investissement. Ces activites ne sont pas independantes — elles constituent un systeme integre, concu pour repondre aux realites du terrain congolais.',
+      "En réunissant plusieurs expertises au sein d'un même écosystème de transformation : technologies numériques, intelligence artificielle, ingénierie, construction, études et recherche, consultance, gestion de projets, logistique, formation et investissement. Ces activités ne sont pas indépendantes — elles constituent un système intégré, conçu pour répondre aux réalités du terrain congolais.",
     color: 'text-accent-light',
     border: 'border-accent/20',
   },
@@ -43,7 +43,7 @@ const goldenCircle = [
     tag: 'WHAT',
     title: 'Ce que nous construisons',
     description:
-      'Des projets concrets qui modernisent les infrastructures. Des entreprises accompagnees de l\'idee a l\'execution. Des emplois qualifies crees localement. Des institutions et des PME dotees des outils numeriques qu\'elles meritent. Chaque service que JuntoX propose est au service de cette mission — pas l\'inverse.',
+      "Des projets concrets qui modernisent les infrastructures. Des entreprises accompagnées de l'idée à l'exécution. Des emplois qualifiés créés localement. Des institutions et des PME dotées des outils numériques qu'elles méritent. Chaque service que JuntoX propose est au service de cette mission — pas l'inverse.",
     color: 'text-white',
     border: 'border-white/[0.1]',
   },
@@ -156,14 +156,14 @@ const ecosystemFeatures = [
   { title: 'API & Intégrations', description: 'Architecture ouverte pour connecter vos systèmes existants.', icon: '/' },
   { title: 'Multi-espaces', description: 'Clients, employés, investisseurs, partenaires — chacun son accès.', icon: '≡' },
   { title: 'IA intégrée', description: 'Assistant intelligent pour analyser, décider et agir plus vite.', icon: '✱' },
-  { title: 'Evolutif', description: "Concu pour supporter des milliers d'utilisateurs des le premier jour.", icon: '↑' },
+  { title: 'Évolutif', description: "Conçu pour supporter des milliers d'utilisateurs dès le premier jour.", icon: '↑' },
 ]
 
 const trustSignals = [
-  { label: 'Ancree en Ituri, RDC', detail: 'Bunia — coeur de l\'Est' },
-  { label: 'SARL enregistree', detail: 'Structure legale congolaise' },
+  { label: 'Ancrée en Ituri, RDC', detail: "Bunia — cœur de l'Est" },
+  { label: 'SARL enregistrée', detail: 'Structure légale congolaise' },
   { label: 'Impact local mesurable', detail: 'Projets, emplois, formations' },
-  { label: 'Groupe multidisciplinaire', detail: '10 poles d\'expertise' },
+  { label: 'Groupe multidisciplinaire', detail: "10 pôles d'expertise" },
   { label: 'Vision long terme', detail: 'Construire pour 100 ans' },
 ]
 
@@ -259,7 +259,7 @@ export default function Home() {
       </div>
 
       {/* ════════════ GOLDEN CIRCLE ════════════ */}
-      <section className="section-padding relative">
+      <section className="section-padding relative overflow-hidden">
         <GlowOrb color="white" size="md" className="left-0 top-1/2 -translate-x-1/2 -translate-y-1/2" animate={false} />
 
         <div className="container-content relative">
@@ -329,7 +329,7 @@ export default function Home() {
       </section>
 
       {/* ════════════ SERVICES ════════════ */}
-      <section className="section-padding relative">
+      <section className="section-padding relative overflow-hidden">
         <GlowOrb color="accent" size="sm" className="right-0 top-0 translate-x-1/2" animate={false} />
 
         <div className="container-content relative">
@@ -385,18 +385,18 @@ export default function Home() {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <AnimatedSection direction="left">
               <div className="section-accent" />
-              <Badge>Notre ecosysteme</Badge>
+              <Badge>Notre écosystème</Badge>
               <h2 className="mt-6 max-w-xl font-serif text-display font-semibold text-white">
-                Un systeme int&eacute;gre,{' '}
+                Un système intégré,{' '}
                 <span className="text-gradient-primary">pas une liste de services</span>
               </h2>
               <p className="mt-5 max-w-lg text-body-lg text-neutral-400">
-                Chez JuntoX, les 10 p&ocirc;les d&apos;expertise ne fonctionnent pas en silos. Ils convergent
-                vers une m&ecirc;me mission &mdash; la transformation concr&egrave;te et durable de la RDC
+                Chez JuntoX, les 10 pôles d&apos;expertise ne fonctionnent pas en silos. Ils convergent
+                vers une même mission — la transformation concrète et durable de la RDC
                 et de l&apos;Afrique centrale.
               </p>
               <div className="mt-8 grid grid-cols-2 gap-3 max-w-sm">
-                {['Technologie', 'Ingenierie', 'Construction', 'Formation', 'Logistique', 'Investissement'].map((p) => (
+                {['Technologie', 'Ingénierie', 'Construction', 'Formation', 'Logistique', 'Investissement'].map((p) => (
                   <div key={p} className="flex items-center gap-2 text-sm text-neutral-500">
                     <div className="h-1.5 w-1.5 rounded-full bg-primary/60 shrink-0" />
                     {p}
@@ -417,7 +417,7 @@ export default function Home() {
       <section className="section-padding">
         <div className="container-content">
           <AnimatedSection className="mb-14 text-center">
-            <Badge variant="accent">Notre methode</Badge>
+            <Badge variant="accent">Notre méthode</Badge>
             <h2 className="mx-auto mt-6 max-w-3xl font-serif text-display font-semibold text-white">
               De la d&eacute;couverte &agrave; l&apos;impact
             </h2>
@@ -452,12 +452,12 @@ export default function Home() {
                 <div className="grid grid-cols-3 gap-2 text-center">
                   <div className="rounded-lg bg-primary/10 px-3 py-2.5 text-xs font-medium text-primary">Next.js 15</div>
                   <div className="rounded-lg bg-accent/10 px-3 py-2.5 text-xs font-medium text-accent-light">FastAPI</div>
-                  <div className="rounded-lg bg-green-500/10 px-3 py-2.5 text-xs font-medium text-green-400">Supabase</div>
+                  <div className="rounded-lg bg-green-500/10 px-3 py-2.5 text-xs font-medium text-green-400">PostgreSQL</div>
                 </div>
                 <div className="mt-2 grid grid-cols-4 gap-2 text-center">
                   <div className="rounded-lg bg-white/[0.03] px-2 py-2 text-xs text-neutral-500">TypeScript</div>
                   <div className="rounded-lg bg-white/[0.03] px-2 py-2 text-xs text-neutral-500">Tailwind</div>
-                  <div className="rounded-lg bg-white/[0.03] px-2 py-2 text-xs text-neutral-500">OpenAI</div>
+                  <div className="rounded-lg bg-white/[0.03] px-2 py-2 text-xs text-neutral-500">Anthropic Claude</div>
                   <div className="rounded-lg bg-white/[0.03] px-2 py-2 text-xs text-neutral-500">Docker</div>
                 </div>
               </div>

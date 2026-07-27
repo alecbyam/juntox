@@ -16,6 +16,10 @@ const FLOAT_CARDS = [
   { value: '50+', label: 'Services actifs',    color: '#b8860b', x: '58%', y: '80%' },
 ]
 
+function round(n: number) {
+  return Math.round(n * 100) / 100
+}
+
 export function HeroVisual() {
   const reduce = useReducedMotion()
   const CX = 220, CY = 220, R = 155
@@ -69,8 +73,8 @@ export function HeroVisual() {
           const rad = deg * Math.PI / 180
           return (
             <line key={deg}
-              x1={CX - R * Math.cos(rad)} y1={CY - R * Math.sin(rad)}
-              x2={CX + R * Math.cos(rad)} y2={CY + R * Math.sin(rad)}
+              x1={round(CX - R * Math.cos(rad))} y1={round(CY - R * Math.sin(rad))}
+              x2={round(CX + R * Math.cos(rad))} y2={round(CY + R * Math.sin(rad))}
               stroke="rgba(255,255,255,0.02)" strokeWidth={1}
             />
           )
@@ -89,7 +93,7 @@ export function HeroVisual() {
               d={`M ${CX} ${CY}
                   L ${CX + R} ${CY}
                   A ${R} ${R} 0 0 0
-                  ${CX + R * Math.cos(-0.55)} ${CY + R * Math.sin(-0.55)} Z`}
+                  ${round(CX + R * Math.cos(-0.55))} ${round(CY + R * Math.sin(-0.55))} Z`}
               fill="rgba(185,28,28,0.05)"
             />
           </motion.g>
@@ -98,8 +102,8 @@ export function HeroVisual() {
         {/* Spoke lines */}
         {ORBIT_NODES.map((node, i) => {
           const rad = node.angle * Math.PI / 180
-          const nx = CX + R * Math.cos(rad)
-          const ny = CY + R * Math.sin(rad)
+          const nx = round(CX + R * Math.cos(rad))
+          const ny = round(CY + R * Math.sin(rad))
           return (
             <motion.line key={i}
               x1={CX} y1={CY} x2={nx} y2={ny}
@@ -117,7 +121,7 @@ export function HeroVisual() {
           const r2 = R * 0.55
           return (
             <motion.circle key={deg}
-              cx={CX + r2 * Math.cos(rad)} cy={CY + r2 * Math.sin(rad)} r={2.5}
+              cx={round(CX + r2 * Math.cos(rad))} cy={round(CY + r2 * Math.sin(rad))} r={2.5}
               fill="rgba(255,255,255,0.1)"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -162,8 +166,8 @@ export function HeroVisual() {
         {/* Orbit nodes */}
         {ORBIT_NODES.map((node, i) => {
           const rad = node.angle * Math.PI / 180
-          const nx = CX + R * Math.cos(rad)
-          const ny = CY + R * Math.sin(rad)
+          const nx = round(CX + R * Math.cos(rad))
+          const ny = round(CY + R * Math.sin(rad))
           return (
             <motion.g key={i}
               style={{ transformOrigin: `${nx}px ${ny}px` }}

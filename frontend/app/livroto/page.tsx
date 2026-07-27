@@ -6,7 +6,7 @@ import { Badge } from '../../components/ui/Badge'
 import { Button } from '../../components/ui/Button'
 import { PageHero } from '../../components/PageHero'
 
-const LIVROTO_URL = 'https://livroto.up.railway.app'
+const LIVROTO_URL = 'https://livroto-frontend-production.up.railway.app'
 const WHATSAPP_SELLER = 'https://wa.me/243988648433?text=Bonjour%20Livroto%20!%20Je%20veux%20ouvrir%20ma%20boutique.'
 
 const features = [

@@ -104,13 +104,12 @@ export function CommandPalette() {
       <button
         onClick={() => setOpen(true)}
         aria-label="Ouvrir la recherche rapide"
-        className="hidden items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.02] px-3.5 py-2 text-xs text-neutral-500 transition hover:border-white/[0.14] hover:text-neutral-300 lg:flex"
+        className="hidden items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] px-2.5 py-2 text-xs text-neutral-500 transition hover:border-white/[0.14] hover:text-neutral-300 xl:flex"
       >
         <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
         </svg>
-        Rechercher
-        <kbd className="ml-2 rounded border border-white/[0.1] bg-white/[0.04] px-1.5 py-0.5 font-mono text-[0.65rem] text-neutral-500">
+        <kbd className="rounded border border-white/[0.1] bg-white/[0.04] px-1.5 py-0.5 font-mono text-[0.65rem] text-neutral-500">
           ⌘K
         </kbd>
       </button>
