@@ -16,7 +16,7 @@ export default function OpengraphImage() {
           justifyContent: 'center',
           background: '#060608',
           backgroundImage:
-            'radial-gradient(circle at 25% 20%, rgba(185,28,28,0.25), transparent 50%), radial-gradient(circle at 80% 70%, rgba(29,78,216,0.18), transparent 50%)',
+            'radial-gradient(circle at 25% 20%, rgba(24,95,165,0.25), transparent 50%), radial-gradient(circle at 80% 70%, rgba(239,159,39,0.18), transparent 50%)',
         }}
       >
         <div
@@ -27,7 +27,7 @@ export default function OpengraphImage() {
             width: 110,
             height: 110,
             borderRadius: 24,
-            background: '#b91c1c',
+            background: '#185FA5',
             marginBottom: 36,
           }}
         >

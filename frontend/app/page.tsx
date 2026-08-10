@@ -348,7 +348,7 @@ export default function Home() {
             {serviceCards.map((card, i) => (
               <AnimatedSection key={card.title} delay={i * 0.06}>
                 <Link href={card.href} className="card-interactive card-shine group flex h-full flex-col">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.03] text-neutral-500 transition-all duration-300 group-hover:border-primary/[0.15] group-hover:bg-primary/[0.08] group-hover:text-primary group-hover:shadow-[0_0_18px_rgba(185,28,28,0.08)]">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.03] text-neutral-500 transition-all duration-300 group-hover:border-primary/[0.15] group-hover:bg-primary/[0.08] group-hover:text-primary group-hover:shadow-[0_0_18px_rgba(24,95,165,0.08)]">
                     {card.icon}
                   </div>
                   <h3 className="mt-5 text-base font-semibold text-white">{card.title}</h3>

@@ -3,16 +3,16 @@
 import { motion, useReducedMotion } from 'framer-motion'
 
 const ORBIT_NODES = [
-  { abbr: 'IA',  color: '#dc2626', angle: -90 },
-  { abbr: 'ENG', color: '#3b82f6', angle: -18 },
+  { abbr: 'IA',  color: '#2E7BC6', angle: -90 },
+  { abbr: 'ENG', color: '#F5B84F', angle: -18 },
   { abbr: 'BTP', color: '#b8860b', angle:  54 },
-  { abbr: 'LOG', color: '#3b82f6', angle: 126 },
-  { abbr: 'FOR', color: '#dc2626', angle: 198 },
+  { abbr: 'LOG', color: '#F5B84F', angle: 126 },
+  { abbr: 'FOR', color: '#2E7BC6', angle: 198 },
 ]
 
 const FLOAT_CARDS = [
-  { value: '10',  label: "Pôles d'expertise", color: '#dc2626', x: '64%', y: '3%'  },
-  { value: '6',   label: 'Pays ciblés',        color: '#3b82f6', x: '0%',  y: '20%' },
+  { value: '10',  label: "Pôles d'expertise", color: '#2E7BC6', x: '64%', y: '3%'  },
+  { value: '6',   label: 'Pays ciblés',        color: '#F5B84F', x: '0%',  y: '20%' },
   { value: '50+', label: 'Services actifs',    color: '#b8860b', x: '58%', y: '80%' },
 ]
 
@@ -88,13 +88,13 @@ export function HeroVisual() {
             transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
           >
             <line x1={CX} y1={CY} x2={CX + R} y2={CY}
-              stroke="#b91c1c" strokeWidth={1.5} strokeOpacity={0.55} />
+              stroke="#185FA5" strokeWidth={1.5} strokeOpacity={0.55} />
             <path
               d={`M ${CX} ${CY}
                   L ${CX + R} ${CY}
                   A ${R} ${R} 0 0 0
                   ${round(CX + R * Math.cos(-0.55))} ${round(CY + R * Math.sin(-0.55))} Z`}
-              fill="rgba(185,28,28,0.05)"
+              fill="rgba(24,95,165,0.05)"
             />
           </motion.g>
         )}
@@ -133,7 +133,7 @@ export function HeroVisual() {
         {/* Pulse rings from center */}
         {!reduce && [0, 1].map(idx => (
           <motion.circle key={idx} cx={CX} cy={CY} r={36}
-            fill="none" stroke="rgba(185,28,28,0.22)" strokeWidth={1.5}
+            fill="none" stroke="rgba(24,95,165,0.22)" strokeWidth={1.5}
             style={{ transformOrigin: `${CX}px ${CY}px` }}
             animate={{ scale: [1, 3.2], opacity: [0.6, 0] }}
             transition={{ delay: idx * 1.4, duration: 2.8, repeat: Infinity, ease: 'easeOut' }}
@@ -142,7 +142,7 @@ export function HeroVisual() {
 
         {/* Center hub */}
         <motion.circle cx={CX} cy={CY} r={36}
-          fill="rgba(185,28,28,0.1)" stroke="#b91c1c" strokeWidth={1.5}
+          fill="rgba(24,95,165,0.1)" stroke="#185FA5" strokeWidth={1.5}
           filter="url(#hv-glow)"
           style={{ transformOrigin: `${CX}px ${CY}px` }}
           initial={{ scale: 0, opacity: 0 }}

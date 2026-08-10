@@ -15,8 +15,8 @@ type Props = {
 }
 
 const colorMap = {
-  primary: { stroke: '#b91c1c', glow: 'rgba(185,28,28,0.3)', text: 'text-primary' },
-  accent:  { stroke: '#1d4ed8', glow: 'rgba(29,78,216,0.3)',  text: 'text-accent-light' },
+  primary: { stroke: '#185FA5', glow: 'rgba(24,95,165,0.3)', text: 'text-primary' },
+  accent:  { stroke: '#EF9F27', glow: 'rgba(239,159,39,0.3)',  text: 'text-accent-light' },
   gold:    { stroke: '#b8860b', glow: 'rgba(184,134,11,0.3)', text: 'text-gold-light' },
 }
 

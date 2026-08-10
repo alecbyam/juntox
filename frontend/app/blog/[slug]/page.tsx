@@ -59,7 +59,7 @@ export default async function ArticlePage({ params }: Props) {
           <div className="absolute inset-0 bg-gradient-mesh opacity-50" />
           <div
             className="absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.03]"
-            style={{ background: 'radial-gradient(circle, #b91c1c 0%, transparent 70%)' }}
+            style={{ background: 'radial-gradient(circle, #185FA5 0%, transparent 70%)' }}
           />
         </div>
 

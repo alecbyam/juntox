@@ -9,8 +9,8 @@
 @layer base {
   :root {
     color-scheme: dark;
-    --color-primary: 185 28 28;
-    --color-accent: 29 78 216;
+    --color-primary: 24 95 165;
+    --color-accent: 239 159 39;
     --color-gold: 184 134 11;
     --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   }
@@ -31,8 +31,8 @@
     background-color: #060608;
     color: #d6d3d1;
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(185, 28, 28, 0.03), transparent),
-      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(29, 78, 216, 0.015), transparent);
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(24, 95, 165, 0.03), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(239, 159, 39, 0.015), transparent);
     -webkit-tap-highlight-color: transparent;
     overflow-x: hidden;
   }
@@ -55,7 +55,7 @@
   }
 
   ::selection {
-    background: rgba(185, 28, 28, 0.25);
+    background: rgba(24, 95, 165, 0.25);
     color: #ffffff;
   }
 
@@ -81,7 +81,7 @@
 
   /* Focus ring */
   :focus-visible {
-    outline: 2px solid rgba(185, 28, 28, 0.5);
+    outline: 2px solid rgba(24, 95, 165, 0.5);
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -92,7 +92,7 @@
     top: -100px;
     left: 1rem;
     z-index: 100;
-    background: #b91c1c;
+    background: #185FA5;
     color: #fff;
     padding: 0.75rem 1.25rem;
     border-radius: 9999px;
@@ -123,14 +123,14 @@
 
   /* ── Text gradients ── */
   .text-gradient-primary {
-    background: linear-gradient(135deg, #dc2626 0%, #f87171 40%, #dc2626 100%);
+    background: linear-gradient(135deg, #2E7BC6 0%, #6FAEDD 40%, #2E7BC6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .text-gradient-accent {
-    background: linear-gradient(135deg, #3b82f6 0%, #93c5fd 40%, #3b82f6 100%);
+    background: linear-gradient(135deg, #F5B84F 0%, #FBD08A 40%, #F5B84F 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -240,17 +240,17 @@
   }
 
   .card-numbered:hover .card-number {
-    color: rgba(185, 28, 28, 0.06);
+    color: rgba(24, 95, 165, 0.06);
   }
 
   .card-featured {
     @apply card-base border-primary/15;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.12), 0 0 60px rgba(185, 28, 28, 0.03), inset 0 1px 0 rgba(255,255,255,0.03);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.12), 0 0 60px rgba(24, 95, 165, 0.03), inset 0 1px 0 rgba(255,255,255,0.03);
   }
 
   .card-featured:hover {
     @apply border-primary/25;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.2), 0 0 80px rgba(185, 28, 28, 0.06), inset 0 1px 0 rgba(255,255,255,0.04);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.2), 0 0 80px rgba(24, 95, 165, 0.06), inset 0 1px 0 rgba(255,255,255,0.04);
   }
 
   /* Gradient border card */
@@ -265,7 +265,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(185, 28, 28, 0.2), rgba(255, 255, 255, 0.04), rgba(29, 78, 216, 0.15));
+    background: linear-gradient(135deg, rgba(24, 95, 165, 0.2), rgba(255, 255, 255, 0.04), rgba(239, 159, 39, 0.15));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -273,7 +273,7 @@
   }
 
   .card-gradient-border:hover::before {
-    background: linear-gradient(135deg, rgba(185, 28, 28, 0.35), rgba(255, 255, 255, 0.06), rgba(29, 78, 216, 0.25));
+    background: linear-gradient(135deg, rgba(24, 95, 165, 0.35), rgba(255, 255, 255, 0.06), rgba(239, 159, 39, 0.25));
   }
 
   /* ── Layout ── */
@@ -287,14 +287,14 @@
 
   .divider {
     @apply h-px w-full;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05) 15%, rgba(185, 28, 28, 0.12) 50%, rgba(255, 255, 255, 0.05) 85%, transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05) 15%, rgba(24, 95, 165, 0.12) 50%, rgba(255, 255, 255, 0.05) 85%, transparent);
     position: relative;
   }
 
   /* Premium section separator with center dot */
   .divider-dot {
     @apply h-px w-full relative;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05) 20%, rgba(185, 28, 28, 0.1) 50%, rgba(255, 255, 255, 0.05) 80%, transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05) 20%, rgba(24, 95, 165, 0.1) 50%, rgba(255, 255, 255, 0.05) 80%, transparent);
   }
 
   .divider-dot::after {
@@ -306,8 +306,8 @@
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: rgba(185, 28, 28, 0.5);
-    box-shadow: 0 0 8px rgba(185, 28, 28, 0.3);
+    background: rgba(24, 95, 165, 0.5);
+    box-shadow: 0 0 8px rgba(24, 95, 165, 0.3);
   }
 
   .divider-subtle {
@@ -406,11 +406,11 @@
 
   /* Glow on hover */
   .hover-glow-primary:hover {
-    box-shadow: 0 0 40px rgba(185, 28, 28, 0.08), 0 0 80px rgba(185, 28, 28, 0.04);
+    box-shadow: 0 0 40px rgba(24, 95, 165, 0.08), 0 0 80px rgba(24, 95, 165, 0.04);
   }
 
   .hover-glow-accent:hover {
-    box-shadow: 0 0 40px rgba(29, 78, 216, 0.08), 0 0 80px rgba(29, 78, 216, 0.04);
+    box-shadow: 0 0 40px rgba(239, 159, 39, 0.08), 0 0 80px rgba(239, 159, 39, 0.04);
   }
 
   /* ── Data display pill ── */
@@ -450,8 +450,8 @@
   }
 
   .ecosystem-node:hover {
-    border-color: rgba(185,28,28,0.4);
-    background: rgba(185,28,28,0.08);
+    border-color: rgba(24,95,165,0.4);
+    background: rgba(24,95,165,0.08);
     transform: scale(1.08);
   }
 
@@ -468,7 +468,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, #b91c1c, transparent);
+    background: linear-gradient(90deg, #185FA5, transparent);
     border-radius: 2px;
   }
 
@@ -517,7 +517,7 @@
     position: absolute;
     inset: -3px;
     border-radius: inherit;
-    background: linear-gradient(135deg, rgba(185,28,28,0.3), transparent, rgba(185,28,28,0.15));
+    background: linear-gradient(135deg, rgba(24,95,165,0.3), transparent, rgba(24,95,165,0.15));
     animation: borderGlow 3s ease-in-out infinite;
     z-index: -1;
   }
@@ -526,7 +526,7 @@
   .section-accent {
     width: 2.5rem;
     height: 2px;
-    background: linear-gradient(90deg, #b91c1c, rgba(185,28,28,0.3));
+    background: linear-gradient(90deg, #185FA5, rgba(24,95,165,0.3));
     border-radius: 2px;
     margin-bottom: 1rem;
   }

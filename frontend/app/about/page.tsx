@@ -236,7 +236,7 @@ export default function AboutPage() {
       <section className="section-padding">
         <div className="container-content">
           <AnimatedSection>
-            <Badge variant="gold">L'origine du nom</Badge>
+            <Badge variant="gold">L&apos;origine du nom</Badge>
             <h2 className="mt-6 max-w-3xl font-serif text-heading-1 font-semibold text-white">
               Benjamin Franklin &amp; le Junto — Philadelphia, 1727
             </h2>
@@ -247,10 +247,10 @@ export default function AboutPage() {
               {/* Left: story */}
               <div className="space-y-6 text-body text-neutral-400">
                 <p>
-                  À 21 ans, Benjamin Franklin fonde à Philadelphia un cercle de réflexion qu'il baptise
+                  À 21 ans, Benjamin Franklin fonde à Philadelphia un cercle de réflexion qu&apos;il baptise
                   le <strong className="text-neutral-200">Junto</strong> — du latin <em>juncto</em>, « ensemble ».
-                  Douze artisans, imprimeurs et commerçants se réunissent chaque vendredi soir autour d'une
-                  règle simple : <strong className="text-neutral-200">partager librement le savoir, s'améliorer
+                  Douze artisans, imprimeurs et commerçants se réunissent chaque vendredi soir autour d&apos;une
+                  règle simple : <strong className="text-neutral-200">partager librement le savoir, s&apos;améliorer
                   mutuellement et servir la communauté.</strong>
                 </p>
                 <p>
@@ -260,16 +260,16 @@ export default function AboutPage() {
                   organisé, à une académie — et in fine aux Lumières américaines.
                 </p>
                 <p>
-                  Franklin avait compris avant tout le monde que l'excellence individuelle ne suffit pas :
-                  c'est l'intelligence <em>collective</em>, la générosité du partage et l'ancrage
+                  Franklin avait compris avant tout le monde que l&apos;excellence individuelle ne suffit pas :
+                  c&apos;est l&apos;intelligence <em>collective</em>, la générosité du partage et l&apos;ancrage
                   dans une communauté réelle qui créent des civilisations durables.
                 </p>
                 <p>
                   Le <strong className="text-neutral-200">X</strong> de JuntoX porte trois sens simultanés :
-                  l'<strong className="text-neutral-200">excellence</strong> comme standard non négociable,
-                  l'<strong className="text-neutral-200">expansion</strong> de l'Afrique vers le monde,
-                  et l'<strong className="text-neutral-200">inconnu</strong> — tout ce que le continent
-                  n'a pas encore révélé au monde et que nous nous engageons à faire émerger.
+                  l&apos;<strong className="text-neutral-200">excellence</strong> comme standard non négociable,
+                  l&apos;<strong className="text-neutral-200">expansion</strong> de l&apos;Afrique vers le monde,
+                  et l&apos;<strong className="text-neutral-200">inconnu</strong> — tout ce que le continent
+                  n&apos;a pas encore révélé au monde et que nous nous engageons à faire émerger.
                 </p>
               </div>
 

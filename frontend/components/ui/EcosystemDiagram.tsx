@@ -9,16 +9,16 @@ const ORBIT = 230
 const NODE_R = 28
 
 const NODES = [
-  { abbr: 'IA',  label: 'Technologies & IA',     color: '#dc2626', href: '/ai' },
-  { abbr: 'ENG', label: 'Ingénierie',             color: '#3b82f6', href: '/ingenierie' },
+  { abbr: 'IA',  label: 'Technologies & IA',     color: '#2E7BC6', href: '/ai' },
+  { abbr: 'ENG', label: 'Ingénierie',             color: '#F5B84F', href: '/ingenierie' },
   { abbr: 'BTP', label: 'Construction',           color: '#b8860b', href: '/construction' },
-  { abbr: 'CST', label: 'Consultance',            color: '#dc2626', href: '/consultance' },
-  { abbr: 'ETU', label: 'Études & Recherche',     color: '#3b82f6', href: '/recherche' },
+  { abbr: 'CST', label: 'Consultance',            color: '#2E7BC6', href: '/consultance' },
+  { abbr: 'ETU', label: 'Études & Recherche',     color: '#F5B84F', href: '/recherche' },
   { abbr: 'FOR', label: 'Formation',              color: '#b8860b', href: '/formation' },
-  { abbr: 'COM', label: 'Commerce',               color: '#dc2626', href: '/commerce' },
-  { abbr: 'LOG', label: 'Logistique',             color: '#3b82f6', href: '/logistique' },
+  { abbr: 'COM', label: 'Commerce',               color: '#2E7BC6', href: '/commerce' },
+  { abbr: 'LOG', label: 'Logistique',             color: '#F5B84F', href: '/logistique' },
   { abbr: 'INV', label: 'Investissement',         color: '#b8860b', href: '/investissements' },
-  { abbr: 'EM',  label: 'Secteurs Émergents',     color: '#dc2626', href: '/secteurs-emergents' },
+  { abbr: 'EM',  label: 'Secteurs Émergents',     color: '#2E7BC6', href: '/secteurs-emergents' },
 ]
 
 function polar(i: number, total: number, r: number): { x: number; y: number } {
@@ -78,7 +78,7 @@ export function EcosystemDiagram() {
         {/* Pulse rings on center */}
         {!reduceMotion && [0, 1].map(r => (
           <motion.circle key={`pulse-${r}`} cx={CX} cy={CY} r={48}
-            fill="none" stroke="rgba(185,28,28,0.2)" strokeWidth={1.5}
+            fill="none" stroke="rgba(24,95,165,0.2)" strokeWidth={1.5}
             style={{ transformOrigin: `${CX}px ${CY}px` }}
             animate={{ scale: [1, 2.2], opacity: [0.5, 0] }}
             transition={{ delay: r * 1.1, duration: 2.2, repeat: Infinity, ease: 'easeOut' }}
@@ -88,7 +88,7 @@ export function EcosystemDiagram() {
         {/* Center hub */}
         <motion.circle
           cx={CX} cy={CY} r={48}
-          fill="rgba(185,28,28,0.12)" stroke="#b91c1c" strokeWidth={1.5}
+          fill="rgba(24,95,165,0.12)" stroke="#185FA5" strokeWidth={1.5}
           initial={{ scale: 0, opacity: 0 }}
           animate={inView ? { scale: 1, opacity: 1 } : {}}
           transition={{ delay: 0.2, duration: 0.6, type: 'spring', stiffness: 180 }}
