@@ -2,7 +2,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 ARG NEXT_PUBLIC_API_URL=https://juntox-production.up.railway.app
-ARG NEXT_PUBLIC_SITE_URL=https://juntox.africa
+ARG NEXT_PUBLIC_SITE_URL=https://juntoxrdc.com
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
 
@@ -17,7 +17,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_PUBLIC_API_URL=https://juntox-production.up.railway.app
-ENV NEXT_PUBLIC_SITE_URL=https://juntox.africa
+ENV NEXT_PUBLIC_SITE_URL=https://juntoxrdc.com
 ENV HOSTNAME=0.0.0.0
 
 COPY --from=builder /app/package.json ./

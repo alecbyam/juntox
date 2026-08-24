@@ -153,7 +153,7 @@ export default async function ArticlePage({ params }: Props) {
             <div className="mt-8 flex flex-wrap items-center gap-4 rounded-xl border border-white/[0.06] bg-surface-elevated/40 px-5 py-4">
               <span className="text-sm text-neutral-500">Partager :</span>
               <a
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent('https://juntox.africa/blog/' + article.slug)}`}
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent('https://juntoxrdc.com/blog/' + article.slug)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-xs text-neutral-400 transition hover:border-white/[0.15] hover:text-white"
@@ -164,7 +164,7 @@ export default async function ArticlePage({ params }: Props) {
                 X / Twitter
               </a>
               <a
-                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://juntox.africa/blog/' + article.slug)}`}
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://juntoxrdc.com/blog/' + article.slug)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-xs text-neutral-400 transition hover:border-white/[0.15] hover:text-white"

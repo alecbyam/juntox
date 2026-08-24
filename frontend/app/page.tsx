@@ -491,7 +491,7 @@ export default function Home() {
                     <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/60" />
                     <div className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
                   </div>
-                  <span className="text-xs text-neutral-600">dashboard.juntox.africa</span>
+                  <span className="text-xs text-neutral-600">dashboard.juntoxrdc.com</span>
                 </div>
                 <div className="mt-4 grid grid-cols-3 gap-2">
                   <div className="rounded-lg bg-white/[0.02] p-3">
