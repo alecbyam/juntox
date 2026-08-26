@@ -7,9 +7,10 @@ import { Badge } from '../../components/ui/Badge'
 import { Accordion } from '../../components/ui/Accordion'
 import { postJson } from '../../lib/api'
 import { useToast } from '../../components/ui/Toast'
+import { siteConfig } from '../../lib/site-config'
 
 const contactInfo = [
-  { label: 'Email', value: 'contact@juntox.africa' },
+  { label: 'Email', value: siteConfig.email },
   { label: 'Téléphone', value: '+243 999 000 000' },
   { label: 'Adresse', value: 'Bunia, Ituri, RD Congo' },
   { label: 'Horaires', value: 'Lun–Ven, 8h–17h (UTC+2)' },

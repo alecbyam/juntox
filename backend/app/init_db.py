@@ -8,7 +8,7 @@ load_dotenv()
 
 if __name__ == '__main__':
     Base.metadata.create_all(bind=engine)
-    admin_email = os.getenv('ADMIN_EMAIL', 'admin@juntox.africa')
+    admin_email = os.getenv('ADMIN_EMAIL', 'admin@juntoxrdc.com')
     admin_password = os.getenv('ADMIN_PASSWORD', 'ChangeMe123!')
 
     db = None

@@ -29,7 +29,7 @@ services:
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       JWT_SECRET_KEY: ${JWT_SECRET_KEY:-dev-secret-change-me}
       ALLOWED_ORIGINS: http://localhost:3000
-      ADMIN_EMAIL: admin@juntox.africa
+      ADMIN_EMAIL: admin@juntoxrdc.com
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-ChangeMe123!}
     ports:
       - '8000:8000'

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { ReactNode } from 'react'
-import { socialLinks } from '../lib/site-config'
+import { siteConfig, socialLinks } from '../lib/site-config'
 
 const SOCIAL_ICONS: Record<string, ReactNode> = {
   Instagram: (
@@ -108,7 +108,7 @@ export function Footer() {
               le monde.
             </p>
             <div className="mt-6 space-y-2 text-sm text-neutral-600">
-              <p>contact@juntox.africa</p>
+              <p>{siteConfig.email}</p>
               <p>Bunia, Ituri, RD Congo</p>
             </div>
             {socialLinks().length > 0 && (

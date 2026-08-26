@@ -8,7 +8,7 @@ export const siteConfig = {
   url: 'https://juntoxrdc.com',
   description:
     'JuntoX SARL — Groupe multidisciplinaire africain. Technologies, ingénierie, construction, logistique, consultance, formation, communication et investissement pour bâtir les entreprises de demain depuis Bunia, Ituri.',
-  email: 'contact@juntox.africa',
+  email: 'contact@juntoxrdc.com',
   locality: 'Bunia',
   region: 'Ituri',
   country: 'CD',
