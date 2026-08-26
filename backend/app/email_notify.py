@@ -1,39 +1,26 @@
-"""Notification email best-effort — utilise smtplib (stdlib, pas de dépendance
-supplémentaire) contre la boîte pro Hostinger (contact@juntoxrdc.com).
+"""Notification email best-effort pour le formulaire de contact, envoyée via
+l'API REST Hostinger Email (https://api.mail.hostinger.com) plutôt que du
+SMTP brut.
 
-Design volontairement défensif : un échec d'envoi (SMTP_HOST absent en dev,
-identifiants pas encore configurés, panne réseau) ne doit JAMAIS faire échouer
-la fonctionnalité principale (l'enregistrement du message en base) — même
-philosophie que côté Livroto (src/lib/agents.functions.ts, saveDraft()).
+Historique : la première version utilisait smtplib (stdlib) contre
+smtp.hostinger.com:465/587, mais Railway bloque le SMTP sortant sur les deux
+ports (politique anti-spam standard des hébergeurs cloud) — chaque tentative
+échouait avec "Network is unreachable" puis "timed out" une fois l'IPv4 forcée.
+L'API REST passe par HTTPS (443), jamais bloqué.
+
+Design volontairement défensif : un échec d'envoi (token absent en dev, panne
+réseau, quota dépassé) ne doit JAMAIS faire échouer la fonctionnalité
+principale (l'enregistrement du message en base) — même philosophie que côté
+Livroto (src/lib/agents.functions.ts, saveDraft()).
 """
 import logging
 import os
-import smtplib
-import socket
-from contextlib import contextmanager
-from email.message import EmailMessage
+
+import httpx
 
 logger = logging.getLogger(__name__)
 
-
-@contextmanager
-def _force_ipv4():
-    """Railway ne route pas la sortie IPv6 par défaut (opt-in séparé) — or
-    smtp.hostinger.com publie un enregistrement AAAA, et getaddrinfo() renvoie
-    l'IPv6 en premier, ce qui donnait "OSError: Network is unreachable" à
-    chaque envoi. On restreint temporairement la résolution DNS à l'IPv4 le
-    temps de la connexion SMTP, sans toucher le hostname (le certificat TLS
-    reste vérifié contre smtp.hostinger.com normalement)."""
-    original = socket.getaddrinfo
-
-    def ipv4_only(host, port, family=0, type=0, proto=0, flags=0):
-        return original(host, port, socket.AF_INET, type, proto, flags)
-
-    socket.getaddrinfo = ipv4_only
-    try:
-        yield
-    finally:
-        socket.getaddrinfo = original
+API_BASE = "https://api.mail.hostinger.com"
 
 
 def send_contact_notification(name: str, email: str, subject: str, message: str) -> bool:
@@ -43,40 +30,38 @@ def send_contact_notification(name: str, email: str, subject: str, message: str)
     Reply-To pointe vers le visiteur : une réponse directe depuis la boîte
     mail suffit, pas besoin de retourner sur le site.
     """
-    host = os.getenv('SMTP_HOST', '').strip()
-    user = os.getenv('SMTP_USER', '').strip()
-    password = os.getenv('SMTP_PASS', '').strip()
-    if not host or not user or not password:
-        logger.info('[email_notify] SMTP non configuré — notification ignorée (message bien enregistré en base)')
+    token = os.getenv('HOSTINGER_API_TOKEN', '').strip()
+    mailbox_id = os.getenv('HOSTINGER_MAILBOX_ID', '').strip()
+    if not token or not mailbox_id:
+        logger.info('[email_notify] Hostinger API non configurée — notification ignorée (message bien enregistré en base)')
         return False
 
-    port = int(os.getenv('SMTP_PORT', '465'))
-    to_addr = os.getenv('CONTACT_NOTIFY_EMAIL', '').strip() or user
+    from_addr = os.getenv('SMTP_USER', '').strip() or 'contact@juntoxrdc.com'
+    to_addr = os.getenv('CONTACT_NOTIFY_EMAIL', '').strip() or from_addr
 
-    msg = EmailMessage()
-    msg['Subject'] = f'📬 Nouveau message contact — {subject}'
-    msg['From'] = f'JuntoX Site <{user}>'
-    msg['To'] = to_addr
-    msg['Reply-To'] = email
-    msg.set_content(
-        f'Nouveau message reçu via le formulaire de contact juntoxrdc.com\n\n'
-        f'De : {name} <{email}>\n'
-        f'Sujet : {subject}\n\n'
-        f'Message :\n{message}\n\n'
-        f'---\nRépondre directement à cet email revient à répondre à {email}.'
-    )
+    body = {
+        "to": [to_addr],
+        "displayName": "JuntoX Site",
+        "subject": f"📬 Nouveau message contact — {subject}",
+        "text": (
+            f"Nouveau message reçu via le formulaire de contact juntoxrdc.com\n\n"
+            f"De : {name} <{email}>\n"
+            f"Sujet : {subject}\n\n"
+            f"Message :\n{message}\n\n"
+            f"---\nRépondre directement à cet email revient à répondre à {email}."
+        ),
+    }
+    # L'API ne prend pas de Reply-To dédié dans ce payload minimal ; on l'indique
+    # dans le corps du message (voir note ci-dessus) plutôt que de complexifier.
 
     try:
-        with _force_ipv4():
-            if port == 465:
-                with smtplib.SMTP_SSL(host, port, timeout=10) as server:
-                    server.login(user, password)
-                    server.send_message(msg)
-            else:
-                with smtplib.SMTP(host, port, timeout=10) as server:
-                    server.starttls()
-                    server.login(user, password)
-                    server.send_message(msg)
+        resp = httpx.post(
+            f"{API_BASE}/api/v1/mailboxes/{mailbox_id}/send",
+            json=body,
+            headers={"Authorization": f"Bearer {token}"},
+            timeout=10,
+        )
+        resp.raise_for_status()
         return True
     except Exception:
         logger.exception('[email_notify] échec envoi notification contact (message bien enregistré en base)')
