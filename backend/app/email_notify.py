@@ -9,9 +9,31 @@ philosophie que côté Livroto (src/lib/agents.functions.ts, saveDraft()).
 import logging
 import os
 import smtplib
+import socket
+from contextlib import contextmanager
 from email.message import EmailMessage
 
 logger = logging.getLogger(__name__)
+
+
+@contextmanager
+def _force_ipv4():
+    """Railway ne route pas la sortie IPv6 par défaut (opt-in séparé) — or
+    smtp.hostinger.com publie un enregistrement AAAA, et getaddrinfo() renvoie
+    l'IPv6 en premier, ce qui donnait "OSError: Network is unreachable" à
+    chaque envoi. On restreint temporairement la résolution DNS à l'IPv4 le
+    temps de la connexion SMTP, sans toucher le hostname (le certificat TLS
+    reste vérifié contre smtp.hostinger.com normalement)."""
+    original = socket.getaddrinfo
+
+    def ipv4_only(host, port, family=0, type=0, proto=0, flags=0):
+        return original(host, port, socket.AF_INET, type, proto, flags)
+
+    socket.getaddrinfo = ipv4_only
+    try:
+        yield
+    finally:
+        socket.getaddrinfo = original
 
 
 def send_contact_notification(name: str, email: str, subject: str, message: str) -> bool:
@@ -45,15 +67,16 @@ def send_contact_notification(name: str, email: str, subject: str, message: str)
     )
 
     try:
-        if port == 465:
-            with smtplib.SMTP_SSL(host, port, timeout=10) as server:
-                server.login(user, password)
-                server.send_message(msg)
-        else:
-            with smtplib.SMTP(host, port, timeout=10) as server:
-                server.starttls()
-                server.login(user, password)
-                server.send_message(msg)
+        with _force_ipv4():
+            if port == 465:
+                with smtplib.SMTP_SSL(host, port, timeout=10) as server:
+                    server.login(user, password)
+                    server.send_message(msg)
+            else:
+                with smtplib.SMTP(host, port, timeout=10) as server:
+                    server.starttls()
+                    server.login(user, password)
+                    server.send_message(msg)
         return True
     except Exception:
         logger.exception('[email_notify] échec envoi notification contact (message bien enregistré en base)')
