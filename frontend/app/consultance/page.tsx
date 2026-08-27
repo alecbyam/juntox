@@ -5,7 +5,6 @@ import { AnimatedSection } from '../../components/ui/AnimatedSection'
 import { Badge } from '../../components/ui/Badge'
 import { Button } from '../../components/ui/Button'
 import { Accordion } from '../../components/ui/Accordion'
-import { CaseStudy } from '../../components/ui/CaseStudy'
 import { AnimatedCounter } from '../../components/ui/AnimatedCounter'
 
 const offerings = [
@@ -184,33 +183,6 @@ export default function ConsultancePage() {
               </AnimatedSection>
             ))}
           </div>
-        </div>
-      </section>
-
-      <div className="divider" />
-
-      {/* Case study */}
-      <section className="section-padding">
-        <div className="container-content">
-          <AnimatedSection>
-            <Badge>Étude de cas</Badge>
-            <h2 className="mt-6 max-w-2xl font-serif text-heading-1 font-semibold text-white">
-              Un exemple de mission
-            </h2>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.1} className="mt-10">
-            <CaseStudy
-              tag="Étude de marché — Fintech"
-              title="Évaluation du potentiel fintech en RDC pour un investisseur international"
-              description="Un fonds d'investissement panafricain nous a mandatés pour évaluer l'opportunité d'investir dans le secteur fintech congolais. En 5 semaines, nous avons cartographié l'écosystème, analysé la réglementation et identifié trois cibles d'investissement prioritaires."
-              metrics={[
-                { value: '5 sem.', label: 'Durée de la mission' },
-                { value: '3', label: 'Cibles identifiées' },
-                { value: '$1M+', label: 'Décision d\'investissement éclairée' },
-              ]}
-            />
-          </AnimatedSection>
         </div>
       </section>
 

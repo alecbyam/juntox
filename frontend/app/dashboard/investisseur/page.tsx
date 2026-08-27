@@ -12,9 +12,9 @@ const metrics = [
 ]
 
 const pipeline = [
-  { stage: 'Sourcing', count: 6, color: 'bg-white/[0.08]' },
-  { stage: 'Due diligence', count: 3, color: 'bg-accent/40' },
-  { stage: 'Négociation', count: 1, color: 'bg-gold/40' },
+  { stage: 'Sourcing', count: 0, color: 'bg-white/[0.08]' },
+  { stage: 'Due diligence', count: 0, color: 'bg-accent/40' },
+  { stage: 'Négociation', count: 0, color: 'bg-gold/40' },
   { stage: 'Conclu', count: 0, color: 'bg-green-500/40' },
 ]
 

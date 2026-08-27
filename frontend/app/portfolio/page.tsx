@@ -8,7 +8,7 @@ import { Badge } from '../../components/ui/Badge'
 import { Button } from '../../components/ui/Button'
 import { AnimatedCounter } from '../../components/ui/AnimatedCounter'
 
-const categories = ['Tous', 'Technologie', 'Intelligence Artificielle', 'Consultance', 'Construction', 'Formation', 'Investissement']
+const categories = ['Tous', 'Technologie', 'Intelligence Artificielle', 'Consultance', 'Formation']
 
 const projects = [
   {
@@ -47,34 +47,6 @@ const projects = [
     status: 'En cours',
     tags: ['Formation', 'Leadership', 'Tech'],
   },
-  {
-    title: 'Terminal logistique 4 200 m²',
-    category: 'Construction',
-    description: 'Estimation et supervision de la construction d\'un terminal de fret, livré dans les délais malgré la saison des pluies.',
-    status: 'Complété',
-    tags: ['Construction', 'Logistique', 'IA estimation'],
-  },
-  {
-    title: 'Série A AgriTech',
-    category: 'Investissement',
-    description: 'Structuration d\'un tour de table de $400K pour une startup de traçabilité agricole issue de notre incubateur.',
-    status: 'Complété',
-    tags: ['Investissement', 'AgriTech', 'Incubation'],
-  },
-  {
-    title: 'Audit chaîne du froid',
-    category: 'Consultance',
-    description: 'Audit et redesign logistique pour un distributeur de produits frais, réduisant les pertes de 18% à 4%.',
-    status: 'Complété',
-    tags: ['Logistique', 'Audit', 'Agro-industrie'],
-  },
-  {
-    title: 'Bootcamp Entrepreneuriat — Cohorte 3',
-    category: 'Formation',
-    description: '18 entrepreneurs formés sur 12 semaines, 9 entreprises lancées et 3 financements obtenus.',
-    status: 'Complété',
-    tags: ['Formation', 'Entrepreneuriat', 'Mentorat'],
-  },
 ]
 
 export default function PortfolioPage() {
@@ -95,10 +67,10 @@ export default function PortfolioPage() {
       <section className="border-y border-white/[0.03] bg-surface/30">
         <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
           {[
-            { target: 8, suffix: '+', label: 'Projets en vedette' },
-            { target: 6, suffix: '', label: 'Domaines couverts' },
-            { target: 5, suffix: '', label: 'Projets complétés' },
-            { target: 3, suffix: '', label: 'Projets en cours' },
+            { target: 5, suffix: '', label: 'Projets en vedette' },
+            { target: 4, suffix: '', label: 'Domaines couverts' },
+            { target: 2, suffix: '', label: 'En production' },
+            { target: 2, suffix: '', label: 'Projets en cours' },
           ].map((stat) => (
             <div key={stat.label} className="px-6 py-10 text-center">
               <p className="font-serif text-heading-2 font-semibold text-white">

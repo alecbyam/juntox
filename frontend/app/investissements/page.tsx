@@ -5,7 +5,6 @@ import { AnimatedSection } from '../../components/ui/AnimatedSection'
 import { Badge } from '../../components/ui/Badge'
 import { Button } from '../../components/ui/Button'
 import { Accordion } from '../../components/ui/Accordion'
-import { CaseStudy } from '../../components/ui/CaseStudy'
 import { AnimatedCounter } from '../../components/ui/AnimatedCounter'
 
 const capabilities = [
@@ -159,32 +158,6 @@ export default function InvestissementsPage() {
               </AnimatedSection>
             ))}
           </div>
-        </div>
-      </section>
-
-      <div className="divider" />
-
-      <section className="section-padding">
-        <div className="container-content">
-          <AnimatedSection>
-            <Badge>Étude de cas</Badge>
-            <h2 className="mt-6 max-w-2xl font-serif text-heading-1 font-semibold text-white">
-              Un investissement en chiffres
-            </h2>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.1} className="mt-10">
-            <CaseStudy
-              tag="Série A — AgriTech"
-              title="Structuration d'un tour de table de $400K pour une startup agro-industrielle"
-              description="Issue de notre incubateur, une startup spécialisée dans la traçabilité agricole avait besoin de capital pour scaler. Nous avons structuré un tour mixte JuntoX + co-investisseur international, complété en 6 semaines."
-              metrics={[
-                { value: '$400K', label: 'Capital levé' },
-                { value: '6 sem.', label: 'Durée du closing' },
-                { value: '3x', label: 'Croissance post-investissement' },
-              ]}
-            />
-          </AnimatedSection>
         </div>
       </section>
 

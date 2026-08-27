@@ -5,7 +5,6 @@ import { AnimatedSection } from '../../components/ui/AnimatedSection'
 import { Badge } from '../../components/ui/Badge'
 import { Button } from '../../components/ui/Button'
 import { Accordion } from '../../components/ui/Accordion'
-import { CaseStudy } from '../../components/ui/CaseStudy'
 import { AnimatedCounter } from '../../components/ui/AnimatedCounter'
 
 const program = [
@@ -156,33 +155,6 @@ export default function IncubateurPage() {
               </div>
             </AnimatedSection>
           </div>
-        </div>
-      </section>
-
-      <div className="divider" />
-
-      {/* Case study */}
-      <section className="section-padding">
-        <div className="container-content">
-          <AnimatedSection>
-            <Badge>Étude de cas</Badge>
-            <h2 className="mt-6 max-w-2xl font-serif text-heading-1 font-semibold text-white">
-              Une cohorte en chiffres
-            </h2>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.1} className="mt-10">
-            <CaseStudy
-              tag="Incubation — AgriTech"
-              title="D'un prototype de recherche à une levée de fonds en 5 mois"
-              description="Issue de notre laboratoire de recherche, une startup de traçabilité agricole a intégré l'incubateur, affiné son modèle d'affaires en 12 semaines, puis levé un tour de table de $400K via notre réseau de co-investisseurs."
-              metrics={[
-                { value: '12 sem.', label: 'Durée du programme' },
-                { value: '$400K', label: 'Capital levé' },
-                { value: '5 mois', label: 'Recherche à investissement' },
-              ]}
-            />
-          </AnimatedSection>
         </div>
       </section>
 
