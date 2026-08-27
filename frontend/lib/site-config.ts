@@ -31,9 +31,9 @@ export const siteConfig = {
   // is built — for now it documents what's coming.
   ecosystem: [
     {
-      name: 'Livroto',
+      name: 'JuntoxShop',
       description: 'Plateforme de commerce en ligne JuntoX',
-      url: '',
+      url: 'https://shop.juntoxrdc.com',
       status: 'in_development' as const,
     },
   ],

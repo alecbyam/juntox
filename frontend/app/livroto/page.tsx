@@ -6,8 +6,8 @@ import { Badge } from '../../components/ui/Badge'
 import { Button } from '../../components/ui/Button'
 import { PageHero } from '../../components/PageHero'
 
-const LIVROTO_URL = 'https://livroto-frontend-production.up.railway.app'
-const WHATSAPP_SELLER = 'https://wa.me/243988648433?text=Bonjour%20Livroto%20!%20Je%20veux%20ouvrir%20ma%20boutique.'
+const JUNTOXSHOP_URL = 'https://shop.juntoxrdc.com'
+const WHATSAPP_SELLER = 'https://wa.me/243988648433?text=Bonjour%20JuntoxShop%20!%20Je%20veux%20ouvrir%20ma%20boutique.'
 
 const features = [
   {
@@ -42,23 +42,23 @@ const zones = [
 const steps = [
   { n: '01', title: 'Choisissez', desc: 'Parcourez le catalogue et ajoutez vos produits au panier.' },
   { n: '02', title: 'Commandez', desc: 'Confirmez votre commande avec votre adresse de livraison.' },
-  { n: '03', title: 'On arrive', desc: 'Un livreur Livroto prend en charge votre commande.' },
+  { n: '03', title: 'On arrive', desc: 'Un livreur JuntoxShop prend en charge votre commande.' },
   { n: '04', title: 'Payez', desc: 'Recevez votre commande et payez cash à la porte.' },
 ]
 
 const stack = ['React', 'Vite', 'Supabase', 'FastAPI', 'Stripe', 'Capacitor (Android / iOS)', 'TanStack Router']
 
-export default function LivrotoPage() {
+export default function JuntoxShopPage() {
   return (
     <>
       <PageHero
         eyebrow="Un produit JuntoX · En production"
         title="Bunia livre à ta porte"
-        description="Livroto est la première marketplace locale de Bunia, Ituri. Commandez auprès de vendeurs du quartier et recevez vos produits à domicile — cash à la porte, sans carte bancaire."
+        description="JuntoxShop est la première marketplace locale de Bunia, Ituri. Commandez auprès de vendeurs du quartier et recevez vos produits à domicile — cash à la porte, sans carte bancaire."
         badge="accent"
       >
-        <Button href={LIVROTO_URL} target="_blank" rel="noopener noreferrer">
-          Ouvrir Livroto
+        <Button href={JUNTOXSHOP_URL} target="_blank" rel="noopener noreferrer">
+          Ouvrir JuntoxShop
         </Button>
         <Button href={WHATSAPP_SELLER} target="_blank" rel="noopener noreferrer" variant="secondary">
           Devenir vendeur
@@ -86,12 +86,12 @@ export default function LivrotoPage() {
       <section className="section-padding">
         <div className="container-content">
           <AnimatedSection>
-            <Badge variant="accent">Pourquoi Livroto</Badge>
+            <Badge variant="accent">Pourquoi JuntoxShop</Badge>
             <h2 className="mt-6 max-w-2xl font-serif text-heading-1 font-semibold text-white">
               Simple. Local. Rapide.
             </h2>
             <p className="mt-4 max-w-xl text-body text-neutral-400">
-              Livroto a été conçu à partir des réalités de Bunia — pas une copie de modèles importés.
+              JuntoxShop a été conçu à partir des réalités de Bunia — pas une copie de modèles importés.
             </p>
           </AnimatedSection>
 
@@ -183,13 +183,13 @@ export default function LivrotoPage() {
               </h2>
               <p className="mt-5 text-body text-neutral-400">
                 Vous vendez des accessoires, de la cuisine, des vêtements ou autre chose à Bunia ?
-                Rejoignez Livroto et touchez des clients dans tous les quartiers — sans site web, sans carte bancaire.
+                Rejoignez JuntoxShop et touchez des clients dans tous les quartiers — sans site web, sans carte bancaire.
               </p>
               <ul className="mt-8 space-y-3">
                 {[
                   'Catalogue en ligne offert',
                   'Commandes reçues via WhatsApp',
-                  'Livraison gérée par Livroto',
+                  'Livraison gérée par JuntoxShop',
                   'Paiement cash sécurisé',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm text-neutral-300">
@@ -258,8 +258,8 @@ export default function LivrotoPage() {
             Accédez à la marketplace et commandez auprès des vendeurs locaux de Bunia.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href={LIVROTO_URL} target="_blank" rel="noopener noreferrer" size="lg">
-              Ouvrir Livroto →
+            <Button href={JUNTOXSHOP_URL} target="_blank" rel="noopener noreferrer" size="lg">
+              Ouvrir JuntoxShop →
             </Button>
             <Button href="/contact" variant="secondary" size="lg">
               Nous contacter

@@ -209,7 +209,7 @@ export function MainNav() {
   ]
 
   const secondaryLinks = [
-    { href: '/livroto', label: 'Livroto' },
+    { href: '/livroto', label: 'JuntoxShop' },
     { href: '/portfolio', label: t.nav.portfolio },
     { href: '/carrieres', label: t.nav.careers },
   ]

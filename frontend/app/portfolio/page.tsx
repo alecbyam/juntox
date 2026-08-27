@@ -12,7 +12,7 @@ const categories = ['Tous', 'Technologie', 'Intelligence Artificielle', 'Consult
 
 const projects = [
   {
-    title: 'Livroto',
+    title: 'JuntoxShop',
     category: 'Technologie',
     description: 'Première marketplace locale de livraison à Bunia, Ituri. Commande en ligne, vendeurs locaux, cash à la porte. Application web et mobile (Android/iOS) — en production.',
     status: 'En production',
