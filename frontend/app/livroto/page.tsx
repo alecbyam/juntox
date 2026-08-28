@@ -67,9 +67,8 @@ export default function JuntoxShopPage() {
 
       {/* Quick stats */}
       <section className="border-y border-white/[0.03] bg-surface/30">
-        <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
+        <div className="container-content grid grid-cols-3 gap-px">
           {[
-            { value: '100%', label: 'Bunia & Ituri couverts' },
             { value: '$2', label: 'Livraison dès' },
             { value: '4', label: 'Étapes pour commander' },
             { value: '100%', label: 'Cash — aucune carte' },
