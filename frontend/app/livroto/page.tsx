@@ -69,7 +69,7 @@ export default function JuntoxShopPage() {
       <section className="border-y border-white/[0.03] bg-surface/30">
         <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
           {[
-            { value: '8', label: 'Quartiers couverts' },
+            { value: '100%', label: 'Bunia & Ituri couverts' },
             { value: '$2', label: 'Livraison dès' },
             { value: '4', label: 'Étapes pour commander' },
             { value: '100%', label: 'Cash — aucune carte' },
@@ -143,10 +143,10 @@ export default function JuntoxShopPage() {
           <AnimatedSection>
             <Badge variant="gold">Zones de livraison</Badge>
             <h2 className="mt-6 max-w-2xl font-serif text-heading-1 font-semibold text-white">
-              On livre dans tout Bunia
+              On livre à Bunia et dans tout l&apos;Ituri
             </h2>
             <p className="mt-4 max-w-lg text-body text-neutral-400">
-              8 quartiers couverts. Tarifs indicatifs — le livreur confirme selon la distance et la charge.
+              Tarifs indicatifs par quartier — le livreur confirme selon la distance et la charge.
             </p>
           </AnimatedSection>
 
