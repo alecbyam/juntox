@@ -7,8 +7,26 @@ from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 from .rate_limit import limiter
 from .main_router import router
+from sqlalchemy import text
 from .db import engine, SessionLocal
 from .models import Base
+
+
+def _repair_schema_drift() -> None:
+    """Base.metadata.create_all() ne crée que les tables absentes — il n'ajoute
+    jamais de colonne à une table qui existe déjà. Sans Alembic (voir memoire
+    project-juntox-platform, M-03), un modèle modifié après la 1ère création
+    d'une table dérive silencieusement de la prod jusqu'à un crash au premier
+    SELECT/INSERT qui touche la colonne manquante — c'est ce qui est arrivé à
+    blog_posts.author_id, ajouté au modèle après coup. Patch minimal et sûr
+    (IF NOT EXISTS = no-op si déjà là) en attendant une vraie migration."""
+    try:
+        with engine.begin() as conn:
+            conn.execute(text(
+                'ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS author_id INTEGER REFERENCES users(id)'
+            ))
+    except Exception as exc:
+        print(f'[JuntoX] Schema drift repair failed (non bloquant) : {exc}')
 
 
 def _seed_admin() -> None:
@@ -80,6 +98,7 @@ def _seed_blog_posts() -> None:
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     Base.metadata.create_all(bind=engine)
+    _repair_schema_drift()
     _seed_admin()
     _seed_blog_posts()
     yield
