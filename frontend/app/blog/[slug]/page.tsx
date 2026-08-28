@@ -1,40 +1,72 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { ARTICLES } from '../../../lib/blog-data'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { fetchPostBySlug, fetchPublishedPosts, estimateReadTime, formatArticleDate } from '../../../lib/blog-api'
 import { Badge } from '../../../components/ui/Badge'
 import { createMetadata } from '../../../lib/metadata'
 import { ReadingProgress } from './ReadingProgress'
 
 type Props = { params: Promise<{ slug: string }> }
 
-export async function generateStaticParams() {
-  return ARTICLES.map((a) => ({ slug: a.slug }))
-}
+// Pas de generateStaticParams : les articles vivent en base (CMS admin), pas
+// dans le code. Rendu à la demande, revalidé toutes les 5 min (voir
+// lib/blog-api.ts) plutôt qu'un instantané figé au build.
+export const revalidate = 300
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const article = ARTICLES.find((a) => a.slug === slug)
+  const article = await fetchPostBySlug(slug)
   if (!article) return {}
   return createMetadata({
     title: article.title,
-    description: article.excerpt,
+    description: article.excerpt ?? article.title,
     path: `/blog/${article.slug}`,
   })
 }
 
+const markdownComponents = {
+  h2: ({ children }: { children?: React.ReactNode }) => (
+    <h2 className="relative mb-5 mt-12 pl-4 font-serif text-heading-2 font-semibold text-white before:absolute before:left-0 before:top-[0.2em] before:h-[0.8em] before:w-[3px] before:rounded-full before:bg-gradient-to-b before:from-primary before:to-primary/30">
+      {children}
+    </h2>
+  ),
+  h3: ({ children }: { children?: React.ReactNode }) => (
+    <h3 className="mb-4 mt-8 font-serif text-heading-3 font-semibold text-white">{children}</h3>
+  ),
+  p: ({ children }: { children?: React.ReactNode }) => (
+    <p className="mb-5 text-body leading-[1.85] text-neutral-400">{children}</p>
+  ),
+  ul: ({ children }: { children?: React.ReactNode }) => (
+    <ul className="mb-5 list-disc space-y-2 pl-5 text-body leading-[1.85] text-neutral-400">{children}</ul>
+  ),
+  ol: ({ children }: { children?: React.ReactNode }) => (
+    <ol className="mb-5 list-decimal space-y-2 pl-5 text-body leading-[1.85] text-neutral-400">{children}</ol>
+  ),
+  a: ({ href, children }: { href?: string; children?: React.ReactNode }) => (
+    <a href={href} className="text-primary-light underline underline-offset-2 hover:text-primary" target={href?.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer">
+      {children}
+    </a>
+  ),
+  strong: ({ children }: { children?: React.ReactNode }) => (
+    <strong className="font-semibold text-neutral-200">{children}</strong>
+  ),
+  blockquote: ({ children }: { children?: React.ReactNode }) => (
+    <blockquote className="my-6 border-l-2 border-primary/40 pl-5 italic text-neutral-400">{children}</blockquote>
+  ),
+}
+
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params
-  const article = ARTICLES.find((a) => a.slug === slug)
+  const [article, allPosts] = await Promise.all([fetchPostBySlug(slug), fetchPublishedPosts()])
   if (!article) notFound()
 
-  const related = ARTICLES.filter(
-    (a) => a.slug !== slug && a.category === article.category,
-  ).slice(0, 2)
+  const sameCategory = allPosts.filter((a) => a.slug !== slug && a.category === article.category)
   const relatedArticles =
-    related.length >= 2
-      ? related
-      : [...related, ...ARTICLES.filter((a) => a.slug !== slug && !related.includes(a))].slice(0, 2)
+    sameCategory.length >= 2
+      ? sameCategory.slice(0, 2)
+      : [...sameCategory, ...allPosts.filter((a) => a.slug !== slug && !sameCategory.includes(a))].slice(0, 2)
 
   return (
     <>
@@ -48,7 +80,7 @@ export default async function ArticlePage({ params }: Props) {
             <span className="text-neutral-700">/</span>
             <Link href="/blog" className="text-neutral-600 transition hover:text-white">Blog</Link>
             <span className="text-neutral-700">/</span>
-            <span className="text-neutral-400 line-clamp-1">{article.category}</span>
+            <span className="text-neutral-400 line-clamp-1">{article.category ?? 'Article'}</span>
           </nav>
         </div>
       </div>
@@ -66,12 +98,12 @@ export default async function ArticlePage({ params }: Props) {
         <div className="container-content relative px-6 sm:px-8">
           <div className="mx-auto max-w-[72ch]">
             <div className="flex flex-wrap items-center gap-3">
-              <Badge>{article.category}</Badge>
+              <Badge>{article.category ?? 'JuntoX'}</Badge>
               <span className="flex items-center gap-1.5 text-xs text-neutral-600">
                 <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                {article.readTime} de lecture
+                {estimateReadTime(article.content)} de lecture
               </span>
             </div>
 
@@ -79,9 +111,11 @@ export default async function ArticlePage({ params }: Props) {
               {article.title}
             </h1>
 
-            <p className="mt-5 text-body-lg leading-relaxed text-neutral-400">
-              {article.excerpt}
-            </p>
+            {article.excerpt && (
+              <p className="mt-5 text-body-lg leading-relaxed text-neutral-400">
+                {article.excerpt}
+              </p>
+            )}
 
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <div className="flex items-center gap-3">
@@ -89,13 +123,12 @@ export default async function ArticlePage({ params }: Props) {
                   <img src="/logo-juntox-mark.png" alt="JuntoX" className="h-full w-full object-contain" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-white">{article.author.name}</p>
-                  <p className="text-xs text-neutral-600">{article.author.role}</p>
+                  <p className="text-sm font-semibold text-white">Équipe JuntoX</p>
                 </div>
               </div>
               <span className="h-4 w-px bg-white/[0.1]" aria-hidden="true" />
-              <time dateTime={article.dateISO} className="text-sm text-neutral-500">
-                {article.date}
+              <time dateTime={article.created_at} className="text-sm text-neutral-500">
+                {formatArticleDate(article.created_at)}
               </time>
             </div>
           </div>
@@ -106,47 +139,12 @@ export default async function ArticlePage({ params }: Props) {
       <article className="py-16 sm:py-20">
         <div className="container-content px-6 sm:px-8">
           <div className="mx-auto max-w-[68ch]">
-
-            {/* Intro section (no heading) */}
-            {article.sections[0]?.paragraphs.map((p, i) => (
-              <p
-                key={i}
-                className={`leading-[1.85] text-neutral-300 ${
-                  i === 0 ? 'mb-7 text-body-lg font-[425]' : 'mb-5 text-body'
-                }`}
-              >
-                {p}
-              </p>
-            ))}
-
-            {/* Remaining sections */}
-            {article.sections.slice(1).map((section, si) => (
-              <section key={si} className="mt-12">
-                {section.heading && (
-                  <h2 className="relative mb-5 pl-4 font-serif text-heading-2 font-semibold text-white before:absolute before:left-0 before:top-[0.2em] before:h-[0.8em] before:w-[3px] before:rounded-full before:bg-gradient-to-b before:from-primary before:to-primary/30">
-                    {section.heading}
-                  </h2>
-                )}
-                {section.paragraphs.map((p, pi) => (
-                  <p key={pi} className="mb-5 text-body leading-[1.85] text-neutral-400">
-                    {p}
-                  </p>
-                ))}
-              </section>
-            ))}
-
-            {/* Tags */}
-            {article.tags.length > 0 && (
-              <div className="mt-14 flex flex-wrap gap-2 border-t border-white/[0.06] pt-8">
-                {article.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1 text-xs text-neutral-500"
-                  >
-                    #{tag}
-                  </span>
-                ))}
-              </div>
+            {article.content ? (
+              <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+                {article.content}
+              </ReactMarkdown>
+            ) : (
+              <p className="text-body text-neutral-500">Cet article n&apos;a pas encore de contenu.</p>
             )}
 
             {/* Share */}
@@ -201,13 +199,15 @@ export default async function ArticlePage({ params }: Props) {
                 {relatedArticles.map((a) => (
                   <Link key={a.slug} href={`/blog/${a.slug}`} className="card-interactive card-shine group flex flex-col">
                     <div className="flex items-center gap-3">
-                      <Badge>{a.category}</Badge>
-                      <span className="text-xs text-neutral-600">{a.readTime}</span>
+                      <Badge>{a.category ?? 'JuntoX'}</Badge>
+                      <span className="text-xs text-neutral-600">{estimateReadTime(a.excerpt)}</span>
                     </div>
                     <h3 className="mt-4 font-serif text-heading-3 font-semibold text-white group-hover:text-neutral-100">
                       {a.title}
                     </h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-neutral-500">{a.excerpt}</p>
+                    {a.excerpt && (
+                      <p className="mt-2 flex-1 text-sm leading-relaxed text-neutral-500">{a.excerpt}</p>
+                    )}
                     <div className="mt-5 flex items-center gap-1.5 text-sm text-neutral-600 transition-all duration-300 group-hover:gap-2.5 group-hover:text-primary">
                       Lire l&apos;article
                       <svg className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

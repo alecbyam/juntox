@@ -52,10 +52,36 @@ def _seed_admin() -> None:
         db.close()
 
 
+def _seed_blog_posts() -> None:
+    """Migre les 7 articles historiques (ex frontend/lib/blog-data.ts, contenu
+    déjà publié publiquement) vers la table blog_posts, une seule fois. Ne
+    s'exécute que si la table est totalement vide — un déploiement ultérieur
+    ne duplique jamais et n'écrase jamais des articles créés depuis via le
+    CMS admin."""
+    from .models import BlogPost, User
+    from .blog_seed_data import BLOG_SEED
+    db = SessionLocal()
+    try:
+        if db.query(BlogPost).count() > 0:
+            return
+        admin_email = os.getenv('ADMIN_EMAIL', '').strip()
+        admin = db.query(User).filter(User.email == admin_email).first() if admin_email else None
+        for entry in BLOG_SEED:
+            db.add(BlogPost(**entry, published=True, author_id=admin.id if admin else None))
+        db.commit()
+        print(f'[JuntoX] Blog seeded: {len(BLOG_SEED)} articles migrated from blog-data.ts')
+    except Exception as exc:
+        print(f'[JuntoX] Blog seeding failed: {exc}')
+        db.rollback()
+    finally:
+        db.close()
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     Base.metadata.create_all(bind=engine)
     _seed_admin()
+    _seed_blog_posts()
     yield
 
 

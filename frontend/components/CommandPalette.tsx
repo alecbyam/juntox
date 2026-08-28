@@ -4,7 +4,6 @@ import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import { pagesIndex } from '../lib/pages-index'
-import { ARTICLES } from '../lib/blog-data'
 
 const ACCENT_MAP: Record<string, string> = {
   'à': 'a', 'â': 'a', 'ä': 'a', 'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e',
@@ -19,21 +18,35 @@ function normalize(s: string) {
     .join('')
 }
 
-const blogEntries = ARTICLES.map((a) => ({
-  href: `/blog/${a.slug}`,
-  label: a.title,
-  group: 'Blog',
-  keywords: `${a.category} ${a.tags.join(' ')} ${a.excerpt}`,
-}))
-
-const searchIndex = [...pagesIndex, ...blogEntries]
+type SearchEntry = { href: string; label: string; group: string; keywords?: string }
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [activeIndex, setActiveIndex] = useState(0)
+  const [blogEntries, setBlogEntries] = useState<SearchEntry[]>([])
   const inputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
+
+  // Les articles vivent en base (CMS admin) — plus une liste figée au build,
+  // voir app/blog/page.tsx. Chargé une fois à l'ouverture du composant.
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL ?? ''}/api/blog?per_page=50`)
+      .then((r) => (r.ok ? r.json() : []))
+      .then((posts: { slug: string; title: string; category: string | null; excerpt: string | null }[]) => {
+        setBlogEntries(
+          posts.map((a) => ({
+            href: `/blog/${a.slug}`,
+            label: a.title,
+            group: 'Blog',
+            keywords: `${a.category ?? ''} ${a.excerpt ?? ''}`,
+          })),
+        )
+      })
+      .catch(() => {})
+  }, [])
+
+  const searchIndex = useMemo(() => [...pagesIndex, ...blogEntries], [blogEntries])
 
   const results = useMemo(() => {
     const q = normalize(query.trim())
@@ -42,7 +55,7 @@ export function CommandPalette() {
       const haystack = normalize(`${p.label} ${p.group} ${p.keywords ?? ''}`)
       return haystack.includes(q)
     })
-  }, [query])
+  }, [query, searchIndex])
 
   const close = useCallback(() => {
     setOpen(false)
