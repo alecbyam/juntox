@@ -97,9 +97,7 @@ export function Footer() {
           {/* Brand column */}
           <div className="max-w-sm">
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <span className="text-sm font-bold text-white">JX</span>
-              </div>
+              <img src="/logo-juntox-mark.png" alt="JuntoX" className="h-8 w-8 object-contain" />
               <span className="text-sm font-semibold tracking-[0.1em] text-white">JUNTOX</span>
             </Link>
             <p className="mt-5 text-sm leading-relaxed text-neutral-500">

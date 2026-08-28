@@ -213,9 +213,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between px-5 py-4">
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary">
-                <span className="text-xs font-bold text-white">JX</span>
-              </div>
+              <img src="/logo-juntox-mark.png" alt="JuntoX" className="h-7 w-7 object-contain" />
               <span className="text-xs font-semibold tracking-[0.08em] text-white">DASHBOARD</span>
             </Link>
             <button
@@ -307,9 +305,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             </svg>
           </button>
           <div className="flex items-center gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary">
-              <span className="text-[0.6rem] font-bold text-white">JX</span>
-            </div>
+            <img src="/logo-juntox-mark.png" alt="JuntoX" className="h-6 w-6 object-contain" />
             <span className="text-xs font-semibold text-white">Dashboard</span>
           </div>
         </div>

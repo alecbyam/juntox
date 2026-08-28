@@ -85,8 +85,8 @@ export default async function ArticlePage({ params }: Props) {
 
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-primary/25 bg-primary/10">
-                  <span className="text-xs font-bold text-primary">JX</span>
+                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-primary/25 bg-primary/10 p-1.5">
+                  <img src="/logo-juntox-mark.png" alt="JuntoX" className="h-full w-full object-contain" />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-white">{article.author.name}</p>

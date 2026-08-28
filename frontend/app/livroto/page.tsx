@@ -234,9 +234,7 @@ export default function JuntoxShopPage() {
                 <div className="mt-8 border-t border-white/[0.06] pt-6">
                   <p className="text-xs text-neutral-600">Un produit conçu et développé par</p>
                   <div className="mt-2 flex items-center gap-2">
-                    <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary">
-                      <span className="text-xs font-bold text-white">JX</span>
-                    </div>
+                    <img src="/logo-juntox-mark.png" alt="JuntoX" className="h-6 w-6 object-contain" />
                     <span className="text-sm font-semibold tracking-widest text-white">JUNTOX</span>
                   </div>
                 </div>

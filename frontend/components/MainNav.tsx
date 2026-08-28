@@ -248,9 +248,7 @@ export function MainNav() {
       <nav className="container-content flex items-center justify-between px-6 py-4 sm:px-8">
         {/* Logo */}
         <Link href="/" className="relative z-10 flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-            <span className="text-sm font-bold text-white">JX</span>
-          </div>
+          <img src="/logo-juntox-mark.png" alt="JuntoX" className="h-8 w-8 object-contain" />
           <span className="text-sm font-semibold tracking-[0.1em] text-white">JUNTOX</span>
         </Link>
 

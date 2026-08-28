@@ -68,8 +68,8 @@ export default function BlogPage() {
               <p className="mt-4 max-w-2xl text-body text-neutral-400">{FEATURED_ARTICLE.excerpt}</p>
               <div className="mt-6 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-full border border-primary/20 bg-primary/10">
-                    <span className="text-[10px] font-bold text-primary">JX</span>
+                  <div className="flex h-7 w-7 items-center justify-center rounded-full border border-primary/20 bg-primary/10 p-1">
+                    <img src="/logo-juntox-mark.png" alt="JuntoX" className="h-full w-full object-contain" />
                   </div>
                   <span className="text-sm text-neutral-600">{FEATURED_ARTICLE.date}</span>
                 </div>
