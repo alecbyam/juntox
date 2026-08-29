@@ -73,10 +73,10 @@ export default function LaboratoireIAPage() {
       <section className="border-y border-white/[0.03] bg-surface/30">
         <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
           {[
-            { target: 3, suffix: '', label: 'Modèles en production' },
+            { target: 1, suffix: '', label: 'Modèle en production' },
             { target: 2, suffix: '', label: 'Projets de recherche actifs' },
             { target: 4, suffix: '', label: 'Briques technologiques' },
-            { target: 8, suffix: '', label: 'Secteurs alimentés par l\'IA' },
+            { target: 3, suffix: '', label: 'Pôles JuntoX déjà assistés par l\'IA' },
           ].map((stat) => (
             <div key={stat.label} className="px-6 py-10 text-center">
               <p className="font-serif text-heading-2 font-semibold text-white">

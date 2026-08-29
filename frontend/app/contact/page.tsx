@@ -11,7 +11,7 @@ import { siteConfig } from '../../lib/site-config'
 
 const contactInfo = [
   { label: 'Email', value: siteConfig.email },
-  { label: 'Téléphone', value: '+243 999 000 000' },
+  { label: 'Téléphone', value: siteConfig.phone },
   { label: 'Adresse', value: 'Bunia, Ituri, RD Congo' },
   { label: 'Horaires', value: 'Lun–Ven, 8h–17h (UTC+2)' },
 ]

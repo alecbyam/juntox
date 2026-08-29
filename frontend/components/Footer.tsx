@@ -107,6 +107,7 @@ export function Footer() {
             </p>
             <div className="mt-6 space-y-2 text-sm text-neutral-600">
               <p>{siteConfig.email}</p>
+              <p>{siteConfig.phone}</p>
               <p>Bunia, Ituri, RD Congo</p>
             </div>
             {socialLinks().length > 0 && (

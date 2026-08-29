@@ -63,7 +63,7 @@ const formatDetails = [
   { title: 'Pratique avant tout', description: 'Chaque module se termine par un projet réel appliqué au contexte de l\'apprenant.' },
   { title: 'Mentorat individuel', description: 'Un mentor dédié accompagne chaque participant tout au long du programme.' },
   { title: 'Cohortes restreintes', description: 'Maximum 20 participants par cohorte pour garantir un suivi personnalisé.' },
-  { title: 'Certification JuntoX', description: 'Certificat reconnu par notre réseau de partenaires entreprises.' },
+  { title: 'Certification JuntoX', description: 'Un certificat délivré par JuntoX à chaque programme complété, valorisable dans un CV ou un dossier de financement.' },
 ]
 
 const faqs = [
@@ -73,7 +73,7 @@ const faqs = [
   },
   {
     question: 'Les formations sont-elles certifiantes ?',
-    answer: 'Oui, chaque programme complété donne lieu à un certificat JuntoX, reconnu par notre réseau de partenaires et d\'entreprises clientes.',
+    answer: 'Oui, chaque programme complété donne lieu à un certificat JuntoX, valorisable dans un CV ou un dossier de financement.',
   },
   {
     question: 'Proposez-vous des formations en entreprise ?',
@@ -81,7 +81,7 @@ const faqs = [
   },
   {
     question: 'Quel est le taux de réussite du bootcamp entrepreneuriat ?',
-    answer: 'Sur les trois dernières cohortes, 70% des participants ont lancé une activité ou obtenu un financement dans les 6 mois suivant le programme.',
+    answer: 'Le programme est encore récent — nous n\'avons pas encore de statistique de réussite à publier. Notre objectif : que chaque participant lance une activité ou obtienne un financement dans les 6 mois suivant le programme.',
   },
 ]
 
@@ -98,11 +98,10 @@ export default function FormationPage() {
       </PageHero>
 
       <section className="border-y border-white/[0.03] bg-surface/30">
-        <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
+        <div className="container-content grid grid-cols-3 gap-px">
           {[
-            { target: 6, suffix: '', label: 'Programmes actifs' },
-            { target: 300, suffix: '+', label: 'Alumni formés' },
-            { target: 70, suffix: '%', label: 'Taux de réussite bootcamp' },
+            { target: 8, suffix: '', label: 'Programmes actifs' },
+            { target: 4, suffix: '', label: 'Piliers pédagogiques' },
             { target: 20, suffix: '', label: 'Participants max/cohorte' },
           ].map((stat) => (
             <div key={stat.label} className="px-6 py-10 text-center">

@@ -47,10 +47,8 @@ const poles = [
 ]
 
 const metrics = [
-  { target: 15, suffix: '+', label: 'Projets IoT déployés' },
-  { target: 3, suffix: '', label: 'Pays d\'intervention' },
-  { target: 40, suffix: '%', label: 'Gain productivité moyen' },
-  { target: 99, suffix: '%', label: 'Uptime systèmes déployés' },
+  { target: 5, suffix: '', label: 'Pôles d\'ingénierie' },
+  { target: 4, suffix: '', label: 'Étapes méthodologiques' },
 ]
 
 const methodology = [
@@ -100,7 +98,7 @@ export default function IngenieriePage() {
 
       {/* Stats */}
       <section className="border-y border-white/[0.03] bg-surface/30">
-        <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
+        <div className="container-content grid grid-cols-2 gap-px">
           {metrics.map((m) => (
             <div key={m.label} className="px-6 py-10 text-center">
               <p className="font-serif text-heading-2 font-semibold text-white">

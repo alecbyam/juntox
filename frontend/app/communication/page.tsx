@@ -39,10 +39,8 @@ const services = [
 ]
 
 const metrics = [
-  { target: 3, suffix: 'x', label: 'Croissance organique moyenne' },
-  { target: 20, suffix: '+', label: 'Marques accompagnées' },
-  { target: 85, suffix: '%', label: 'Taux de satisfaction clients' },
-  { target: 6, suffix: '', label: 'Expertises métier' },
+  { target: 4, suffix: '', label: 'Domaines d\'expertise' },
+  { target: 4, suffix: '', label: 'Étapes du processus' },
 ]
 
 const process = [
@@ -59,7 +57,7 @@ const faqs = [
   },
   {
     question: 'Proposez-vous de la production vidéo localement en RDC ?',
-    answer: 'Oui, nous disposons d\'une équipe de production basée à Bunia et d\'un réseau de partenaires à Kinshasa, Goma et Lubumbashi. Nous couvrons l\'ensemble du territoire et pouvons déployer des tournages dans des contextes variés — y compris en zones à logistique complexe.',
+    answer: 'Oui, notre équipe de production est basée à Bunia et nous pouvons organiser des tournages ailleurs en RDC selon le projet, y compris en zones à logistique complexe.',
   },
   {
     question: 'Comment mesurez-vous le ROI de vos campagnes marketing ?',
@@ -86,7 +84,7 @@ export default function CommunicationPage() {
 
       {/* Stats */}
       <section className="border-y border-white/[0.03] bg-surface/30">
-        <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
+        <div className="container-content grid grid-cols-2 gap-px">
           {metrics.map((m) => (
             <div key={m.label} className="px-6 py-10 text-center">
               <p className="font-serif text-heading-2 font-semibold text-white">

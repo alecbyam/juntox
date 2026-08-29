@@ -20,7 +20,7 @@ const specializations = [
 const capabilities = [
   { title: 'Maîtrise d\'ouvrage déléguée', description: 'Assistance à maîtrise d\'ouvrage (AMO) pour les clients qui n\'ont pas de direction technique interne.' },
   { title: 'Conception architecturale', description: 'Design fonctionnel et esthétique adapté aux contraintes climatiques, culturelles et réglementaires locales.' },
-  { title: 'Estimation IA', description: 'Notre moteur d\'estimation calcule les coûts avec une marge d\'erreur inférieure à 8%, contre 20-30% pour les méthodes traditionnelles.' },
+  { title: 'Estimation IA', description: 'Notre moteur d\'estimation combine les prix des matériaux en temps réel et les données régionales pour produire des chiffrages plus fiables que les méthodes traditionnelles.' },
   { title: 'Supervision de chantiers', description: 'Contrôle qualité hebdomadaire, suivi des délais, coordination des corps de métier et gestion proactive des imprévus.' },
   { title: 'Fourniture de matériaux', description: 'Approvisionnement en matériaux de construction : ciment, fer, bois, toiture, sanitaires — sourcing local et international.' },
   { title: 'Smart buildings', description: 'Intégration de capteurs IoT, gestion énergétique intelligente et systèmes de sécurité connectés dans les nouvelles constructions.' },
@@ -42,7 +42,7 @@ const faqs = [
   },
   {
     question: 'Comment l\'IA améliore-t-elle l\'estimation des coûts ?',
-    answer: 'Notre modèle est entraîné sur des centaines de projets régionaux et intègre les prix des matériaux en temps réel, la main-d\'œuvre locale et les spécificités du terrain — réduisant les dépassements budgétaires de manière significative.',
+    answer: 'Notre modèle intègre les prix des matériaux en temps réel, la main-d\'œuvre locale et les spécificités du terrain pour produire un chiffrage plus fiable qu\'une estimation manuelle classique.',
   },
   {
     question: 'Proposez-vous un suivi à distance pour les investisseurs ?',
@@ -68,12 +68,11 @@ export default function ConstructionPage() {
 
       {/* Stats */}
       <section className="border-y border-white/[0.03] bg-surface/30">
-        <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
+        <div className="container-content grid grid-cols-3 gap-px">
           {[
-            { target: 18, suffix: '', label: 'Chantiers livrés' },
-            { target: 8, suffix: '%', label: 'Marge d\'erreur estimation' },
-            { target: 4, suffix: '', label: 'Spécialités couvertes' },
-            { target: 100, suffix: '%', label: 'Suivi digital' },
+            { target: 6, suffix: '', label: 'Spécialités couvertes' },
+            { target: 4, suffix: '', label: 'Étapes du processus' },
+            { target: 100, suffix: '%', label: 'Suivi digital transparent' },
           ].map((stat) => (
             <div key={stat.label} className="px-6 py-10 text-center">
               <p className="font-serif text-heading-2 font-semibold text-white">

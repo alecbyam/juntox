@@ -21,7 +21,7 @@ const sectors = [
       { label: 'Stockage d\'énergie', detail: 'Batteries lithium et plomb-gel' },
       { label: 'Energy-as-a-Service', detail: 'Modèles OPEX sans investissement initial' },
     ],
-    stat: { value: '60%', label: 'Réduction de facture énergétique moyenne' },
+    stat: { value: '4', label: 'Solutions énergétiques dans notre offre' },
   },
   {
     id: 'agriculture',
@@ -36,7 +36,7 @@ const sectors = [
       { label: 'Traçabilité de filière', detail: 'Blockchain et certifications export' },
       { label: 'Financement agricole', detail: 'Accès au crédit pour les exploitants' },
     ],
-    stat: { value: '3x', label: 'Rendement moyen avec agriculture de précision' },
+    stat: { value: '4', label: 'Solutions agricoles dans notre offre' },
   },
   {
     id: 'sante',
@@ -51,7 +51,7 @@ const sectors = [
       { label: 'HIS (Hospital Information System)', detail: 'Gestion intégrée des établissements de santé' },
       { label: 'HMIS & épidémiologie', detail: 'Surveillance et collecte de données de santé' },
     ],
-    stat: { value: '5x', label: 'Vitesse de traitement des dossiers patients' },
+    stat: { value: '4', label: 'Solutions eHealth dans notre offre' },
   },
   {
     id: 'education',
@@ -88,14 +88,12 @@ const sectors = [
 const metrics = [
   { target: 5, suffix: '', label: 'Secteurs d\'avenir couverts' },
   { target: 50, suffix: 'M+', label: 'Personnes ciblées par nos solutions' },
-  { target: 3, suffix: '', label: 'Marchés pilotes actifs' },
-  { target: 10, suffix: '+', label: 'Partenaires sectoriels' },
 ]
 
 const faqs = [
   {
     question: 'Ces secteurs sont-ils déjà opérationnels chez JuntoX ou seulement en développement ?',
-    answer: 'Certains sont opérationnels (énergie solaire, agriculture IoT, eHealth), d\'autres sont en phase de développement ou de partenariat stratégique. Nous travaillons avec des partenaires spécialisés pour chaque secteur et pouvons structurer des consortiums sur mesure selon votre projet.',
+    answer: 'Nous développons activement des capacités dans ces cinq secteurs, en nous appuyant sur notre socle technologique (IA, IoT, data). Certains axes avancent plus vite que d\'autres selon les opportunités et partenariats en cours — nous sommes transparents sur l\'état d\'avancement à chaque échange.',
   },
   {
     question: 'Comment JuntoX aborde-t-il des secteurs aussi différents de votre cœur technologique ?',
@@ -126,7 +124,7 @@ export default function SecteursEmergentsPage() {
 
       {/* Stats */}
       <section className="border-y border-white/[0.03] bg-surface/30">
-        <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
+        <div className="container-content grid grid-cols-2 gap-px">
           {metrics.map((m) => (
             <div key={m.label} className="px-6 py-10 text-center">
               <p className="font-serif text-heading-2 font-semibold text-white">

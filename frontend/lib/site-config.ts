@@ -9,6 +9,7 @@ export const siteConfig = {
   description:
     'JuntoX SARL — Groupe multidisciplinaire africain. Technologies, ingénierie, construction, logistique, consultance, formation, communication et investissement pour bâtir les entreprises de demain depuis Bunia, Ituri.',
   email: 'contact@juntoxrdc.com',
+  phone: '+243 964 316 182',
   locality: 'Bunia',
   region: 'Ituri',
   country: 'CD',
@@ -23,7 +24,7 @@ export const siteConfig = {
     facebook: '',
     x: '',
     youtube: '',
-    whatsapp: '', // e.g. '243900000000' — used to build a wa.me link
+    whatsapp: '243964316182', // used to build a wa.me link
   },
 
   // Sibling products in the JuntoX ecosystem. Adding an entry here makes

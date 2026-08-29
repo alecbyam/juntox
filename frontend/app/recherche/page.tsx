@@ -38,7 +38,7 @@ const faqs = [
   },
   {
     question: 'Collaborez-vous avec des universités ?',
-    answer: 'Oui, nous avons des partenariats actifs avec plusieurs institutions académiques en RDC et à l\'international pour la co-recherche et l\'encadrement de chercheurs.',
+    answer: 'C\'est un axe que nous voulons développer : co-recherche, encadrement de chercheurs et transfert de connaissances avec des institutions académiques en RDC et à l\'international. Si vous représentez une université ou un centre de recherche, contactez-nous.',
   },
   {
     question: 'Comment un prototype devient-il un produit ?',
@@ -63,11 +63,10 @@ export default function RecherchePage() {
       </PageHero>
 
       <section className="border-y border-white/[0.03] bg-surface/30">
-        <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
+        <div className="container-content grid grid-cols-3 gap-px">
           {[
             { target: 4, suffix: '', label: 'Axes de recherche actifs' },
-            { target: 12, suffix: '+', label: 'Publications produites' },
-            { target: 3, suffix: '', label: 'Partenariats académiques' },
+            { target: 7, suffix: '', label: 'Articles publiés sur le blog' },
             { target: 2, suffix: '', label: 'Prototypes en cours' },
           ].map((stat) => (
             <div key={stat.label} className="px-6 py-10 text-center">

@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     question: 'Un partenariat académique implique-t-il un financement ?',
-    answer: 'Pas nécessairement. Beaucoup de nos collaborations académiques portent sur l\'échange de connaissances, l\'encadrement d\'étudiants ou la co-publication, sans transaction financière.',
+    answer: 'Pas nécessairement. Ce type de collaboration peut porter sur l\'échange de connaissances, l\'encadrement d\'étudiants ou la co-publication, sans transaction financière.',
   },
 ]
 
@@ -68,11 +68,9 @@ export default function PartenairesPage() {
 
       {/* Stats */}
       <section className="border-y border-white/[0.03] bg-surface/30">
-        <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
+        <div className="container-content grid grid-cols-2 gap-px">
           {[
-            { target: 8, suffix: '+', label: 'Partenaires actifs' },
             { target: 4, suffix: '', label: 'Types de partenariat' },
-            { target: 3, suffix: '', label: 'Pays représentés' },
             { target: 5, suffix: ' j.', label: 'Délai de premier contact' },
           ].map((stat) => (
             <div key={stat.label} className="px-6 py-10 text-center">

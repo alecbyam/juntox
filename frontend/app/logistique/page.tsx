@@ -38,7 +38,7 @@ const process = [
 const faqs = [
   {
     question: 'De combien réduisez-vous les coûts logistiques en moyenne ?',
-    answer: 'Nos clients observent généralement une réduction de 15 à 30% des coûts logistiques après optimisation, selon l\'état initial de leur chaîne d\'approvisionnement.',
+    answer: 'Selon l\'état initial de la chaîne d\'approvisionnement, une optimisation logistique permet typiquement une réduction de 15 à 30% des coûts — c\'est l\'objectif que nous visons sur chaque audit.',
   },
   {
     question: 'Travaillez-vous avec des PME ou uniquement de grandes entreprises ?',
@@ -67,12 +67,11 @@ export default function LogistiquePage() {
       </PageHero>
 
       <section className="border-y border-white/[0.03] bg-surface/30">
-        <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
+        <div className="container-content grid grid-cols-3 gap-px">
           {[
-            { target: 30, suffix: '%', label: 'Réduction coûts moyenne' },
-            { target: 4, suffix: '', label: 'Secteurs servis' },
+            { target: 6, suffix: '', label: 'Secteurs servis' },
+            { target: 4, suffix: '', label: 'Étapes du processus' },
             { target: 24, suffix: '/7', label: 'Suivi temps réel' },
-            { target: 15, suffix: '+', label: 'Partenaires transport' },
           ].map((stat) => (
             <div key={stat.label} className="px-6 py-10 text-center">
               <p className="font-serif text-heading-2 font-semibold text-white">

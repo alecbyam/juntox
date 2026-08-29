@@ -64,7 +64,7 @@ const faqs = [
   },
   {
     question: 'JuntoX publie-t-elle des rapports financiers réguliers ?',
-    answer: 'Les investisseurs ont accès à des rapports trimestriels détaillés via leur espace dédié sur la plateforme, incluant performance, pipeline et indicateurs d\'impact.',
+    answer: 'C\'est notre objectif dès les premiers investisseurs à bord : un espace dédié avec rapports trimestriels détaillés, incluant performance, pipeline et indicateurs d\'impact.',
   },
   {
     question: 'Quelle est la stratégie de sortie pour les investisseurs ?',

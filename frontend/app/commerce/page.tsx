@@ -65,12 +65,11 @@ export default function CommercePage() {
       </PageHero>
 
       <section className="border-y border-white/[0.03] bg-surface/30">
-        <div className="container-content grid grid-cols-2 gap-px sm:grid-cols-4">
+        <div className="container-content grid grid-cols-3 gap-px">
           {[
             { target: 4, suffix: '', label: 'Corridors commerciaux' },
-            { target: 25, suffix: '+', label: 'Opérations réalisées' },
-            { target: 6, suffix: '', label: 'Pays partenaires' },
-            { target: 10, suffix: ' sem.', label: 'Délai moyen' },
+            { target: 8, suffix: '', label: 'Domaines de capacité' },
+            { target: 4, suffix: '', label: 'Étapes du processus' },
           ].map((stat) => (
             <div key={stat.label} className="px-6 py-10 text-center">
               <p className="font-serif text-heading-2 font-semibold text-white">
