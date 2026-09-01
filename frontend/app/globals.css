@@ -530,4 +530,38 @@
     border-radius: 2px;
     margin-bottom: 1rem;
   }
+
+  /* ── Aperçu Markdown (CMS admin blog) ──
+     Version légère du rendu de app/blog/[slug]/page.tsx (qui stylise chaque
+     composant en JSX) — ici on style directement le HTML brut de
+     ReactMarkdown pour un aperçu rapide sans dupliquer tout le mapping. */
+  .prose-blog h1, .prose-blog h2, .prose-blog h3 {
+    font-weight: 600;
+    color: white;
+    margin-top: 1.25em;
+    margin-bottom: 0.5em;
+  }
+  .prose-blog h1 { font-size: 1.4em; }
+  .prose-blog h2 { font-size: 1.25em; }
+  .prose-blog h3 { font-size: 1.1em; }
+  .prose-blog p { margin-bottom: 0.9em; line-height: 1.75; color: rgb(163 163 163); }
+  .prose-blog ul, .prose-blog ol { margin-bottom: 0.9em; padding-left: 1.25em; color: rgb(163 163 163); }
+  .prose-blog ul { list-style-type: disc; }
+  .prose-blog ol { list-style-type: decimal; }
+  .prose-blog li { margin-bottom: 0.25em; }
+  .prose-blog a { color: #2E7BC6; text-decoration: underline; text-underline-offset: 2px; }
+  .prose-blog strong { font-weight: 600; color: rgb(229 229 229); }
+  .prose-blog blockquote {
+    border-left: 2px solid rgba(24,95,165,0.4);
+    padding-left: 1em;
+    font-style: italic;
+    color: rgb(163 163 163);
+    margin: 1em 0;
+  }
+  .prose-blog code {
+    background: rgba(255,255,255,0.06);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
 }

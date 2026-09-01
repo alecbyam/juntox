@@ -3,7 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { fetchPostBySlug, fetchPublishedPosts, estimateReadTime, formatArticleDate } from '../../../lib/blog-api'
+import { fetchPostBySlug, fetchPublishedPosts, formatArticleDate, formatReadTime } from '../../../lib/blog-api'
 import { Badge } from '../../../components/ui/Badge'
 import { createMetadata } from '../../../lib/metadata'
 import { ReadingProgress } from './ReadingProgress'
@@ -103,7 +103,7 @@ export default async function ArticlePage({ params }: Props) {
                 <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                {estimateReadTime(article.content)} de lecture
+                {formatReadTime(article.read_minutes)} de lecture
               </span>
             </div>
 
@@ -200,7 +200,7 @@ export default async function ArticlePage({ params }: Props) {
                   <Link key={a.slug} href={`/blog/${a.slug}`} className="card-interactive card-shine group flex flex-col">
                     <div className="flex items-center gap-3">
                       <Badge>{a.category ?? 'JuntoX'}</Badge>
-                      <span className="text-xs text-neutral-600">{estimateReadTime(a.excerpt)}</span>
+                      <span className="text-xs text-neutral-600">{formatReadTime(a.read_minutes)}</span>
                     </div>
                     <h3 className="mt-4 font-serif text-heading-3 font-semibold text-white group-hover:text-neutral-100">
                       {a.title}

@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, Field, computed_field, field_validator
 import re
 
 
@@ -41,6 +41,12 @@ class BlogPostResponse(BaseModel):
 
     model_config = {'from_attributes': True}
 
+    @computed_field
+    @property
+    def read_minutes(self) -> int:
+        words = len((self.content or '').split())
+        return max(1, round(words / 200))
+
 
 class BlogPostSummary(BaseModel):
     id: int
@@ -50,5 +56,15 @@ class BlogPostSummary(BaseModel):
     category: Optional[str]
     published: bool
     created_at: datetime
+    # Lu depuis l'objet ORM (from_attributes) pour calculer read_minutes,
+    # mais jamais serialise : la liste d'articles n'a pas besoin du corps
+    # complet, seulement du temps de lecture qui en derive.
+    content: Optional[str] = Field(default=None, exclude=True)
 
     model_config = {'from_attributes': True}
+
+    @computed_field
+    @property
+    def read_minutes(self) -> int:
+        words = len((self.content or '').split())
+        return max(1, round(words / 200))

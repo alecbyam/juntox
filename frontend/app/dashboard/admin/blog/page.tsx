@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { Badge } from '../../../../components/ui/Badge'
 import { getToken } from '../../../../lib/auth'
 
@@ -68,6 +70,13 @@ function slugify(text: string): string {
     .replace(/\s+/g, '-')
 }
 
+/** Même formule que backend/app/schemas/blog.py (read_minutes) — affichée en
+ * direct pendant la rédaction pour donner un repère avant de publier. */
+function estimateReadMinutes(content: string): number {
+  const words = content.trim().split(/\s+/).filter(Boolean).length
+  return Math.max(1, Math.round(words / 200))
+}
+
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('fr-FR', {
     day: 'numeric',
@@ -85,6 +94,7 @@ export default function BlogAdminPage() {
   const [form, setForm] = useState<FormState>(EMPTY_FORM)
   const [saving, setSaving] = useState(false)
   const [saveError, setSaveError] = useState<string | null>(null)
+  const [editorTab, setEditorTab] = useState<'write' | 'preview'>('write')
 
   const fetchPosts = useCallback(async () => {
     setLoading(true)
@@ -108,6 +118,7 @@ export default function BlogAdminPage() {
     setForm(EMPTY_FORM)
     setEditingPost(null)
     setSaveError(null)
+    setEditorTab('write')
     setModal('create')
   }
 
@@ -122,6 +133,7 @@ export default function BlogAdminPage() {
     })
     setEditingPost(post)
     setSaveError(null)
+    setEditorTab('write')
     setModal('edit')
   }
 
@@ -440,14 +452,54 @@ export default function BlogAdminPage() {
 
                   {/* Content */}
                   <div>
-                    <label className="text-xs font-medium text-neutral-500">Contenu (Markdown)</label>
-                    <textarea
-                      value={form.content}
-                      onChange={(e) => setForm((f) => ({ ...f, content: e.target.value }))}
-                      rows={12}
-                      placeholder={"# Titre\n\nContenu de l'article en Markdown..."}
-                      className="mt-1.5 w-full resize-y rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 font-mono text-sm text-white outline-none transition placeholder:text-neutral-600 focus:border-primary/40 focus:ring-1 focus:ring-primary/20"
-                    />
+                    <div className="flex items-center justify-between">
+                      <label className="text-xs font-medium text-neutral-500">Contenu (Markdown)</label>
+                      <div className="flex items-center gap-3">
+                        <span className="text-[0.65rem] text-neutral-600">
+                          {form.content.trim() ? `${estimateReadMinutes(form.content)} min de lecture` : 'Vide'}
+                        </span>
+                        <div className="flex rounded-lg border border-white/[0.08] p-0.5 text-xs">
+                          <button
+                            type="button"
+                            onClick={() => setEditorTab('write')}
+                            className={`rounded-md px-2.5 py-1 transition ${
+                              editorTab === 'write' ? 'bg-primary/15 text-primary-light' : 'text-neutral-500 hover:text-white'
+                            }`}
+                          >
+                            Écrire
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setEditorTab('preview')}
+                            className={`rounded-md px-2.5 py-1 transition ${
+                              editorTab === 'preview' ? 'bg-primary/15 text-primary-light' : 'text-neutral-500 hover:text-white'
+                            }`}
+                          >
+                            Aperçu
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {editorTab === 'write' ? (
+                      <textarea
+                        value={form.content}
+                        onChange={(e) => setForm((f) => ({ ...f, content: e.target.value }))}
+                        rows={12}
+                        placeholder={"# Titre\n\nContenu de l'article en Markdown..."}
+                        className="mt-1.5 w-full resize-y rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 font-mono text-sm text-white outline-none transition placeholder:text-neutral-600 focus:border-primary/40 focus:ring-1 focus:ring-primary/20"
+                      />
+                    ) : (
+                      <div className="mt-1.5 h-[19.5rem] overflow-y-auto rounded-xl border border-white/[0.08] bg-white/[0.02] px-4 py-3">
+                        {form.content.trim() ? (
+                          <div className="prose-blog text-sm">
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>{form.content}</ReactMarkdown>
+                          </div>
+                        ) : (
+                          <p className="text-sm text-neutral-600">Rien à prévisualiser pour l&apos;instant.</p>
+                        )}
+                      </div>
+                    )}
                   </div>
 
                   {saveError && (

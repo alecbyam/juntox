@@ -15,6 +15,9 @@ export type BlogPostSummary = {
   category: string | null
   published: boolean
   created_at: string
+  // Calculé côté backend sur le contenu complet (voir schemas/blog.py) —
+  // le corps de l'article n'est pas envoyé dans la liste, seul ce chiffre l'est.
+  read_minutes: number
 }
 
 export type BlogPost = BlogPostSummary & {
@@ -31,11 +34,7 @@ export const BLOG_CATEGORIES = [
   'Investissements',
 ]
 
-/** Temps de lecture estimé (~200 mots/min), calculé côté client — le backend
- * ne stocke pas cette donnée, pas besoin d'un champ dédié pour un calcul aussi simple. */
-export function estimateReadTime(content: string | null): string {
-  const words = (content ?? '').trim().split(/\s+/).filter(Boolean).length
-  const minutes = Math.max(1, Math.round(words / 200))
+export function formatReadTime(minutes: number): string {
   return `${minutes} min`
 }
 

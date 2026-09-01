@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { AnimatedSection } from '../../components/ui/AnimatedSection'
 import { Badge } from '../../components/ui/Badge'
-import { BLOG_CATEGORIES, estimateReadTime, formatArticleDate, type BlogPostSummary } from '../../lib/blog-api'
+import { BLOG_CATEGORIES, formatArticleDate, formatReadTime, type BlogPostSummary } from '../../lib/blog-api'
 
 const CATEGORIES = ['Tous', ...BLOG_CATEGORIES]
 
@@ -60,7 +60,7 @@ export function BlogPageClient({
                     <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    {estimateReadTime(featured.excerpt)} de lecture
+                    {formatReadTime(featured.read_minutes)} de lecture
                   </span>
                 </div>
                 <h2 className="mt-5 font-serif text-heading-1 font-semibold text-white transition group-hover:text-neutral-100">
@@ -114,7 +114,7 @@ export function BlogPageClient({
                 <Link href={`/blog/${article.slug}`} className="card-interactive card-shine group flex h-full flex-col">
                   <div className="flex items-center gap-3">
                     <Badge>{article.category ?? 'JuntoX'}</Badge>
-                    <span className="text-xs text-neutral-600">{estimateReadTime(article.excerpt)}</span>
+                    <span className="text-xs text-neutral-600">{formatReadTime(article.read_minutes)}</span>
                   </div>
                   <h3 className="mt-5 font-serif text-heading-3 font-semibold text-white group-hover:text-neutral-100">
                     {article.title}
